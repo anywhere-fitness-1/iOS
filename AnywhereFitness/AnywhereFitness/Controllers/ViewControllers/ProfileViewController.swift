@@ -14,10 +14,12 @@ class ProfileViewController: UIViewController {
     
     // Outlets
     @IBOutlet weak var tableView: UITableView!
+ 
     @IBOutlet weak var topView: UIView!
-    
     @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var userFullName: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+
     
     
     
@@ -30,8 +32,15 @@ class ProfileViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        updateView()
     }
     
+    func updateView() {
+        userImageView.layer.cornerRadius = 68
+        userImageView.clipsToBounds = true
+        userImageView.layer.borderWidth = 2
+        userImageView.layer.borderColor = UIColor.darkGray.cgColor
+    }
 
  
 
