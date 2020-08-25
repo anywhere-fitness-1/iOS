@@ -22,9 +22,12 @@ class AddClassViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var addTimePickerView: UIDatePicker!
     @IBOutlet weak var intensitySegmentedControl: UISegmentedControl!
     
-    @IBOutlet weak var durationTextField: UITextField!
+ 
+    @IBOutlet weak var durationSegmentControl: UISegmentedControl!
     @IBOutlet weak var addTypePickerView: UIPickerView!
-    @IBOutlet weak var maxClassSizeTextField: UITextField!
+    @IBOutlet weak var stepperControl: UIStepper!
+    @IBOutlet weak var maxClassSizeLabel: UILabel!
+    
     
     @IBOutlet weak var bottomConstrain: NSLayoutConstraint!
     
@@ -36,8 +39,8 @@ class AddClassViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         nameTextField.delegate = self
         instructorNameTextField.delegate = self
-        durationTextField.delegate = self
-        maxClassSizeTextField.delegate = self
+//        durationTextField.delegate = self
+//        maxClassSizeTextField.delegate = self
         
         addTypePickerView.delegate = self
         addTypePickerView.dataSource = self
@@ -71,8 +74,8 @@ class AddClassViewController: UIViewController, UITextFieldDelegate {
     func hideKeyBoard() {
         nameTextField.resignFirstResponder()
         instructorNameTextField.resignFirstResponder()
-        durationTextField.resignFirstResponder()
-        maxClassSizeTextField.resignFirstResponder()
+//        durationTextField.resignFirstResponder()
+//        maxClassSizeTextField.resignFirstResponder()
     }
     
     // UITextField Delegates Methods
