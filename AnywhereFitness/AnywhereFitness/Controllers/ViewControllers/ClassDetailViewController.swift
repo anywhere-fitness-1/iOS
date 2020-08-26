@@ -23,6 +23,11 @@ class ClassDetailViewController: UIViewController {
     @IBOutlet weak var attendeesTextView: UITextView!
     @IBOutlet weak var maxClassSizeLabel: UILabel!
     
+    @IBOutlet weak var topBackgroundView: UIView!
+    @IBOutlet weak var centerBackgroundView: UIView!
+    @IBOutlet weak var bottomBackgroundView: UIView!
+    @IBOutlet weak var locationView: UIView!
+    
     @IBOutlet weak var smallViewLeft: UIView!
     @IBOutlet weak var smallViewCenter: UIView!
     @IBOutlet weak var smallViewRight: UIView!
@@ -30,7 +35,7 @@ class ClassDetailViewController: UIViewController {
     
     
     // MARK: - Properties
-    
+    let customUI = CustomUI()
     
 
     override func viewDidLoad() {
@@ -40,20 +45,16 @@ class ClassDetailViewController: UIViewController {
     }
     
     func configureView() {
-        smallViewLeft.layer.cornerRadius = 8
-        smallViewLeft.layer.borderWidth = 1
-        smallViewLeft.layer.borderColor = UIColor.lightGray.cgColor
-        smallViewLeft.clipsToBounds = true
+        customUI.customCardView(card: topBackgroundView)
+        customUI.customCardView(card: centerBackgroundView)
+        customUI.customCardView(card: bottomBackgroundView)
         
-        smallViewCenter.layer.cornerRadius = 8
-        smallViewCenter.layer.borderWidth = 1
-        smallViewCenter.layer.borderColor = UIColor.lightGray.cgColor
-        smallViewCenter.clipsToBounds = true
+        customUI.customSmallCardView(card: smallViewLeft)
+        customUI.customSmallCardView(card: smallViewCenter)
+        customUI.customSmallCardView(card: smallViewRight)
         
-        smallViewRight.layer.cornerRadius = 8
-        smallViewRight.layer.borderWidth = 1
-        smallViewRight.layer.borderColor = UIColor.lightGray.cgColor
-        smallViewRight.clipsToBounds = true
+        locationView.layer.borderWidth = 1
+        locationView.layer.borderColor = UIColor.white.cgColor
     }
     
 

@@ -35,4 +35,12 @@ struct CustomUI {
         cell.layer.shadowOpacity = 0.8
         cell.layer.shadowOffset = CGSize(width: 10, height: 10)
     }
+    
+    func customSmallCardView(card: UIView) {
+        card.layer.cornerRadius = 10
+        card.layer.borderWidth = 1
+        card.layer.borderColor = UIColor.lightGray.cgColor
+        card.clipsToBounds = true
+    }
+    
 }
