@@ -14,7 +14,6 @@ class ProfileViewController: UIViewController {
     
     // Outlets
     @IBOutlet weak var tableView: UITableView!
- 
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
