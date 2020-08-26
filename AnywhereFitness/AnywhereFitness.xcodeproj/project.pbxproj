@@ -21,6 +21,7 @@
 		12AB67DA24EE3CF900AC2663 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12AB67D924EE3CF900AC2663 /* Settings.storyboard */; };
 		12AB67DF24EE436300AC2663 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB67DE24EE436300AC2663 /* SearchCollectionViewCell.swift */; };
 		12AB67E124EE43CA00AC2663 /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB67E024EE43CA00AC2663 /* SearchCollectionViewController.swift */; };
+		3135318624EF5C78008F2413 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3135318524EF5C78008F2413 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		12AB67D924EE3CF900AC2663 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		12AB67DE24EE436300AC2663 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		12AB67E024EE43CA00AC2663 /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
+		3135318524EF5C78008F2413 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			children = (
 				1281AA5824EDE3ED00D24E0B /* OpeningViewController.swift */,
 				12AB67E024EE43CA00AC2663 /* SearchCollectionViewController.swift */,
+				3135318524EF5C78008F2413 /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				124FC62424EE453E0074155A /* CategoryController.swift in Sources */,
 				1281AA3A24EDD1E800D24E0B /* SceneDelegate.swift in Sources */,
 				124FC62224EE450D0074155A /* Category.swift in Sources */,
+				3135318624EF5C78008F2413 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
