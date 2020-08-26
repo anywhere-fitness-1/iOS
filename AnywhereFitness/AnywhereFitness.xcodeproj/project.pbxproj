@@ -14,10 +14,6 @@
 		1281AA3F24EDD1E800D24E0B /* Opening.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1281AA3D24EDD1E800D24E0B /* Opening.storyboard */; };
 		1281AA4124EDD1EC00D24E0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1281AA4024EDD1EC00D24E0B /* Assets.xcassets */; };
 		1281AA4424EDD1EC00D24E0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1281AA4224EDD1EC00D24E0B /* LaunchScreen.storyboard */; };
-		1A2B82E524EE03B800815CA3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B82E424EE03B800815CA3 /* CoreDataStack.swift */; };
-		1A2B82E724EF564600815CA3 /* Class+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B82E624EF564600815CA3 /* Class+Convenience.swift */; };
-		1A2B82ED24EF56CC00815CA3 /* ClassRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B82EC24EF56CC00815CA3 /* ClassRepresentation.swift */; };
-		1A5C18DB24EDD76A00A7BE0F /* AnywhereFitness.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A5C18D924EDD76A00A7BE0F /* AnywhereFitness.xcdatamodeld */; };
 		1281AA5924EDE3ED00D24E0B /* OpeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281AA5824EDE3ED00D24E0B /* OpeningViewController.swift */; };
 		1281AA5C24EDE42700D24E0B /* CustomUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281AA5B24EDE42700D24E0B /* CustomUI.swift */; };
 		12AB67D324EE3B5000AC2663 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12AB67D224EE3B5000AC2663 /* Search.storyboard */; };
@@ -25,6 +21,16 @@
 		12AB67DA24EE3CF900AC2663 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12AB67D924EE3CF900AC2663 /* Settings.storyboard */; };
 		12AB67DF24EE436300AC2663 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB67DE24EE436300AC2663 /* SearchCollectionViewCell.swift */; };
 		12AB67E124EE43CA00AC2663 /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB67E024EE43CA00AC2663 /* SearchCollectionViewController.swift */; };
+		1A2B82E524EE03B800815CA3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B82E424EE03B800815CA3 /* CoreDataStack.swift */; };
+		1A2B82E724EF564600815CA3 /* Class+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B82E624EF564600815CA3 /* Class+Convenience.swift */; };
+		1A2B82ED24EF56CC00815CA3 /* ClassRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B82EC24EF56CC00815CA3 /* ClassRepresentation.swift */; };
+		1A5C18DB24EDD76A00A7BE0F /* AnywhereFitness.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A5C18D924EDD76A00A7BE0F /* AnywhereFitness.xcdatamodeld */; };
+		1AA8172724F5B7C800649A07 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8172624F5B7C800649A07 /* Client.swift */; };
+		1AA8172924F5B7D400649A07 /* Instructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8172824F5B7D400649A07 /* Instructor.swift */; };
+		1AA8172B24F5B94900649A07 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8172A24F5B94900649A07 /* Bearer.swift */; };
+		1AA8172D24F5BA6100649A07 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8172C24F5BA6100649A07 /* LoginController.swift */; };
+		1AA8172F24F5BA7E00649A07 /* ClassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8172E24F5BA7E00649A07 /* ClassController.swift */; };
+		1AA8173124F5DFA500649A07 /* ClassListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8173024F5DFA500649A07 /* ClassListing.swift */; };
 		8614CFEE24EF3FAA00414865 /* ProfileClassesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614CFED24EF3FAA00414865 /* ProfileClassesTableViewCell.swift */; };
 		8614CFF024EF42A800414865 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614CFEF24EF42A800414865 /* ProfileViewController.swift */; };
 		8614D05124F32B9E00414865 /* ClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614D05024F32B9D00414865 /* ClassDetailViewController.swift */; };
@@ -48,15 +54,21 @@
 		12AB67D924EE3CF900AC2663 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		12AB67DE24EE436300AC2663 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		12AB67E024EE43CA00AC2663 /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
+		1A2B82E424EE03B800815CA3 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		1A2B82E624EF564600815CA3 /* Class+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Class+Convenience.swift"; sourceTree = "<group>"; };
+		1A2B82EC24EF56CC00815CA3 /* ClassRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRepresentation.swift; sourceTree = "<group>"; };
+		1A5C18DA24EDD76A00A7BE0F /* AnywhereFitness.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnywhereFitness.xcdatamodel; sourceTree = "<group>"; };
+		1AA8172624F5B7C800649A07 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		1AA8172824F5B7D400649A07 /* Instructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructor.swift; sourceTree = "<group>"; };
+		1AA8172A24F5B94900649A07 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
+		1AA8172C24F5BA6100649A07 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = AnywhereFitness/Models/LoginController.swift; sourceTree = SOURCE_ROOT; };
+		1AA8172E24F5BA7E00649A07 /* ClassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClassController.swift; path = AnywhereFitness/Models/ClassController.swift; sourceTree = SOURCE_ROOT; };
+		1AA8173024F5DFA500649A07 /* ClassListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassListing.swift; sourceTree = "<group>"; };
 		8614CFED24EF3FAA00414865 /* ProfileClassesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileClassesTableViewCell.swift; sourceTree = "<group>"; };
 		8614CFEF24EF42A800414865 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8614CFF124EF56E900414865 /* AnywhereFitnessOpeningVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = AnywhereFitnessOpeningVideo.mp4; sourceTree = "<group>"; };
 		8614D05024F32B9D00414865 /* ClassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDetailViewController.swift; sourceTree = "<group>"; };
 		8614D05224F41F0100414865 /* AddClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClassViewController.swift; sourceTree = "<group>"; };
-		1A2B82E424EE03B800815CA3 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		1A2B82E624EF564600815CA3 /* Class+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Class+Convenience.swift"; sourceTree = "<group>"; };
-		1A2B82EC24EF56CC00815CA3 /* ClassRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRepresentation.swift; sourceTree = "<group>"; };
-		1A5C18DA24EDD76A00A7BE0F /* AnywhereFitness.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnywhereFitness.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				124FC62324EE453E0074155A /* CategoryController.swift */,
+				1AA8172C24F5BA6100649A07 /* LoginController.swift */,
+				1AA8172E24F5BA7E00649A07 /* ClassController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -175,18 +189,6 @@
 				1281AA4224EDD1EC00D24E0B /* LaunchScreen.storyboard */,
 			);
 			path = Launch;
-			sourceTree = "<group>";
-		};
-		1A5C18D824EDD75200A7BE0F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				1A5C18D924EDD76A00A7BE0F /* AnywhereFitness.xcdatamodeld */,
-				1A2B82E424EE03B800815CA3 /* CoreDataStack.swift */,
-				1A2B82E624EF564600815CA3 /* Class+Convenience.swift */,
-				1A2B82EC24EF56CC00815CA3 /* ClassRepresentation.swift */,
-				124FC62124EE450D0074155A /* Category.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		1281AA5A24EDE41C00D24E0B /* CustomUI */ = {
@@ -235,6 +237,22 @@
 				8614CFED24EF3FAA00414865 /* ProfileClassesTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		1A5C18D824EDD75200A7BE0F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1A5C18D924EDD76A00A7BE0F /* AnywhereFitness.xcdatamodeld */,
+				1A2B82E424EE03B800815CA3 /* CoreDataStack.swift */,
+				1A2B82E624EF564600815CA3 /* Class+Convenience.swift */,
+				1A2B82EC24EF56CC00815CA3 /* ClassRepresentation.swift */,
+				124FC62124EE450D0074155A /* Category.swift */,
+				1AA8172624F5B7C800649A07 /* Client.swift */,
+				1AA8172824F5B7D400649A07 /* Instructor.swift */,
+				1AA8172A24F5B94900649A07 /* Bearer.swift */,
+				1AA8173024F5DFA500649A07 /* ClassListing.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,10 +338,16 @@
 				8614CFEE24EF3FAA00414865 /* ProfileClassesTableViewCell.swift in Sources */,
 				1281AA5924EDE3ED00D24E0B /* OpeningViewController.swift in Sources */,
 				8614D05124F32B9E00414865 /* ClassDetailViewController.swift in Sources */,
+				1AA8173124F5DFA500649A07 /* ClassListing.swift in Sources */,
+				1AA8172D24F5BA6100649A07 /* LoginController.swift in Sources */,
 				1281AA5C24EDE42700D24E0B /* CustomUI.swift in Sources */,
+				1AA8172924F5B7D400649A07 /* Instructor.swift in Sources */,
 				12AB67E124EE43CA00AC2663 /* SearchCollectionViewController.swift in Sources */,
+				1AA8172F24F5BA7E00649A07 /* ClassController.swift in Sources */,
+				1AA8172724F5B7C800649A07 /* Client.swift in Sources */,
 				124FC62424EE453E0074155A /* CategoryController.swift in Sources */,
 				1281AA3A24EDD1E800D24E0B /* SceneDelegate.swift in Sources */,
+				1AA8172B24F5B94900649A07 /* Bearer.swift in Sources */,
 				1A2B82ED24EF56CC00815CA3 /* ClassRepresentation.swift in Sources */,
 				1A2B82E524EE03B800815CA3 /* CoreDataStack.swift in Sources */,
 				124FC62224EE450D0074155A /* Category.swift in Sources */,
