@@ -23,28 +23,28 @@ class OpeningViewController: UIViewController {
     //MARK: - Lifecycle Views
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureVideoBackground()
+ //       configureVideoBackground()
         configureButtons()
         configureTextFields()
     }
     
     //MARK: - Helper Methods
-    func configureVideoBackground() {
-        let path = Bundle.main.path(forResource: "AnywhereFitnessOpeningVideo", ofType: "mp4")
-        player = AVPlayer(url: NSURL(fileURLWithPath: path!) as URL)
-        player!.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none;
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = self.view.frame
-        playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        self.view.layer.insertSublayer(playerLayer, at: 0)
-        NotificationCenter.default.addObserver(self, selector:#selector(self.playerItemDidReachEnd), name:NSNotification.Name.AVPlayerItemDidPlayToEndTime, object:player!.currentItem)
-        player!.seek(to: CMTime.zero)
-        player!.play()
-    }
-    
-    @objc func playerItemDidReachEnd() {
-        player!.seek(to: CMTime.zero)
-    }
+//    func configureVideoBackground() {
+//        let path = Bundle.main.path(forResource: "AnywhereFitnessOpeningVideo", ofType: "mp4")
+//        player = AVPlayer(url: NSURL(fileURLWithPath: path!) as URL)
+//        player!.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none;
+//        let playerLayer = AVPlayerLayer(player: player)
+//        playerLayer.frame = self.view.frame
+//        playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+//        self.view.layer.insertSublayer(playerLayer, at: 0)
+//        NotificationCenter.default.addObserver(self, selector:#selector(self.playerItemDidReachEnd), name:NSNotification.Name.AVPlayerItemDidPlayToEndTime, object:player!.currentItem)
+//        player!.seek(to: CMTime.zero)
+//        player!.play()
+//    }
+//
+//    @objc func playerItemDidReachEnd() {
+//        player!.seek(to: CMTime.zero)
+//    }
     
     func configureButtons() {
         customUI.customDullButtonCorners(button: loginButton)
