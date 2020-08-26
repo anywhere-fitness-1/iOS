@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Segmented Controller View Controller-->
         <scene sceneID="YDn-xl-C1B">
             <objects>
-                <viewController storyboardIdentifier="OnboardingStoryboard" id="NMG-5z-cPR" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingStoryboard" id="NMG-5z-cPR" customClass="SegmentedControllerViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="28k-nA-G73">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,7 +46,8 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="Yki-7B-weF" kind="presentation" modalPresentationStyle="fullScreen" id="sUH-P0-xuW"/>
+                                            <action selector="nextButton:" destination="NMG-5z-cPR" eventType="touchUpInside" id="wZg-Yk-0d6"/>
+                                            <segue destination="Yki-7B-weF" kind="presentation" identifier="ToNameViewController" modalPresentationStyle="fullScreen" id="sUH-P0-xuW"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -61,15 +62,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OQN-2P-JnD"/>
                     </view>
+                    <connections>
+                        <outlet property="nextButton" destination="bHL-NM-yfs" id="2RH-TD-xiD"/>
+                        <outlet property="segmentedController" destination="JDY-zR-Ftw" id="Qs4-me-xC3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uE7-cQ-gUC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="461" y="39"/>
         </scene>
-        <!--View Controller-->
+        <!--Name View Controller-->
         <scene sceneID="JWO-5w-dDS">
             <objects>
-                <viewController id="Yki-7B-weF" sceneMemberID="viewController">
+                <viewController id="Yki-7B-weF" customClass="NameViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xyX-08-twW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,7 +114,8 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="DtT-yk-lrY" kind="presentation" modalPresentationStyle="fullScreen" id="J7q-r7-FCR"/>
+                                            <action selector="nextButtonTapped:" destination="Yki-7B-weF" eventType="touchUpInside" id="Sc9-UR-UPW"/>
+                                            <segue destination="DtT-yk-lrY" kind="presentation" identifier="ToMoreInfoViewController" modalPresentationStyle="fullScreen" id="J7q-r7-FCR"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -128,15 +134,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iXD-aI-ufb"/>
                     </view>
+                    <connections>
+                        <outlet property="nameTextField" destination="tga-H5-SOc" id="7gd-br-o3N"/>
+                        <outlet property="nextButton" destination="HzB-uq-udb" id="gIe-Fw-iPG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bu2-cO-2Gf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1307" y="39"/>
         </scene>
-        <!--View Controller-->
+        <!--More Info View Controller-->
         <scene sceneID="D3A-G0-ZWg">
             <objects>
-                <viewController id="DtT-yk-lrY" sceneMemberID="viewController">
+                <viewController id="DtT-yk-lrY" customClass="MoreInfoViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OPd-lz-y3g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -171,7 +181,8 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="2G8-Aa-b5I" kind="presentation" modalPresentationStyle="fullScreen" id="4dA-ia-ffx"/>
+                                            <action selector="nextButtonTapped:" destination="DtT-yk-lrY" eventType="touchUpInside" id="d9d-aP-Iqp"/>
+                                            <segue destination="2G8-Aa-b5I" kind="presentation" identifier="ToChoosePhotoViewController" modalPresentationStyle="fullScreen" id="4dA-ia-ffx"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -188,15 +199,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qJ0-GW-Ctf"/>
                     </view>
+                    <connections>
+                        <outlet property="nextButton" destination="qHw-CM-j1Y" id="bHh-wk-hga"/>
+                        <outlet property="textView" destination="qLZ-Nb-2wG" id="PN5-NV-hnO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rnj-Ev-Egs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2129" y="39"/>
         </scene>
-        <!--View Controller-->
+        <!--Choose Photo View Controller-->
         <scene sceneID="2Y2-ze-NXM">
             <objects>
-                <viewController id="2G8-Aa-b5I" sceneMemberID="viewController">
+                <viewController id="2G8-Aa-b5I" customClass="ChoosePhotoViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="APq-ba-hPN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -226,6 +241,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="nextButtonTapped:" destination="2G8-Aa-b5I" eventType="touchUpInside" id="2DK-0b-aeP"/>
                                     <segue destination="71d-vz-qse" kind="presentation" modalPresentationStyle="fullScreen" id="hOQ-Yb-wmZ"/>
                                 </connections>
                             </button>
@@ -243,15 +259,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dS9-Kg-j3D"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="xpX-ac-4AQ" id="hza-35-vKJ"/>
+                        <outlet property="nextButton" destination="xhS-hs-gLd" id="XZu-iI-3Iv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kaJ-Dr-gIt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2971.0144927536235" y="38.839285714285715"/>
         </scene>
-        <!--View Controller-->
+        <!--Password View Controller-->
         <scene sceneID="t0x-F8-WTw">
             <objects>
-                <viewController id="71d-vz-qse" sceneMemberID="viewController">
+                <viewController id="71d-vz-qse" customClass="PasswordViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qaP-wr-PE7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -306,6 +326,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
+                                            <action selector="nextButtonTapped:" destination="71d-vz-qse" eventType="touchUpInside" id="klh-Pu-bCZ"/>
                                             <segue destination="0FG-dW-b0g" kind="presentation" identifier="ToSearchStoryboard" modalPresentationStyle="fullScreen" id="VxD-T3-RAW"/>
                                         </connections>
                                     </button>
@@ -325,6 +346,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JDH-0s-Z5U"/>
                     </view>
+                    <connections>
+                        <outlet property="confirmPassword" destination="jCH-7i-PEK" id="O0b-7m-ycV"/>
+                        <outlet property="createPassword" destination="CUU-JA-Xtn" id="LwU-vY-qnr"/>
+                        <outlet property="nextButton" destination="6WA-1v-NsU" id="kFx-gb-FV0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WhB-ot-SPU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
