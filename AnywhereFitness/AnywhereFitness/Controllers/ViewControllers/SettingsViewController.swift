@@ -39,12 +39,15 @@ class SettingsViewController: UIViewController {
               var firstNameLabel: UILabel = UILabel()
               var lastNameLabel: UILabel = UILabel()
               
+              
               // Password Properties
               var passwordTextField: UITextField = UITextField()
               var passwordTextLabel: UILabel = UILabel()
               var logoutButton: UIButton = UIButton(type: .roundedRect)
               var emailTextField: UITextField = UITextField()
               var emailLabel: UILabel = UILabel()
+    
+              var profileImageView: UIImageView = UIImageView()
     
     
 
@@ -58,10 +61,23 @@ class SettingsViewController: UIViewController {
         super.setEditing(editing, animated: animated)
 
         if editing { wasEdited = true } else {
+            
+            guard let firstName = firstNameTextField.text, !firstName.isEmpty else {
+                showAlert(text: "firstName")
+                return}
            
-            guard let firstName = firstNameTextField.text, !firstName.isEmpty, let lastName = lastNameTextField.text, !lastName.isEmpty, let password = passwordTextField.text, !password.isEmpty, let email = emailTextField.text, !email.isEmpty else {
-                showAlert()
-                self.viewDidLoad()
+            guard let lastName = lastNameTextField.text, !lastName.isEmpty else {
+                showAlert(text: "lastName")
+                return
+            }
+            
+            guard let password = passwordTextField.text, !password.isEmpty else {
+                showAlert(text: "password")
+                return
+            }
+            
+            guard let email = emailTextField.text, !email.isEmpty else {
+                showAlert(text: "email")
                 return
             }
             firstNameTextField.text = firstName
@@ -137,6 +153,7 @@ class SettingsViewController: UIViewController {
         logoutButton.setTitleColor(.white, for: .normal)
         logoutButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         logoutButton.backgroundColor = .blue
+        logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
         
         
         // Adding The Fields and Labels to a Vertical StackView
@@ -156,14 +173,41 @@ class SettingsViewController: UIViewController {
         NSLayoutConstraint.activate([svTop, svWidth, svLeading, svHeight])
     }
     
-    func logoutButtonTapped(sender: UIButton) {
+    @objc func logoutButtonTapped() {
+        let openingController = OpeningViewController()
+        present(openingController, animated: true, completion: nil)
         
     }
     
-    func showAlert() {
+    func showAlert(text: String) {
         let alert = UIAlertController(title: "Unable to Save", message: "Make sure all fields are filled out", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        
+        switch text {
+        case "firstName":
+            alert.message = "Fill out first name"
+            self.present(alert, animated: true) {
+                self.viewDidLoad()
+            }
+        case "lastName":
+            alert.message = "Fill out last name"
+            self.present(alert, animated: true) {
+                self.viewDidLoad()
+            }
+        case "email":
+            alert.message = "Fill out proper email"
+            self.present(alert, animated: true) {
+                self.viewDidLoad()
+            }
+        case "password":
+            alert.message = "Fill out password"
+            self.present(alert, animated: true) {
+                self.viewDidLoad()
+            }
+        default:
+            break
+        }
+        
         
     }
     }
