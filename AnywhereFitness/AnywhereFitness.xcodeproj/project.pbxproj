@@ -31,6 +31,7 @@
 		1AA8172D24F5BA6100649A07 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8172C24F5BA6100649A07 /* LoginController.swift */; };
 		1AA8172F24F5BA7E00649A07 /* ClassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8172E24F5BA7E00649A07 /* ClassController.swift */; };
 		1AA8173124F5DFA500649A07 /* ClassListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8173024F5DFA500649A07 /* ClassListing.swift */; };
+		3135318624EF5C78008F2413 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3135318524EF5C78008F2413 /* SettingsViewController.swift */; };
 		8614CFEE24EF3FAA00414865 /* ProfileClassesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614CFED24EF3FAA00414865 /* ProfileClassesTableViewCell.swift */; };
 		8614CFF024EF42A800414865 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614CFEF24EF42A800414865 /* ProfileViewController.swift */; };
 		8614D05124F32B9E00414865 /* ClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614D05024F32B9D00414865 /* ClassDetailViewController.swift */; };
@@ -64,6 +65,7 @@
 		1AA8172C24F5BA6100649A07 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = AnywhereFitness/Models/LoginController.swift; sourceTree = SOURCE_ROOT; };
 		1AA8172E24F5BA7E00649A07 /* ClassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClassController.swift; path = AnywhereFitness/Models/ClassController.swift; sourceTree = SOURCE_ROOT; };
 		1AA8173024F5DFA500649A07 /* ClassListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassListing.swift; sourceTree = "<group>"; };
+		3135318524EF5C78008F2413 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8614CFED24EF3FAA00414865 /* ProfileClassesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileClassesTableViewCell.swift; sourceTree = "<group>"; };
 		8614CFEF24EF42A800414865 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8614CFF124EF56E900414865 /* AnywhereFitnessOpeningVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = AnywhereFitnessOpeningVideo.mp4; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			children = (
 				1281AA5824EDE3ED00D24E0B /* OpeningViewController.swift */,
 				12AB67E024EE43CA00AC2663 /* SearchCollectionViewController.swift */,
+				3135318524EF5C78008F2413 /* SettingsViewController.swift */,
 				8614CFEF24EF42A800414865 /* ProfileViewController.swift */,
 				8614D05024F32B9D00414865 /* ClassDetailViewController.swift */,
 				8614D05224F41F0100414865 /* AddClassViewController.swift */,
@@ -351,6 +354,7 @@
 				1A2B82ED24EF56CC00815CA3 /* ClassRepresentation.swift in Sources */,
 				1A2B82E524EE03B800815CA3 /* CoreDataStack.swift in Sources */,
 				124FC62224EE450D0074155A /* Category.swift in Sources */,
+				3135318624EF5C78008F2413 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
