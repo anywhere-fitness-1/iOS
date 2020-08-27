@@ -8,7 +8,16 @@
 
 import UIKit
 
-class TrainerOrClientViewController: UIViewController {
+class SegmentedControllerViewController: UIViewController {
+    
+    enum TypeOfUser {
+        case client
+        case instructor
+    }
+    
+    @IBOutlet weak var segmentedController: UISegmentedControl!
+    @IBOutlet weak var nextButton: UIButton!
+    
 
     
     override func viewDidLoad() {
@@ -16,4 +25,16 @@ class TrainerOrClientViewController: UIViewController {
 
     }
     
+    func chooseUser() {
+        
+        if segmentedController.selectedSegmentIndex == 0 {
+            
+        }
+        
+    }
+    
+    
+    @IBAction func nextButtonTapped(_ sender: UIButton) {
+        
+    }
 }
