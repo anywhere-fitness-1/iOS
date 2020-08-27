@@ -50,8 +50,19 @@ class AddClassViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(Keyboard(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(Keyboard(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
-
+//        durationSegmentControl.layer.borderColor = UIColor.systemOrange.cgColor
+//        durationSegmentControl.layer.borderWidth = 2
+//        durationSegmentControl.backgroundColor = UIColor.white
+//        durationSegmentControl.layer.backgroundColor = UIColor.white.cgColor
+        
     }
+    
+    @IBAction func maxClassSizeStepper(_ sender: UIStepper) {
+        var number = 0
+        number = Int(sender.value)
+        maxClassSizeLabel.text = String(number)
+    }
+    
     
     
     // Selector Objc Keyboard function

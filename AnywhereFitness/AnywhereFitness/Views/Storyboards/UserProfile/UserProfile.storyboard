@@ -227,8 +227,9 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dJy-5d-A9V">
-                                                        <rect key="frame" x="15" y="542.5" width="570" height="36"/>
+                                                    <segmentedControl clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dJy-5d-A9V">
+                                                        <rect key="frame" x="15" y="542.5" width="384" height="36"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="0eG-h2-QFL"/>
                                                         </constraints>
@@ -237,6 +238,13 @@
                                                             <segment title="Intermediate"/>
                                                             <segment title="Advanced"/>
                                                         </segments>
+                                                        <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </segmentedControl>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifw-Go-kbD">
                                                         <rect key="frame" x="15" y="667" width="570" height="19.5"/>
@@ -275,13 +283,16 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ewh-7o-rhS">
-                                                        <rect key="frame" x="15" y="893" width="570" height="32"/>
+                                                        <rect key="frame" x="30" y="893" width="314" height="32"/>
                                                         <subviews>
-                                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="oUz-qj-Epe">
-                                                                <rect key="frame" x="0.0" y="0.0" width="275" height="32"/>
+                                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="25" stepValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="oUz-qj-Epe">
+                                                                <rect key="frame" x="0.0" y="0.0" width="147" height="32"/>
+                                                                <connections>
+                                                                    <action selector="maxClassSizeStepper:" destination="hnl-4P-EEa" eventType="valueChanged" id="7rC-Nu-ze4"/>
+                                                                </connections>
                                                             </stepper>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKT-UA-YHG">
-                                                                <rect key="frame" x="295" y="4" width="275" height="24"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKT-UA-YHG">
+                                                                <rect key="frame" x="167" y="4" width="147" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -316,7 +327,7 @@
                                                     <constraint firstItem="tJk-RA-EV4" firstAttribute="leading" secondItem="hQC-Ib-Sck" secondAttribute="leading" constant="15" id="LCb-Pi-XQF"/>
                                                     <constraint firstAttribute="trailing" secondItem="SzS-hO-7zY" secondAttribute="trailing" constant="15" id="LUe-aw-hlC"/>
                                                     <constraint firstItem="QRM-XA-hW1" firstAttribute="leading" secondItem="hQC-Ib-Sck" secondAttribute="leading" constant="15" id="Lbp-8z-M2d"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Ewh-7o-rhS" secondAttribute="trailing" constant="15" id="NFU-QE-PW7"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Ewh-7o-rhS" secondAttribute="trailing" constant="70" id="NFU-QE-PW7"/>
                                                     <constraint firstItem="kLR-69-GwP" firstAttribute="top" secondItem="hQC-Ib-Sck" secondAttribute="top" constant="15" id="Ufw-BY-85f"/>
                                                     <constraint firstItem="dJy-5d-A9V" firstAttribute="leading" secondItem="hQC-Ib-Sck" secondAttribute="leading" constant="15" id="VCN-CC-O9Q"/>
                                                     <constraint firstItem="kLR-69-GwP" firstAttribute="leading" secondItem="hQC-Ib-Sck" secondAttribute="leading" constant="15" id="Xjg-RO-tdV"/>
@@ -334,7 +345,7 @@
                                                     <constraint firstItem="dJy-5d-A9V" firstAttribute="top" secondItem="QRM-XA-hW1" secondAttribute="bottom" constant="5" id="opt-jJ-H3E"/>
                                                     <constraint firstItem="SzS-hO-7zY" firstAttribute="top" secondItem="ifw-Go-kbD" secondAttribute="bottom" constant="5" id="rb3-lc-0GN"/>
                                                     <constraint firstItem="upU-4a-gCX" firstAttribute="leading" secondItem="hQC-Ib-Sck" secondAttribute="leading" constant="15" id="rz6-zi-j13"/>
-                                                    <constraint firstItem="Ewh-7o-rhS" firstAttribute="leading" secondItem="hQC-Ib-Sck" secondAttribute="leading" constant="15" id="tmH-Sg-nKQ"/>
+                                                    <constraint firstItem="Ewh-7o-rhS" firstAttribute="leading" secondItem="hQC-Ib-Sck" secondAttribute="leading" constant="30" id="tmH-Sg-nKQ"/>
                                                     <constraint firstAttribute="trailing" secondItem="Jyl-Ad-vJ7" secondAttribute="trailing" constant="15" id="wXN-6C-Lvl"/>
                                                     <constraint firstItem="Jyl-Ad-vJ7" firstAttribute="top" secondItem="dJy-5d-A9V" secondAttribute="bottom" constant="15" id="xrR-uD-s0K"/>
                                                     <constraint firstItem="Ewh-7o-rhS" firstAttribute="top" secondItem="hVP-b6-Fbf" secondAttribute="bottom" constant="5" id="z9m-d2-Fqm"/>
@@ -403,7 +414,7 @@
         <!--Class-->
         <scene sceneID="muM-Nm-e2o">
             <objects>
-                <viewController id="xPY-Hh-dI3" customClass="ClassDetailViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsVC" id="xPY-Hh-dI3" customClass="ClassDetailViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qo8-Ce-T7s">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -743,7 +754,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bFi-3y-1Uc"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Class" id="MGt-sf-FhR"/>
+                    <navigationItem key="navigationItem" title="Class" id="MGt-sf-FhR">
+                        <barButtonItem key="rightBarButtonItem" title="Cancel Class" id="wbg-vr-1D2"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="attendeesTextView" destination="NlY-LI-4Fe" id="LBl-7Z-Fau"/>
                         <outlet property="bottomBackgroundView" destination="Ypg-CI-7Zm" id="TEQ-ig-ABv"/>

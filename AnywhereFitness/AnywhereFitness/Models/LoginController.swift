@@ -21,6 +21,8 @@ enum NetworkError: Error {
     case failedSignIn
     case noToken
     case tryAgain
+    case failedDecoding
+    case failedResponse
 }
 
 class LoginController {
