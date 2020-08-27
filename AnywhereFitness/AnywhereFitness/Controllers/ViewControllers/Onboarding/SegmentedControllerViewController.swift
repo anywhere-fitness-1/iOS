@@ -10,6 +10,11 @@ import UIKit
 
 class SegmentedControllerViewController: UIViewController {
     
+    enum TypeOfUser {
+        case client
+        case instructor
+    }
+    
     @IBOutlet weak var segmentedController: UISegmentedControl!
     @IBOutlet weak var nextButton: UIButton!
     
@@ -17,6 +22,15 @@ class SegmentedControllerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    func chooseUser() {
+        
+        if segmentedController.selectedSegmentIndex == 0 {
+            
+        }
+        
+    }
+    
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         
