@@ -14,14 +14,28 @@ class InstructorPasswordViewController: UIViewController {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     
-    var toSearchStoryboard = "ToSearchStoryboard"
+    var passingInstructor: Instructor?
+    var toInstructorPhotoViewController = "ToInstructorPhotoViewController"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == toInstructorPhotoViewController {
+            let photoVC = segue.identifier as? InstructorPhotoViewController
+            photoVC?.passingInstructor = passingInstructor
+        }
+    }
+    
 
     @IBAction func nextButtonTapped(_ sender: UIButton) {
+        guard let password = createPasswordTextField.text,
+            !password.isEmpty else { return }
         
+        let instructor = Instructor(username: passingInstructor?.username, password: password, name: passingInstructor?.name, specialties: passingInstructor?.specialties, image: nil)
+        
+        passingInstructor = instructor
     }
 }

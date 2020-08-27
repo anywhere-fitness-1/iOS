@@ -13,16 +13,20 @@ class InstructorPhotoViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var saveAndFinishButton: UIButton!
     
+    var passingInstructor: Instructor?
     var toInstructorUsernameViewController = "ToInstructorUsernameViewController"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func saveAndFinishButtonTapped(_ sender: UIButton) {
+        guard let image = imageView else { return }
         
+        let instructor = Instructor(username: passingInstructor?.username, password: passingInstructor?.password, name: passingInstructor?.name, specialties: passingInstructor?.specialties, image: image)
+        
+        passingInstructor = instructor
     }
     
     
