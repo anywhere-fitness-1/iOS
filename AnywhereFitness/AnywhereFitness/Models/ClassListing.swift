@@ -10,7 +10,7 @@ import Foundation
 
 struct ClassListing: Codable {
     
-    var id: Int
+    var id: Int?
     var name: String
     var type: String
     var time: String

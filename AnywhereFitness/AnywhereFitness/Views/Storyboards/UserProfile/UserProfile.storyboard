@@ -415,7 +415,7 @@
         <!--Class-->
         <scene sceneID="muM-Nm-e2o">
             <objects>
-                <viewController id="xPY-Hh-dI3" customClass="ClassDetailViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsVC" id="xPY-Hh-dI3" customClass="ClassDetailViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qo8-Ce-T7s">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
