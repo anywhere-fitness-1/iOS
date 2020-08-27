@@ -1,5 +1,5 @@
 //
-//  PasswordViewController.swift
+//  InstructorNameViewController.swift
 //  AnywhereFitness
 //
 //  Created by Lambda_School_loaner_226 on 8/26/20.
@@ -8,15 +8,18 @@
 
 import UIKit
 
-class PasswordViewController: UIViewController {
-    
-    @IBOutlet weak var createPassword: UITextField!
-    @IBOutlet weak var confirmPassword: UITextField!
+class InstructorNameViewController: UIViewController {
+
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
+    
+    var toInstructorMoreInfoViewController = "ToInstructorMoreInfoViewController"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
+    
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         

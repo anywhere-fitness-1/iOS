@@ -19,8 +19,10 @@ class SegmentedControllerViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
     
     func chooseUser() {
