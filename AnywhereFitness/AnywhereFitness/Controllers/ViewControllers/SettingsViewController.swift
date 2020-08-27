@@ -8,16 +8,18 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var navBar: UINavigationItem!
     var wasEdited = false
+    let imagePicker = UIImagePickerController()
+    
     
     lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 100)
     
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView(frame: .zero)
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray4
         view.frame = self.view.bounds
         view.contentSize = contentViewSize
         
@@ -26,31 +28,35 @@ class SettingsViewController: UIViewController {
     
     lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray4
         view.frame = self.view.bounds
         
         return view
         
     }()
     
-            // First Name Last Name Properties
+            // Labels, Buttons, Textfields, ImageView
               var firstNameTextField: UITextField = UITextField()
               var lastNameTextField: UITextField = UITextField()
               var firstNameLabel: UILabel = UILabel()
               var lastNameLabel: UILabel = UILabel()
               
-              // Password Properties
               var passwordTextField: UITextField = UITextField()
               var passwordTextLabel: UILabel = UILabel()
               var logoutButton: UIButton = UIButton(type: .roundedRect)
               var emailTextField: UITextField = UITextField()
               var emailLabel: UILabel = UILabel()
     
+              var profileImageView: UIImageView = UIImageView()
     
-
+    override func viewWillLayoutSubviews() {
+        profileImageView.setRounded()
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews()
+        imagePicker.delegate = self
 
         }
     
@@ -58,10 +64,23 @@ class SettingsViewController: UIViewController {
         super.setEditing(editing, animated: animated)
 
         if editing { wasEdited = true } else {
+            
+            guard let firstName = firstNameTextField.text, !firstName.isEmpty else {
+                showAlert(text: "firstName")
+                return}
            
-            guard let firstName = firstNameTextField.text, !firstName.isEmpty, let lastName = lastNameTextField.text, !lastName.isEmpty, let password = passwordTextField.text, !password.isEmpty, let email = emailTextField.text, !email.isEmpty else {
-                showAlert()
-                self.viewDidLoad()
+            guard let lastName = lastNameTextField.text, !lastName.isEmpty else {
+                showAlert(text: "lastName")
+                return
+            }
+            
+            guard let password = passwordTextField.text, !password.isEmpty else {
+                showAlert(text: "password")
+                return
+            }
+            
+            guard let email = emailTextField.text, !email.isEmpty else {
+                showAlert(text: "email")
                 return
             }
             firstNameTextField.text = firstName
@@ -73,11 +92,16 @@ class SettingsViewController: UIViewController {
             
             //Save Information to Firebase
         }
+
         firstNameTextField.isUserInteractionEnabled = editing
         lastNameTextField.isUserInteractionEnabled = editing
         passwordTextField.isUserInteractionEnabled = editing
         emailTextField.isUserInteractionEnabled = editing
         navigationItem.hidesBackButton = editing
+        profileImageView.isUserInteractionEnabled = editing
+        containerView.isUserInteractionEnabled = editing
+        logoutButton.isHidden = editing
+
     }
     
     
@@ -96,12 +120,13 @@ class SettingsViewController: UIViewController {
         containerView.addSubview(emailTextField)
         containerView.addSubview(emailLabel)
         containerView.addSubview(firstNameTextField)
+        containerView.addSubview(profileImageView)
         
         firstNameTextField.isUserInteractionEnabled = false
         lastNameTextField.isUserInteractionEnabled = false
         emailTextField.isUserInteractionEnabled = false
         passwordTextField.isUserInteractionEnabled = false
-        
+        profileImageView.isUserInteractionEnabled = false
         
         firstNameTextField.translatesAutoresizingMaskIntoConstraints = false
         firstNameTextField.text = "John"
@@ -136,39 +161,136 @@ class SettingsViewController: UIViewController {
         logoutButton.titleLabel?.text = "Logout"
         logoutButton.setTitleColor(.white, for: .normal)
         logoutButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        logoutButton.backgroundColor = .blue
+        logoutButton.backgroundColor = .black
+        logoutButton.layer.cornerRadius = 5
+        logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
+        
+        profileImageView.translatesAutoresizingMaskIntoConstraints = false
+        profileImageView.image = UIImage(named: "bodypump")
+        profileImageView.layer.borderWidth = 1.0
+        profileImageView.clipsToBounds = true
+        profileImageView.layer.borderColor = UIColor.darkGray.cgColor
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        profileImageView.addGestureRecognizer(tapGestureRecognizer)
+        profileImageView.setRounded()
+        let tapGestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(tapGestureRecognizer:)))
+        containerView.addGestureRecognizer(tapGestureRecognizer2)
+        containerView.isUserInteractionEnabled = false
         
         
+
         // Adding The Fields and Labels to a Vertical StackView
-          let stackView = UIStackView(arrangedSubviews: [firstNameLabel, firstNameTextField, lastNameLabel, lastNameTextField, passwordTextLabel, passwordTextField, emailLabel, emailTextField, logoutButton])
+          let stackView = UIStackView(arrangedSubviews: [firstNameLabel, firstNameTextField, lastNameLabel, lastNameTextField, passwordTextLabel, passwordTextField, emailLabel, emailTextField])
           stackView.axis = .vertical
           stackView.distribution = .equalSpacing
-          stackView.spacing = 10
           stackView.translatesAutoresizingMaskIntoConstraints = false
           
         containerView.addSubview(stackView)
                  
-          let svTop = stackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20)
+        let svTop = stackView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 20)
           let svLeading = stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15)
-          let svWidth = stackView.widthAnchor.constraint(equalToConstant: 200)
-          let svHeight = stackView.heightAnchor.constraint(equalToConstant: 500)
+        let svTrailing = stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15)
+//          let svWidth = stackView.widthAnchor.constraint(equalToConstant: 200)
+          let svHeight = stackView.heightAnchor.constraint(equalToConstant: 300)
 
-        NSLayoutConstraint.activate([svTop, svWidth, svLeading, svHeight])
-    }
-    
-    func logoutButtonTapped(sender: UIButton) {
+        NSLayoutConstraint.activate([svTop, svTrailing, svLeading, svHeight])
+        
+        profileImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20).isActive = true
+        profileImageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        profileImageView.setRounded()
+        
+        logoutButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20).isActive = true
+        logoutButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20).isActive = true
+        logoutButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20).isActive = true
+        logoutButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
         
     }
     
-    func showAlert() {
+    @objc func logoutButtonTapped() {
+        let openingController = OpeningViewController()
+        present(openingController, animated: true, completion: nil)
+        
+    }
+    
+    func showAlert(text: String) {
         let alert = UIAlertController(title: "Unable to Save", message: "Make sure all fields are filled out", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
         
+        switch text {
+        case "firstName":
+            alert.message = "Fill out first name"
+            self.present(alert, animated: true) {
+                self.viewDidLoad()
+            }
+        case "lastName":
+            alert.message = "Fill out last name"
+            self.present(alert, animated: true) {
+                self.viewDidLoad()
+            }
+        case "email":
+            alert.message = "Fill out proper email"
+            self.present(alert, animated: true) {
+                self.viewDidLoad()
+            }
+        case "password":
+            alert.message = "Fill out password"
+            self.present(alert, animated: true) {
+                self.viewDidLoad()
+            }
+        default:
+            break
+        }
+        
+        
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer){
+        
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+
+               // Your action
+        print("ImageTapped Function Firing")
+           }
+    
+    @objc func dismissKeyboard(tapGestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     }
 
 extension SettingsViewController : UITextFieldDelegate {
     
 }
+
+
+extension SettingsViewController: UIImagePickerControllerDelegate {
+// MARK: - UIImagePickerControllerDelegate Methods
+ 
+func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+        profileImageView.contentMode = .scaleAspectFit
+        profileImageView.image = pickedImage
+    }
+ 
+    dismiss(animated: true, completion: nil)
+}
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+extension UIImageView {
+
+    func setRounded() {
+        self.layer.cornerRadius = (self.frame.width / 2) //instead of let radius = CGRectGetWidth(self.frame) / 2
+        self.layer.masksToBounds = true
+        self.contentMode = .scaleAspectFill
+    }
+}
+
 
