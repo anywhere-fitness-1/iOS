@@ -1,5 +1,5 @@
 //
-//  ChoosePhotoViewController.swift
+//  ClientMoreInfoViewController.swift
 //  AnywhereFitness
 //
 //  Created by Lambda_School_loaner_226 on 8/26/20.
@@ -8,18 +8,18 @@
 
 import UIKit
 
-class ChoosePhotoViewController: UIViewController {
-    
-    @IBOutlet weak var imageView: UIImageView!
+class ClientMoreInfoViewController: UIViewController {
+
+    @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var nextButton: UIButton!
     
-
+    var toClientPhotoViewController = "ToClientPhotoViewController"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
-    
     @IBAction func nextButtonTapped(_ sender: UIButton) {
-        
     }
     
 }
