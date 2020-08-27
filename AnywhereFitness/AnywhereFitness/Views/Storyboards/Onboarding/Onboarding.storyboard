@@ -532,7 +532,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="nextButtonTapped:" destination="mpm-EQ-bVd" eventType="touchUpInside" id="IfI-IY-UV9"/>
+                                    <action selector="saveAndFinishButtonTapped:" destination="mpm-EQ-bVd" eventType="touchUpInside" id="Rtu-NZ-sb7"/>
                                     <segue destination="0FG-dW-b0g" kind="presentation" identifier="ToSearchStoryboard" modalPresentationStyle="fullScreen" id="QyY-3o-Hyh"/>
                                 </connections>
                             </button>
@@ -552,7 +552,7 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="wsv-fE-9sn" id="5py-Zh-WW5"/>
-                        <outlet property="nextButton" destination="wa6-JH-IL1" id="seV-DZ-3Pz"/>
+                        <outlet property="saveAndFinishButton" destination="wa6-JH-IL1" id="0Kg-me-8kb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cnZ-hT-d67" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -617,7 +617,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="saveAndFinishButtonTapped:" destination="hYn-5e-8zw" eventType="touchUpInside" id="7Tr-vM-Ng1"/>
+                                            <action selector="nextButtonTapped:" destination="hYn-5e-8zw" eventType="touchUpInside" id="LtG-BZ-NmT"/>
                                             <segue destination="mpm-EQ-bVd" kind="presentation" identifier="ToInstructorPhotoViewController" modalPresentationStyle="fullScreen" id="O0o-ab-NGS"/>
                                         </connections>
                                     </button>
@@ -640,7 +640,7 @@
                     <connections>
                         <outlet property="confirmPasswordTextField" destination="5Mc-ig-6Jj" id="f1j-8h-og6"/>
                         <outlet property="createPasswordTextField" destination="7EV-qX-44d" id="AUQ-aA-UQ8"/>
-                        <outlet property="saveAndFinishButton" destination="dhw-Zx-1Xx" id="CAl-4f-Siq"/>
+                        <outlet property="nextButton" destination="dhw-Zx-1Xx" id="1qz-aQ-P1A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xN5-XG-xQa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -766,6 +766,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
+                                            <action selector="nextButtonTapped:" destination="TW5-gg-hId" eventType="touchUpInside" id="asO-Ef-BEC"/>
                                             <action selector="saveAndFinishButtonTapped:" destination="TW5-gg-hId" eventType="touchUpInside" id="rMN-Dd-Uac"/>
                                             <segue destination="yLM-lH-23G" kind="presentation" identifier="ToInstructorAboutViewController" modalPresentationStyle="fullScreen" id="Rsk-YN-buH"/>
                                         </connections>
@@ -784,7 +785,10 @@
                     </view>
                     <connections>
                         <outlet property="createPasswordTextField" destination="mVX-8S-oMH" id="J0p-Et-TT2"/>
+                        <outlet property="nextButton" destination="AYa-Tv-Cxb" id="ZIW-dS-9dw"/>
                         <outlet property="saveAndFinishButton" destination="AYa-Tv-Cxb" id="NQZ-80-nh8"/>
+                        <outlet property="usernameLabel" destination="jCN-i5-YMx" id="Vnf-Rz-hlS"/>
+                        <outlet property="usernameTextField" destination="mVX-8S-oMH" id="bZr-ox-6ng"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fbg-FH-LEI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -793,7 +797,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bMe-dg-esa"/>
+        <segue reference="QyY-3o-Hyh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.viewfinder" catalog="system" width="128" height="114"/>

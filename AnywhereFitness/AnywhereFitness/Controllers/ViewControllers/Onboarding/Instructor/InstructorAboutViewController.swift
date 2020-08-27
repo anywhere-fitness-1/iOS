@@ -13,13 +13,27 @@ class InstructorAboutViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var nextButton: UIButton!
     
-    var toInstructorPhotoViewController = "ToInstructorPhotoViewController"
+    var passingInstructor: Instructor?
+    var toInstructorPasswordViewController = "ToInstructorPasswordViewController"
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == toInstructorPasswordViewController {
+            let passwordVC = segue.identifier as? InstructorPasswordViewController
+            passwordVC?.passingInstructor = passingInstructor
+        }
+    }
+    
     @IBAction func nextButtonTapped(_ sender: UIButton) {
+        guard let specialties = textView.text else { return }
+        
+        let instructor = Instructor(username: passingInstructor?.username, password: nil, name: passingInstructor?.name, specialties: specialties, image: nil)
+        
+        passingInstructor = instructor
     }
     
 }

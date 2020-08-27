@@ -14,7 +14,7 @@ class InstructorNameViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     
     var passingInstructor: Instructor?
-    var toInstructorMoreInfoViewController = "ToInstructorMoreInfoViewController"
+    var toInstructorUsernameViewController = "ToInstructorUsernameViewController"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,14 +22,19 @@ class InstructorNameViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        <#code#>
+        if segue.identifier == toInstructorUsernameViewController {
+            let usernameVC = segue.destination as? InstructorUsernameViewController
+            usernameVC?.passingInstructor = passingInstructor
+        }
     }
-    
-    
-    
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
+        guard let name = nameTextField.text,
+            !name.isEmpty else { return }
+        
+        let instructor = Instructor(username: nil, password: nil, name: name, specialties: nil, image: nil)
+        
+        passingInstructor = instructor
         
     }
-    
 }
