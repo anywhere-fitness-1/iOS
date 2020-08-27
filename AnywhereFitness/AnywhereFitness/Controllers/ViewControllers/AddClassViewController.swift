@@ -13,7 +13,7 @@ import UIKit
 class AddClassViewController: UIViewController, UITextFieldDelegate {
     
     // Outlets
-    @IBOutlet weak var bacgroundView: UIView!
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var nameTextField: UITextField!

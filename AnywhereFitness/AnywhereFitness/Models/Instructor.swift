@@ -9,9 +9,9 @@
 import Foundation
 
 struct Instructor: Codable {
-    let username: String
-    let password: String
-    let name: String
-    let specialties: String
-    let image: String
+    let username: String?
+    let password: String?
+    let name: String?
+    let specialties: String?
+    let image: String?
 }

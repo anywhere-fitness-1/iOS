@@ -24,11 +24,11 @@
 		12AB67DF24EE436300AC2663 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB67DE24EE436300AC2663 /* SearchCollectionViewCell.swift */; };
 		12AB67E124EE43CA00AC2663 /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB67E024EE43CA00AC2663 /* SearchCollectionViewController.swift */; };
 		12C9BD2424F70FA400ED2677 /* ClientNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9BD2324F70FA400ED2677 /* ClientNameViewController.swift */; };
-		12C9BD2624F70FDF00ED2677 /* ClientMoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9BD2524F70FDF00ED2677 /* ClientMoreInfoViewController.swift */; };
+		12C9BD2624F70FDF00ED2677 /* ClientAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9BD2524F70FDF00ED2677 /* ClientAboutViewController.swift */; };
 		12C9BD2824F70FEE00ED2677 /* ClientPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9BD2724F70FEE00ED2677 /* ClientPhotoViewController.swift */; };
 		12C9BD2A24F7180F00ED2677 /* ClientPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9BD2924F7180F00ED2677 /* ClientPasswordViewController.swift */; };
 		12C9BD2C24F7181D00ED2677 /* InstructorNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9BD2B24F7181D00ED2677 /* InstructorNameViewController.swift */; };
-		12C9BD2E24F7182C00ED2677 /* InstructorMoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9BD2D24F7182C00ED2677 /* InstructorMoreInfoViewController.swift */; };
+		12C9BD2E24F7182C00ED2677 /* InstructorAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9BD2D24F7182C00ED2677 /* InstructorAboutViewController.swift */; };
 		12C9BD3224F7184C00ED2677 /* InstructorPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9BD3124F7184C00ED2677 /* InstructorPasswordViewController.swift */; };
 		12C9BD3424F7185F00ED2677 /* InstructorPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9BD3324F7185F00ED2677 /* InstructorPhotoViewController.swift */; };
 		12C9BD3624F71BBE00ED2677 /* SegmentedControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9BD3524F71BBE00ED2677 /* SegmentedControllerViewController.swift */; };
@@ -71,11 +71,11 @@
 		12AB67DE24EE436300AC2663 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		12AB67E024EE43CA00AC2663 /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
 		12C9BD2324F70FA400ED2677 /* ClientNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientNameViewController.swift; sourceTree = "<group>"; };
-		12C9BD2524F70FDF00ED2677 /* ClientMoreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientMoreInfoViewController.swift; sourceTree = "<group>"; };
+		12C9BD2524F70FDF00ED2677 /* ClientAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientAboutViewController.swift; sourceTree = "<group>"; };
 		12C9BD2724F70FEE00ED2677 /* ClientPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientPhotoViewController.swift; sourceTree = "<group>"; };
 		12C9BD2924F7180F00ED2677 /* ClientPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientPasswordViewController.swift; sourceTree = "<group>"; };
 		12C9BD2B24F7181D00ED2677 /* InstructorNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorNameViewController.swift; sourceTree = "<group>"; };
-		12C9BD2D24F7182C00ED2677 /* InstructorMoreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorMoreInfoViewController.swift; sourceTree = "<group>"; };
+		12C9BD2D24F7182C00ED2677 /* InstructorAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorAboutViewController.swift; sourceTree = "<group>"; };
 		12C9BD3124F7184C00ED2677 /* InstructorPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorPasswordViewController.swift; sourceTree = "<group>"; };
 		12C9BD3324F7185F00ED2677 /* InstructorPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorPhotoViewController.swift; sourceTree = "<group>"; };
 		12C9BD3524F71BBE00ED2677 /* SegmentedControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControllerViewController.swift; sourceTree = "<group>"; };
@@ -291,7 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				12C9BD2324F70FA400ED2677 /* ClientNameViewController.swift */,
-				12C9BD2524F70FDF00ED2677 /* ClientMoreInfoViewController.swift */,
+				12C9BD2524F70FDF00ED2677 /* ClientAboutViewController.swift */,
 				12C9BD2724F70FEE00ED2677 /* ClientPhotoViewController.swift */,
 				12C9BD2924F7180F00ED2677 /* ClientPasswordViewController.swift */,
 				12C9BD3724F7311B00ED2677 /* ClientUsernameViewController.swift */,
@@ -303,7 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				12C9BD2B24F7181D00ED2677 /* InstructorNameViewController.swift */,
-				12C9BD2D24F7182C00ED2677 /* InstructorMoreInfoViewController.swift */,
+				12C9BD2D24F7182C00ED2677 /* InstructorAboutViewController.swift */,
 				12C9BD3124F7184C00ED2677 /* InstructorPasswordViewController.swift */,
 				12C9BD3324F7185F00ED2677 /* InstructorPhotoViewController.swift */,
 				12C9BD3924F7312700ED2677 /* InstructorUsernameViewController.swift */,
@@ -421,7 +421,7 @@
 				12C9BD2424F70FA400ED2677 /* ClientNameViewController.swift in Sources */,
 				8614D05124F32B9E00414865 /* ClassDetailViewController.swift in Sources */,
 				1AA8173124F5DFA500649A07 /* ClassListing.swift in Sources */,
-				12C9BD2624F70FDF00ED2677 /* ClientMoreInfoViewController.swift in Sources */,
+				12C9BD2624F70FDF00ED2677 /* ClientAboutViewController.swift in Sources */,
 				1AA8172D24F5BA6100649A07 /* LoginController.swift in Sources */,
 				1281AA5C24EDE42700D24E0B /* CustomUI.swift in Sources */,
 				1AA8172924F5B7D400649A07 /* Instructor.swift in Sources */,
@@ -435,7 +435,7 @@
 				1A2B82E524EE03B800815CA3 /* CoreDataStack.swift in Sources */,
 				12C9BD3224F7184C00ED2677 /* InstructorPasswordViewController.swift in Sources */,
 				124FC62224EE450D0074155A /* Category.swift in Sources */,
-				12C9BD2E24F7182C00ED2677 /* InstructorMoreInfoViewController.swift in Sources */,
+				12C9BD2E24F7182C00ED2677 /* InstructorAboutViewController.swift in Sources */,
 				3135318624EF5C78008F2413 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

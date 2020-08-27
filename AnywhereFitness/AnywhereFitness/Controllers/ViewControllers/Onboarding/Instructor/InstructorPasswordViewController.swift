@@ -12,7 +12,7 @@ class InstructorPasswordViewController: UIViewController {
 
     @IBOutlet weak var createPasswordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-    @IBOutlet weak var saveAndFinishButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     
     var toSearchStoryboard = "ToSearchStoryboard"
     
@@ -21,7 +21,7 @@ class InstructorPasswordViewController: UIViewController {
 
     }
 
-    @IBAction func saveAndFinishButtonTapped(_ sender: UIButton) {
+    @IBAction func nextButtonTapped(_ sender: UIButton) {
         
     }
 }
