@@ -13,12 +13,19 @@ class InstructorNameViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     
+    var passingInstructor: Instructor?
     var toInstructorMoreInfoViewController = "ToInstructorMoreInfoViewController"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        <#code#>
+    }
+    
+    
     
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {

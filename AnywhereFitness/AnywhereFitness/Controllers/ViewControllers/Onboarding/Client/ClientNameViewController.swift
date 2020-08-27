@@ -13,21 +13,26 @@ class ClientNameViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     
-    var client: Client?
-    
-    var toClientMoreInfoViewController = "ToClientMoreInfoViewController"
+    var passingClient: Client?
+    var toClientUsernameViewController = "ToClientUsernameViewController"
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == toClientUsernameViewController {
+            let clientInfoVC = segue.destination as? ClientUsernameViewController
+            clientInfoVC?.passingClient = passingClient
+        }
+    }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         guard let name = nameTextField.text,
             !name.isEmpty else { return }
         
         let client = Client(username: nil, password: nil, name: name, about: nil, image: nil)
+        passingClient = client
     }
     
 }

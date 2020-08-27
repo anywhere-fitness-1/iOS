@@ -12,15 +12,28 @@ class ClientPasswordViewController: UIViewController {
 
     @IBOutlet weak var createPasswordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-    @IBOutlet weak var saveAndFinishButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     
-    var toSearchStoryboard = "ToSearchStoryboard"
+    var passingClient: Client?
+    var toClientPhotoViewController = "ToClientPhotoViewController"
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == toClientPhotoViewController {
+            let photoVC = segue.destination as? ClientPhotoViewController
+            photoVC?.passingClient = passingClient
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-    @IBAction func saveAndFinishButtonTapped(_ sender: UIButton) {
+    @IBAction func nextButtonTapped(_ sender: UIButton) {
+        guard let password = createPasswordTextField.text,
+            !password.isEmpty else { return }
         
+        let client = Client(username: passingClient?.username, password: nil, name: passingClient?.name, about: passingClient?.about, image: nil)
+        
+        passingClient = client
     }
 }

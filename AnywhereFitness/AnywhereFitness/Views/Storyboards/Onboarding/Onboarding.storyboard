@@ -45,7 +45,7 @@
                                             <constraint firstAttribute="height" constant="50" id="ueZ-ZB-S2G"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="23"/>
-                                        <state key="normal" title="Trainer">
+                                        <state key="normal" title="Instructor">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -113,7 +113,7 @@
                                         </state>
                                         <connections>
                                             <action selector="nextButtonTapped:" destination="Yki-7B-weF" eventType="touchUpInside" id="JxY-hb-Vcw"/>
-                                            <segue destination="DtT-yk-lrY" kind="presentation" identifier="ToClientMoreInfoViewController" modalPresentationStyle="fullScreen" id="J7q-r7-FCR"/>
+                                            <segue destination="T53-Sb-fQ2" kind="presentation" identifier="ToClientUsernameViewController" modalPresentationStyle="fullScreen" id="8tC-pc-wib"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -141,10 +141,10 @@
             </objects>
             <point key="canvasLocation" x="1323" y="-457"/>
         </scene>
-        <!--Client More Info View Controller-->
+        <!--Client About View Controller-->
         <scene sceneID="D3A-G0-ZWg">
             <objects>
-                <viewController id="DtT-yk-lrY" customClass="ClientMoreInfoViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DtT-yk-lrY" customClass="ClientAboutViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OPd-lz-y3g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -180,7 +180,7 @@
                                         </state>
                                         <connections>
                                             <action selector="nextButtonTapped:" destination="DtT-yk-lrY" eventType="touchUpInside" id="rOe-uF-ycs"/>
-                                            <segue destination="2G8-Aa-b5I" kind="presentation" identifier="ToClientPhotoViewController" modalPresentationStyle="fullScreen" id="4dA-ia-ffx"/>
+                                            <segue destination="71d-vz-qse" kind="presentation" identifier="ToClientPasswordViewController" modalPresentationStyle="fullScreen" id="eMw-Qk-9oT"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -204,7 +204,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rnj-Ev-Egs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2146" y="-457"/>
+            <point key="canvasLocation" x="2872" y="-457"/>
         </scene>
         <!--Client Photo View Controller-->
         <scene sceneID="2Y2-ze-NXM">
@@ -235,12 +235,12 @@
                                     <constraint firstAttribute="height" constant="50" id="0he-Pk-Hkq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="23"/>
-                                <state key="normal" title="Next">
+                                <state key="normal" title="Save and Finish">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="nextButtonTapped:" destination="2G8-Aa-b5I" eventType="touchUpInside" id="CQa-S5-D9v"/>
-                                    <segue destination="T53-Sb-fQ2" kind="presentation" identifier="ToClientUsernameViewController" modalPresentationStyle="fullScreen" id="3WF-lI-UcE"/>
+                                    <segue destination="0FG-dW-b0g" kind="presentation" identifier="ToSearchStoryboard" modalPresentationStyle="fullScreen" id="bMe-dg-esa"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -264,7 +264,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kaJ-Dr-gIt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2988" y="-457"/>
+            <point key="canvasLocation" x="4422" y="-457"/>
         </scene>
         <!--Client Password View Controller-->
         <scene sceneID="t0x-F8-WTw">
@@ -320,12 +320,12 @@
                                             <constraint firstAttribute="height" constant="50" id="bua-TO-8jt"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="23"/>
-                                        <state key="normal" title="Save &amp; Finish">
+                                        <state key="normal" title="Next">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="saveAndFinishButtonTapped:" destination="71d-vz-qse" eventType="touchUpInside" id="4sR-6F-TJP"/>
-                                            <segue destination="0FG-dW-b0g" kind="presentation" identifier="ToClientSearchStoryboard" modalPresentationStyle="fullScreen" id="VxD-T3-RAW"/>
+                                            <segue destination="2G8-Aa-b5I" kind="presentation" identifier="ToClientPhotoViewController" modalPresentationStyle="fullScreen" id="q75-ls-gQh"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -352,7 +352,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WhB-ot-SPU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4817" y="-457"/>
+            <point key="canvasLocation" x="3636" y="-457"/>
         </scene>
         <!--SearchStoryboard-->
         <scene sceneID="pCh-sG-7XF">
@@ -360,7 +360,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="SearchStoryboard" storyboardName="Search" referencedIdentifier="SearchStoryboard" id="0FG-dW-b0g" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tst-vY-Lr2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5798" y="-166"/>
+            <point key="canvasLocation" x="5218" y="-166"/>
         </scene>
         <!--Instructor Name View Controller-->
         <scene sceneID="cDP-dQ-3FT">
@@ -406,7 +406,7 @@
                                         </state>
                                         <connections>
                                             <action selector="nextButtonTapped:" destination="mN1-mg-Pyr" eventType="touchUpInside" id="Gye-g9-TXv"/>
-                                            <segue destination="yLM-lH-23G" kind="presentation" identifier="ToInstructorMoreInfoViewController" modalPresentationStyle="fullScreen" id="nz6-5e-DGz"/>
+                                            <segue destination="TW5-gg-hId" kind="presentation" identifier="ToInstructorUsernameViewController" modalPresentationStyle="fullScreen" id="Mme-Sd-XWC"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -434,10 +434,10 @@
             </objects>
             <point key="canvasLocation" x="1322" y="214"/>
         </scene>
-        <!--Instructor More Info View Controller-->
+        <!--Instructor About View Controller-->
         <scene sceneID="Wgb-99-0xs">
             <objects>
-                <viewController id="yLM-lH-23G" customClass="InstructorMoreInfoViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yLM-lH-23G" customClass="InstructorAboutViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CtO-cZ-36U">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -473,7 +473,7 @@
                                         </state>
                                         <connections>
                                             <action selector="nextButtonTapped:" destination="yLM-lH-23G" eventType="touchUpInside" id="biF-vc-t8t"/>
-                                            <segue destination="mpm-EQ-bVd" kind="presentation" identifier="ToInstructorPhotoViewController" modalPresentationStyle="fullScreen" id="lsc-SB-gfP"/>
+                                            <segue destination="hYn-5e-8zw" kind="presentation" identifier="ToInstructorPasswordViewController" modalPresentationStyle="fullScreen" id="lqS-94-0S8"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -497,7 +497,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49z-5B-UyR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2145" y="214"/>
+            <point key="canvasLocation" x="2872" y="214"/>
         </scene>
         <!--Instructor Photo View Controller-->
         <scene sceneID="mHW-0r-djf">
@@ -528,12 +528,12 @@
                                     <constraint firstAttribute="height" constant="50" id="RMj-OC-lAs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="23"/>
-                                <state key="normal" title="Next">
+                                <state key="normal" title="Save and Finish">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="nextButtonTapped:" destination="mpm-EQ-bVd" eventType="touchUpInside" id="IfI-IY-UV9"/>
-                                    <segue destination="TW5-gg-hId" kind="presentation" identifier="ToInstructorUsernameViewController" modalPresentationStyle="fullScreen" id="dSK-ot-hcR"/>
+                                    <segue destination="0FG-dW-b0g" kind="presentation" identifier="ToSearchStoryboard" modalPresentationStyle="fullScreen" id="QyY-3o-Hyh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -557,7 +557,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cnZ-hT-d67" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2987" y="214"/>
+            <point key="canvasLocation" x="4422" y="214"/>
         </scene>
         <!--Instructor Password View Controller-->
         <scene sceneID="UgW-bG-dAe">
@@ -613,12 +613,12 @@
                                             <constraint firstAttribute="height" constant="50" id="E1r-tm-0Z0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="23"/>
-                                        <state key="normal" title="Save &amp; Finish">
+                                        <state key="normal" title="Next">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="saveAndFinishButtonTapped:" destination="hYn-5e-8zw" eventType="touchUpInside" id="7Tr-vM-Ng1"/>
-                                            <segue destination="0FG-dW-b0g" kind="presentation" identifier="ToSearchStoryboard" modalPresentationStyle="fullScreen" id="NWq-Kn-A3C"/>
+                                            <segue destination="mpm-EQ-bVd" kind="presentation" identifier="ToInstructorPhotoViewController" modalPresentationStyle="fullScreen" id="O0o-ab-NGS"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -645,27 +645,27 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xN5-XG-xQa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4817" y="214"/>
+            <point key="canvasLocation" x="3636" y="214"/>
         </scene>
-        <!--Client Password View Controller-->
+        <!--Client Username View Controller-->
         <scene sceneID="Ga8-uK-KKt">
             <objects>
-                <viewController id="T53-Sb-fQ2" customClass="ClientPasswordViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="T53-Sb-fQ2" customClass="ClientUsernameViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u15-qs-gRq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dkP-mR-Djc">
-                                <rect key="frame" x="20" y="367.5" width="374" height="161"/>
+                                <rect key="frame" x="20" y="349.5" width="374" height="197"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a username" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000149011612" translatesAutoresizingMaskIntoConstraints="NO" id="Itr-DL-50T">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey FIRSTNAME! Create a username" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000149011612" translatesAutoresizingMaskIntoConstraints="NO" id="Itr-DL-50T">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="72"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lmm-eE-dH1">
-                                        <rect key="frame" x="0.0" y="44" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="80" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="aVb-v1-LCm"/>
                                         </constraints>
@@ -673,14 +673,14 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUN-iw-auW">
-                                        <rect key="frame" x="0.0" y="102" width="374" height="1"/>
+                                        <rect key="frame" x="0.0" y="138" width="374" height="1"/>
                                         <color key="backgroundColor" red="1" green="0.6254740137" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="RzH-fd-T5k"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x2a-hy-c5V">
-                                        <rect key="frame" x="0.0" y="111" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="147" width="374" height="50"/>
                                         <color key="backgroundColor" red="1" green="0.6254740137" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="amv-Dq-4fN"/>
@@ -690,8 +690,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
+                                            <action selector="nextButtonTapped:" destination="T53-Sb-fQ2" eventType="touchUpInside" id="SPj-Ja-mYh"/>
                                             <action selector="saveAndFinishButtonTapped:" destination="T53-Sb-fQ2" eventType="touchUpInside" id="Ojv-p6-ngD"/>
-                                            <segue destination="71d-vz-qse" kind="presentation" identifier="ToClientPasswordViewController" modalPresentationStyle="fullScreen" id="UF2-Hj-pQe"/>
+                                            <segue destination="DtT-yk-lrY" kind="presentation" identifier="ToClientAboutViewController" modalPresentationStyle="fullScreen" id="PHN-cy-jUa"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -712,32 +713,35 @@
                     </view>
                     <connections>
                         <outlet property="createPasswordTextField" destination="Lmm-eE-dH1" id="Heo-pu-EdK"/>
+                        <outlet property="nextButtonTapped" destination="x2a-hy-c5V" id="eZF-9k-ALb"/>
                         <outlet property="saveAndFinishButton" destination="x2a-hy-c5V" id="U2d-5X-mEP"/>
+                        <outlet property="usernameLabel" destination="Itr-DL-50T" id="r3J-kz-riV"/>
+                        <outlet property="usernameTextField" destination="Lmm-eE-dH1" id="VpD-fi-bkh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zfd-lb-bgo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3868" y="-457"/>
+            <point key="canvasLocation" x="2097" y="-457"/>
         </scene>
-        <!--Instructor Password View Controller-->
+        <!--Instructor Username View Controller-->
         <scene sceneID="cf7-rB-RNI">
             <objects>
-                <viewController id="TW5-gg-hId" customClass="InstructorPasswordViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TW5-gg-hId" customClass="InstructorUsernameViewController" customModule="AnywhereFitness" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fyi-lv-lJQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Pga-X7-BWY">
-                                <rect key="frame" x="20" y="367.5" width="374" height="161"/>
+                                <rect key="frame" x="20" y="349.5" width="374" height="197"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a username" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000149011612" translatesAutoresizingMaskIntoConstraints="NO" id="jCN-i5-YMx">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey FIRSTNAME! Create a username" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000149011612" translatesAutoresizingMaskIntoConstraints="NO" id="jCN-i5-YMx">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="72"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mVX-8S-oMH">
-                                        <rect key="frame" x="0.0" y="44" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="80" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="qvP-Ob-Kj1"/>
                                         </constraints>
@@ -745,14 +749,14 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zL-zx-9nH">
-                                        <rect key="frame" x="0.0" y="102" width="374" height="1"/>
+                                        <rect key="frame" x="0.0" y="138" width="374" height="1"/>
                                         <color key="backgroundColor" red="1" green="0.6254740137" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="xyW-Z8-FqX"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYa-Tv-Cxb">
-                                        <rect key="frame" x="0.0" y="111" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="147" width="374" height="50"/>
                                         <color key="backgroundColor" red="1" green="0.6254740137" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="7uz-iv-NpD"/>
@@ -763,7 +767,7 @@
                                         </state>
                                         <connections>
                                             <action selector="saveAndFinishButtonTapped:" destination="TW5-gg-hId" eventType="touchUpInside" id="rMN-Dd-Uac"/>
-                                            <segue destination="hYn-5e-8zw" kind="presentation" identifier="ToInstructorPasswordViewController" modalPresentationStyle="fullScreen" id="YNg-Og-izr"/>
+                                            <segue destination="yLM-lH-23G" kind="presentation" identifier="ToInstructorAboutViewController" modalPresentationStyle="fullScreen" id="Rsk-YN-buH"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -785,11 +789,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fbg-FH-LEI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3868" y="214"/>
+            <point key="canvasLocation" x="2097" y="214"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VxD-T3-RAW"/>
+        <segue reference="bMe-dg-esa"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.viewfinder" catalog="system" width="128" height="114"/>

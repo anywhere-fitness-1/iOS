@@ -10,21 +10,39 @@ import UIKit
 
 class ClientUsernameViewController: UIViewController {
 
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var nextButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        unwrapPassingClient(passingClient: passingClient)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    var passingClient: Client?
+    var toClientAboutViewController = "ToClientAboutViewController"
+    
+    func unwrapPassingClient(passingClient: Client?) {
+        guard let passingClient = passingClient else { return }
+        
+         usernameLabel.text = "Hi \(passingClient.name)! Please create a username"
     }
-    */
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == toClientAboutViewController {
+            let clientInfoVC = segue.destination as? ClientAboutViewController
+            clientInfoVC?.passingClient = passingClient
+        }
+    }
+    
+    @IBAction func nextButtonTapped(_ sender: UIButton) {
+        guard let username = usernameTextField.text,
+            !username.isEmpty else { return }
+        
+        let client = Client(username: username, password: nil, name: passingClient?.name, about: nil, image: nil)
+        
+        passingClient = client
+        
+    }
+    
 }

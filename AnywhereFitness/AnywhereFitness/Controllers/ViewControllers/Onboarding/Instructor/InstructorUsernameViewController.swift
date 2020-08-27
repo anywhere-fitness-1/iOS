@@ -14,5 +14,8 @@ class InstructorUsernameViewController: UIViewController {
         super.viewDidLoad()
 
     }
+    
+    var passingInstructor: Instructor?
+    var toClientAboutViewController = "ToClientAboutViewController"
 
 }

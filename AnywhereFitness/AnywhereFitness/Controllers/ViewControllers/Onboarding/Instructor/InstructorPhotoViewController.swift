@@ -11,7 +11,7 @@ import UIKit
 class InstructorPhotoViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var saveAndFinishButton: UIButton!
     
     var toInstructorUsernameViewController = "ToInstructorUsernameViewController"
     
@@ -21,7 +21,7 @@ class InstructorPhotoViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func nextButtonTapped(_ sender: UIButton) {
+    @IBAction func saveAndFinishButtonTapped(_ sender: UIButton) {
         
     }
     
