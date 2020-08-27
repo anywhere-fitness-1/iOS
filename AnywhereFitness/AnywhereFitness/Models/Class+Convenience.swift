@@ -29,7 +29,7 @@ enum Location: String, CaseIterable {
     case newYork = "New York"
 }
 
-extension Class {
+extension UserClass {
     
     var classRepresentation: ClassRepresentation? {
         guard let uuid = uuid?.uuidString,
