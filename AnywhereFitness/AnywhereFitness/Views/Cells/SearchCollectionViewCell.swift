@@ -10,22 +10,26 @@ import UIKit
 
 class SearchCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var categoryLabel: UILabel!
     
-    var category: Category? {
+    @IBOutlet weak var classLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var currentAttendeesLabel: UILabel!
+    @IBOutlet weak var instructorLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    var classListing: ClassListing? {
         didSet {
             updateUI()
         }
     }
     
     func updateUI() {
-        guard let category = category else { return }
-        categoryLabel.text = category.name
-        imageView.image = category.imageName
-        DispatchQueue.main.async {
-            self.imageView.layer.masksToBounds = true
-        }
+        classLabel.text = classListing?.name
+        typeLabel.text = classListing?.type
+        currentAttendeesLabel.text = "Attendees: \(classListing?.attendees ?? 0)"
+        locationLabel.text = classListing?.location
+        timeLabel.text
+        
     }
-    
 }

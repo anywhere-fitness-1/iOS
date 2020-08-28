@@ -11,15 +11,14 @@ import Foundation
 struct ClassListing: Codable {
     
     var id: Int?
-    var name: String
-    var type: String
-    var time: String
-    var date: String
+    var instructorName: String
+    var instructorID: Int
+    var className: String
+    var classType: String
+    var date: Date
     var duration: String
     var intensity: String
     var location: String
     var attendees: Int
     var maxClassSize: Int
-    var instructorID: Int
-    
 }
