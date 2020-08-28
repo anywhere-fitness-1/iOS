@@ -32,8 +32,7 @@ class AddClassViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var bottomConstrain: NSLayoutConstraint!
     
     // MARK: - Properties
-    private let dataSource = ["Yoga", "Pilates", "Aerobics", "Zumba", "Cross Fit", "Strength Training"]
-    
+    private let dataSource = Type.allCases.map { $0.rawValue }
 
     override func viewDidLoad() {
         super.viewDidLoad()
