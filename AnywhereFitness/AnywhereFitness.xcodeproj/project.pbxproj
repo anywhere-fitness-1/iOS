@@ -22,7 +22,7 @@
 		12AB67D724EE3C3A00AC2663 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12AB67D624EE3C3A00AC2663 /* UserProfile.storyboard */; };
 		12AB67DA24EE3CF900AC2663 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12AB67D924EE3CF900AC2663 /* Settings.storyboard */; };
 		12AB67DF24EE436300AC2663 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB67DE24EE436300AC2663 /* SearchCollectionViewCell.swift */; };
-		12AB67E124EE43CA00AC2663 /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB67E024EE43CA00AC2663 /* SearchCollectionViewController.swift */; };
+		12C465B824F8AC8B00A6FDD3 /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C465B724F8AC8B00A6FDD3 /* SearchCollectionViewController.swift */; };
 		12C9BD2424F70FA400ED2677 /* ClientNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9BD2324F70FA400ED2677 /* ClientNameViewController.swift */; };
 		12C9BD2624F70FDF00ED2677 /* ClientAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9BD2524F70FDF00ED2677 /* ClientAboutViewController.swift */; };
 		12C9BD2824F70FEE00ED2677 /* ClientPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9BD2724F70FEE00ED2677 /* ClientPhotoViewController.swift */; };
@@ -69,7 +69,7 @@
 		12AB67D624EE3C3A00AC2663 /* UserProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		12AB67D924EE3CF900AC2663 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		12AB67DE24EE436300AC2663 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
-		12AB67E024EE43CA00AC2663 /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
+		12C465B724F8AC8B00A6FDD3 /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
 		12C9BD2324F70FA400ED2677 /* ClientNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientNameViewController.swift; sourceTree = "<group>"; };
 		12C9BD2524F70FDF00ED2677 /* ClientAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientAboutViewController.swift; sourceTree = "<group>"; };
 		12C9BD2724F70FEE00ED2677 /* ClientPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientPhotoViewController.swift; sourceTree = "<group>"; };
@@ -178,9 +178,9 @@
 		1281AA4F24EDD22C00D24E0B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				12C465B624F8AC3800A6FDD3 /* Search */,
 				12C9BD1624F6FEE100ED2677 /* Onboarding */,
 				1281AA5824EDE3ED00D24E0B /* OpeningViewController.swift */,
-				12AB67E024EE43CA00AC2663 /* SearchCollectionViewController.swift */,
 				3135318524EF5C78008F2413 /* SettingsViewController.swift */,
 				8614CFEF24EF42A800414865 /* ProfileViewController.swift */,
 				8614D05024F32B9D00414865 /* ClassDetailViewController.swift */,
@@ -275,6 +275,14 @@
 				8614CFED24EF3FAA00414865 /* ProfileClassesTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		12C465B624F8AC3800A6FDD3 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				12C465B724F8AC8B00A6FDD3 /* SearchCollectionViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		12C9BD1624F6FEE100ED2677 /* Onboarding */ = {
@@ -413,6 +421,7 @@
 				1A5C18DB24EDD76A00A7BE0F /* AnywhereFitness.xcdatamodeld in Sources */,
 				12AB67DF24EE436300AC2663 /* SearchCollectionViewCell.swift in Sources */,
 				12C9BD2A24F7180F00ED2677 /* ClientPasswordViewController.swift in Sources */,
+				12C465B824F8AC8B00A6FDD3 /* SearchCollectionViewController.swift in Sources */,
 				12C9BD3424F7185F00ED2677 /* InstructorPhotoViewController.swift in Sources */,
 				8614CFF024EF42A800414865 /* ProfileViewController.swift in Sources */,
 				8614CFEE24EF3FAA00414865 /* ProfileClassesTableViewCell.swift in Sources */,
@@ -425,7 +434,6 @@
 				1AA8172D24F5BA6100649A07 /* LoginController.swift in Sources */,
 				1281AA5C24EDE42700D24E0B /* CustomUI.swift in Sources */,
 				1AA8172924F5B7D400649A07 /* Instructor.swift in Sources */,
-				12AB67E124EE43CA00AC2663 /* SearchCollectionViewController.swift in Sources */,
 				1AA8172F24F5BA7E00649A07 /* ClassController.swift in Sources */,
 				1AA8172724F5B7C800649A07 /* Client.swift in Sources */,
 				124FC62424EE453E0074155A /* CategoryController.swift in Sources */,
