@@ -35,6 +35,7 @@ class LoginController {
     private lazy var clientsLoginURL = baseURL.appendingPathComponent("/clients/login")
     private lazy var instructorsLoginURL = baseURL.appendingPathComponent("/instructors/login")
     
+    private let firebaseURL = URL(string: "https://fitness-bd254.firebaseio.com/")!
     
     private func postRequest(for url: URL) -> URLRequest {
         var request = URLRequest(url: url)

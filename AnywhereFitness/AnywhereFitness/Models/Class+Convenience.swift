@@ -19,9 +19,11 @@ enum Type: String, CaseIterable {
     case yoga = "Yoga"
     case pilates = "Pilates"
     case aerobics = "Aerobics"
-    case zumba = "Zumba"
+    case dance = "Dance"
     case crossFit = "Cross Fit"
     case strengthTraining = "Strength Training"
+    case martialArts = "Martial Arts"
+    case other = "Other"
 }
 
 enum Location: String, CaseIterable {
