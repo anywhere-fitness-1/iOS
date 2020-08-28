@@ -10,15 +10,34 @@ import UIKit
 
 class SearchCollectionViewController: UIViewController {
     
- 
+    //MARK: -IBOutlets -
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var collectionView: UICollectionView!
     
-
+    
+    //MARK: - View Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
     
 
+}
+//MARK: - Extensions -
+extension SearchCollectionViewController: UICollectionViewDelegate {
+    
+}
+
+extension SearchCollectionViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
+    }
+    
+    
 }
