@@ -46,7 +46,6 @@
 		1AA8172B24F5B94900649A07 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8172A24F5B94900649A07 /* Bearer.swift */; };
 		1AA8172D24F5BA6100649A07 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8172C24F5BA6100649A07 /* LoginController.swift */; };
 		1AA8172F24F5BA7E00649A07 /* ClassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8172E24F5BA7E00649A07 /* ClassController.swift */; };
-		1AA8173124F5DFA500649A07 /* ClassListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8173024F5DFA500649A07 /* ClassListing.swift */; };
 		3135318624EF5C78008F2413 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3135318524EF5C78008F2413 /* SettingsViewController.swift */; };
 		8614CFEE24EF3FAA00414865 /* ProfileClassesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614CFED24EF3FAA00414865 /* ProfileClassesTableViewCell.swift */; };
 		8614CFF024EF42A800414865 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614CFEF24EF42A800414865 /* ProfileViewController.swift */; };
@@ -95,7 +94,6 @@
 		1AA8172A24F5B94900649A07 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
 		1AA8172C24F5BA6100649A07 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = AnywhereFitness/Models/LoginController.swift; sourceTree = SOURCE_ROOT; };
 		1AA8172E24F5BA7E00649A07 /* ClassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClassController.swift; path = AnywhereFitness/Models/ClassController.swift; sourceTree = SOURCE_ROOT; };
-		1AA8173024F5DFA500649A07 /* ClassListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassListing.swift; sourceTree = "<group>"; };
 		3135318524EF5C78008F2413 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8614CFED24EF3FAA00414865 /* ProfileClassesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileClassesTableViewCell.swift; sourceTree = "<group>"; };
 		8614CFEF24EF42A800414865 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -342,7 +340,6 @@
 				1AA8172624F5B7C800649A07 /* Client.swift */,
 				1AA8172824F5B7D400649A07 /* Instructor.swift */,
 				1AA8172A24F5B94900649A07 /* Bearer.swift */,
-				1AA8173024F5DFA500649A07 /* ClassListing.swift */,
 				1A81A1A224F9F92600E5FDA5 /* User.swift */,
 			);
 			path = Models;
@@ -505,7 +502,6 @@
 				12C9BD2824F70FEE00ED2677 /* ClientPhotoViewController.swift in Sources */,
 				12C9BD2424F70FA400ED2677 /* ClientNameViewController.swift in Sources */,
 				8614D05124F32B9E00414865 /* ClassDetailViewController.swift in Sources */,
-				1AA8173124F5DFA500649A07 /* ClassListing.swift in Sources */,
 				12C9BD2624F70FDF00ED2677 /* ClientAboutViewController.swift in Sources */,
 				1AA8172D24F5BA6100649A07 /* LoginController.swift in Sources */,
 				1281AA5C24EDE42700D24E0B /* CustomUI.swift in Sources */,
