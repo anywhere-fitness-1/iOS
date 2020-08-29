@@ -25,11 +25,11 @@ class SearchCollectionViewCell: UICollectionViewCell {
     }
     
     func updateUI() {
-        classLabel.text = classListing?.name
-        typeLabel.text = classListing?.type
+        classLabel.text = classListing?.instructorName
+        typeLabel.text = classListing?.classType
         currentAttendeesLabel.text = "Attendees: \(classListing?.attendees ?? 0)"
         locationLabel.text = classListing?.location
-        timeLabel.text
+        timeLabel.text = "\(classListing?.date)"
         
     }
 }
