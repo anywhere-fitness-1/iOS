@@ -18,9 +18,6 @@ class ProfileClassesTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
-    
-    
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()
