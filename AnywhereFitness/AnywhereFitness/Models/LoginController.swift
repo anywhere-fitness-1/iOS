@@ -31,6 +31,12 @@ enum NetworkError: Error {
 
 class LoginController {
     
+    static let shared = LoginController()
+    
+    private init() { }
+    
+    var currentUser: User?
+    
     var bearer: Bearer?
         
     private let baseURL = URL(string: "https://anywhere-fitness-1.herokuapp.com/api")!

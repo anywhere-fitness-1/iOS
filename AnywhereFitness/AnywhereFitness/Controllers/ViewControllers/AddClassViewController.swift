@@ -17,9 +17,8 @@ class AddClassViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var instructorNameTextField: UITextField!
     @IBOutlet weak var addDatePickerView: UIDatePicker!
-    @IBOutlet weak var addTimePickerView: UIDatePicker!
+    @IBOutlet weak var locationPickerView: UIPickerView!
     @IBOutlet weak var intensitySegmentedControl: UISegmentedControl!
     
  
@@ -32,17 +31,21 @@ class AddClassViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var bottomConstrain: NSLayoutConstraint!
     
     // MARK: - Properties
-    private let dataSource = ClassType.allCases.map { $0.rawValue }
-
+    
+    private let classTypes = ClassType.allCases.map { $0.rawValue }
+    private let locations = Location.allCases.map { $0.rawValue }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.delegate = self
-        instructorNameTextField.delegate = self
+//        instructorNameTextField.delegate = self
 //        durationTextField.delegate = self
 //        maxClassSizeTextField.delegate = self
         
         addTypePickerView.delegate = self
         addTypePickerView.dataSource = self
+        locationPickerView.delegate = self
+        locationPickerView.dataSource = self
         
 //        self.hideKeyBoard()
         
@@ -83,7 +86,7 @@ class AddClassViewController: UIViewController, UITextFieldDelegate {
     // Methods or Functions
     func hideKeyBoard() {
         nameTextField.resignFirstResponder()
-        instructorNameTextField.resignFirstResponder()
+//        instructorNameTextField.resignFirstResponder()
 //        durationTextField.resignFirstResponder()
 //        maxClassSizeTextField.resignFirstResponder()
     }
@@ -99,6 +102,30 @@ class AddClassViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func saveBtn(_ sender: UIBarButtonItem) {
+        
+        guard let classTitle = nameTextField.text,
+            !classTitle.isEmpty,
+            let instructorID = LoginController.shared.currentUser?.identifier else { return }
+        let startTime = addDatePickerView.date
+        let intensityIndex = intensitySegmentedControl.selectedSegmentIndex
+        let intensity = Intensity.allCases[intensityIndex]
+        let durationIndex = durationSegmentControl.selectedSegmentIndex
+        let duration = Duration.allCases[durationIndex]
+        let classTypeIndex = addTypePickerView.selectedRow(inComponent: 0)
+        let classType = ClassType.allCases[classTypeIndex]
+        let locationIndex = locationPickerView.selectedRow(inComponent: 0)
+        let location = Location.allCases[locationIndex]
+        let maxClassSize = Int(stepperControl.value)
+
+        let classListing = ClassListing(classTitle: classTitle, classType: classType, instructorID: instructorID, startTime: startTime, duration: duration, intensity: intensity, location: location, maxClassSize: maxClassSize)
+        ClassController.shared.createClass(classListing: classListing)
+        do {
+            try CoreDataStack.shared.mainContext.save()
+            navigationController?.dismiss(animated: true, completion: nil)
+        } catch {
+            NSLog("Error saving managed object context: \(error)")
+        }
+        
     }
     
    
@@ -116,13 +143,21 @@ extension AddClassViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
-        return dataSource.count
-        
+        switch pickerView {
+        case locationPickerView:
+            return locations.count
+        default:
+            return classTypes.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return dataSource[row]
+        switch pickerView {
+        case locationPickerView:
+            return locations[row]
+        default:
+            return classTypes[row]
+        }
     }
     
 } //

@@ -348,7 +348,6 @@
 				1AA8172624F5B7C800649A07 /* Client.swift */,
 				1AA8172824F5B7D400649A07 /* Instructor.swift */,
 				1AA8172A24F5B94900649A07 /* Bearer.swift */,
-				1AA8173024F5DFA500649A07 /* ClassListing.swift */,
 				1A81A1A224F9F92600E5FDA5 /* User.swift */,
 			);
 			path = Models;
@@ -511,7 +510,6 @@
 				12C9BD2824F70FEE00ED2677 /* ClientPhotoViewController.swift in Sources */,
 				12C9BD2424F70FA400ED2677 /* ClientNameViewController.swift in Sources */,
 				8614D05124F32B9E00414865 /* ClassDetailViewController.swift in Sources */,
-				1AA8173124F5DFA500649A07 /* ClassListing.swift in Sources */,
 				12C9BD2624F70FDF00ED2677 /* ClientAboutViewController.swift in Sources */,
 				1AA8172D24F5BA6100649A07 /* LoginController.swift in Sources */,
 				1281AA5C24EDE42700D24E0B /* CustomUI.swift in Sources */,

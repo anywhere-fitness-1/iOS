@@ -12,6 +12,10 @@ import Firebase
 
 class ClassController {
     
+    static let shared = ClassController()
+    
+    private init() { }
+    
 //    var bearer: Bearer?
 //
 //    private let baseURL = URL(string: "https://anywhere-fitness-1.herokuapp.com/api")!
@@ -22,7 +26,7 @@ class ClassController {
     
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
     
-    var classListings: [ClassListing] = []
+//    var classListings: [ClassListing] = []
 
     
     // MARK: - Web Dev Server
@@ -251,6 +255,28 @@ class ClassController {
             completion(.success(true))
         }
         task.resume()
+    }
+    
+    func deleteClass(_ classListing: ClassListing, completion: @escaping CompletionHandler = { _ in }) {
+        guard let uuid = classListing.identifier else {
+            completion(.failure(.noIdentifier))
+            return
+        }
+        let requestURL = firebaseURL.appendingPathComponent(uuid.uuidString).appendingPathExtension("json")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "DELETE"
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            completion(.success(true))
+        }
+        task.resume()
+        let moc = CoreDataStack.shared.mainContext
+        moc.delete(classListing)
+        do {
+            try moc.save()
+        } catch {
+            moc.reset()
+            NSLog("Error saving managed object context: \(error)")
+        }
     }
     
 }
