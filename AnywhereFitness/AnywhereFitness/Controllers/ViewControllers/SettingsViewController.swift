@@ -35,22 +35,25 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         
     }()
     
-            // Labels, Buttons, Textfields, ImageView
-              var firstNameTextField: UITextField = UITextField()
-              var lastNameTextField: UITextField = UITextField()
-              var firstNameLabel: UILabel = UILabel()
-              var lastNameLabel: UILabel = UILabel()
-              
-              var passwordTextField: UITextField = UITextField()
-              var passwordTextLabel: UILabel = UILabel()
-              var logoutButton: UIButton = UIButton(type: .roundedRect)
-              var emailTextField: UITextField = UITextField()
-              var emailLabel: UILabel = UILabel()
+    // Labels, Buttons, Textfields, ImageView
+    var firstNameTextField: UITextField = UITextField()
+    var lastNameTextField: UITextField = UITextField()
+    var firstNameLabel: UILabel = UILabel()
+    var lastNameLabel: UILabel = UILabel()
     
-              var profileImageView: UIImageView = UIImageView()
+    var passwordTextField: UITextField = UITextField()
+    var passwordTextLabel: UILabel = UILabel()
+    var logoutButton: UIButton = UIButton(type: .roundedRect)
+    var emailTextField: UITextField = UITextField()
+    var emailLabel: UILabel = UILabel()
+    
+    var profileImageView: UIImageView = UIImageView()
+    var editPhotoView: UIImageView = UIImageView()
+    var grayPhotoView: UIImageView = UIImageView()
     
     override func viewWillLayoutSubviews() {
         profileImageView.setRounded()
+        editPhotoView.setRounded()
         
     }
     override func viewDidLoad() {
@@ -63,7 +66,11 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
 
-        if editing { wasEdited = true } else {
+        if editing {
+        wasEdited = true
+        editPhotoView.isHidden = false
+        grayPhotoView.isHidden = false
+        } else {
             
             guard let firstName = firstNameTextField.text, !firstName.isEmpty else {
                 showAlert(text: "firstName")
@@ -87,6 +94,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
             lastNameTextField.text = lastName
             emailTextField.text = email
             passwordTextField.text = password
+            grayPhotoView.isHidden = true
+            editPhotoView.isHidden = true
             
             //Save Information to Core Data
             
@@ -101,6 +110,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         profileImageView.isUserInteractionEnabled = editing
         containerView.isUserInteractionEnabled = editing
         logoutButton.isHidden = editing
+        editPhotoView.isUserInteractionEnabled = editing
+        grayPhotoView.isUserInteractionEnabled = editing
+       
 
     }
     
@@ -121,12 +133,16 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         containerView.addSubview(emailLabel)
         containerView.addSubview(firstNameTextField)
         containerView.addSubview(profileImageView)
+        profileImageView.addSubview(grayPhotoView)
+        profileImageView.addSubview(editPhotoView)
         
         firstNameTextField.isUserInteractionEnabled = false
         lastNameTextField.isUserInteractionEnabled = false
         emailTextField.isUserInteractionEnabled = false
         passwordTextField.isUserInteractionEnabled = false
         profileImageView.isUserInteractionEnabled = false
+        editPhotoView.isUserInteractionEnabled = false
+        grayPhotoView.isUserInteractionEnabled = false
         
         firstNameTextField.translatesAutoresizingMaskIntoConstraints = false
         firstNameTextField.text = "John"
@@ -172,10 +188,18 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         profileImageView.layer.borderColor = UIColor.darkGray.cgColor
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         profileImageView.addGestureRecognizer(tapGestureRecognizer)
+        editPhotoView.addGestureRecognizer(tapGestureRecognizer)
+        grayPhotoView.addGestureRecognizer(tapGestureRecognizer)
         profileImageView.setRounded()
         let tapGestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(tapGestureRecognizer:)))
         containerView.addGestureRecognizer(tapGestureRecognizer2)
         containerView.isUserInteractionEnabled = false
+        editPhotoView.translatesAutoresizingMaskIntoConstraints = false
+        editPhotoView.image = UIImage(named: "addPhoto")
+        editPhotoView.clipsToBounds = true
+        grayPhotoView.translatesAutoresizingMaskIntoConstraints = false
+        grayPhotoView.image = UIImage(named: "GrayPhoto")
+        grayPhotoView.clipsToBounds = true
         
         
 
@@ -188,18 +212,32 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         containerView.addSubview(stackView)
                  
         let svTop = stackView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 20)
-          let svLeading = stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15)
-        let svTrailing = stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15)
-//          let svWidth = stackView.widthAnchor.constraint(equalToConstant: 200)
-          let svHeight = stackView.heightAnchor.constraint(equalToConstant: 300)
+          let svLeading = stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
+        let svTrailing = stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
+          let svHeight = stackView.heightAnchor.constraint(equalToConstant: 250)
 
         NSLayoutConstraint.activate([svTop, svTrailing, svLeading, svHeight])
         
         profileImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20).isActive = true
-        profileImageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        profileImageView.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        profileImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         profileImageView.setRounded()
+        
+        editPhotoView.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor).isActive = true
+        editPhotoView.centerXAnchor.constraint(equalTo: profileImageView.centerXAnchor).isActive = true
+        editPhotoView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        editPhotoView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        editPhotoView.isHidden = true
+        editPhotoView.layer.opacity = 0.5
+        
+        grayPhotoView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20).isActive = true
+        grayPhotoView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        grayPhotoView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        grayPhotoView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        grayPhotoView.layer.opacity = 0.7
+        grayPhotoView.isHidden = true
+        grayPhotoView.setRounded()
         
         logoutButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20).isActive = true
         logoutButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20).isActive = true
