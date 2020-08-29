@@ -8,17 +8,17 @@
 
 import Foundation
 
-struct ClassListing: Codable {
-    
-    var id: Int?
-    var instructorName: String
-    var instructorID: Int
-    var className: String
-    var classType: String
-    var date: Date
-    var duration: String
-    var intensity: String
-    var location: String
-    var attendees: Int
-    var maxClassSize: Int
-}
+//struct ClassListing: Codable {
+//
+//    var identifier: String
+//    var instructorName: String
+//    var instructorID: Int
+//    var className: String
+//    var classType: String
+//    var date: Date
+//    var duration: String
+//    var intensity: String
+//    var location: String
+//    var attendees: Int
+//    var maxClassSize: Int
+//}

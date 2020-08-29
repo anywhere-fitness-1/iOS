@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="UserClass" representedClassName="UserClass" syncable="YES" codeGenerationType="class">
-        <attribute name="attendeeCount" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    <entity name="ClassListing" representedClassName="ClassListing" syncable="YES" codeGenerationType="class">
         <attribute name="attendees" attributeType="String"/>
-        <attribute name="date" attributeType="String"/>
-        <attribute name="duration" attributeType="Integer 16" usesScalarValueType="YES"/>
-        <attribute name="id" attributeType="Integer 16" usesScalarValueType="YES"/>
-        <attribute name="instructorID" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="classTitle" attributeType="String"/>
+        <attribute name="classType" attributeType="String"/>
+        <attribute name="duration" attributeType="String"/>
+        <attribute name="identifier" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="instructorID" attributeType="String"/>
         <attribute name="intensity" attributeType="String"/>
         <attribute name="location" attributeType="String"/>
-        <attribute name="maxClassSize" attributeType="Integer 16" usesScalarValueType="YES"/>
-        <attribute name="name" attributeType="String"/>
-        <attribute name="startTime" attributeType="String"/>
-        <attribute name="type" attributeType="String"/>
-        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="maxClassSize" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="startTime" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="UserClass" positionX="713.87109375" positionY="34.79296875" width="128" height="238"/>
+        <element name="ClassListing" positionX="-63" positionY="-18" width="128" height="193"/>
     </elements>
 </model>

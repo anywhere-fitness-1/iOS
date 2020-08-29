@@ -22,9 +22,9 @@ class ClientPhotoViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
-        guard let imageView = imageView else { return }
+        // guard let imageView = imageView else { return }
         
-        let client = Client(username: passingClient?.username, password: passingClient?.password, name: passingClient?.name, about: passingClient?.about, image: imageView)
+        let client = Client(username: passingClient?.username, password: passingClient?.password, name: passingClient?.name, about: passingClient?.about, image: nil)
         
         passingClient = client
         

@@ -25,11 +25,12 @@ class SearchCollectionViewCell: UICollectionViewCell {
     }
     
     func updateUI() {
-        classLabel.text = classListing?.name
-        typeLabel.text = classListing?.type
-        currentAttendeesLabel.text = "Attendees: \(classListing?.attendees ?? 0)"
-        locationLabel.text = classListing?.location
-        timeLabel.text
-        
+        if let classListing = classListing {
+            classLabel.text = classListing.classTitle
+            typeLabel.text = classListing.classType
+            currentAttendeesLabel.text = "Attendees: \(classListing.attendees?.count)"
+            locationLabel.text = classListing.location
+            // timeLabel.text
+        }
     }
 }

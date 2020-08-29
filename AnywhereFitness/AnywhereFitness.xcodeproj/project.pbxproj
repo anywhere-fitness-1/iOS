@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07D6A2A396AC0D9278583954 /* Pods_AnywhereFitness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 962ACC83B68F14CC7902BC4F /* Pods_AnywhereFitness.framework */; };
 		122572D124F60F8600AF6D34 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 122572D024F60F8600AF6D34 /* Onboarding.storyboard */; };
 		122572D324F6237900AF6D34 /* AnywhereFitnessOpeningVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 122572D224F6237900AF6D34 /* AnywhereFitnessOpeningVideo.mp4 */; };
 		124FC62224EE450D0074155A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124FC62124EE450D0074155A /* Category.swift */; };
@@ -37,7 +38,9 @@
 		1A2B82E524EE03B800815CA3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B82E424EE03B800815CA3 /* CoreDataStack.swift */; };
 		1A2B82E724EF564600815CA3 /* Class+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B82E624EF564600815CA3 /* Class+Convenience.swift */; };
 		1A2B82ED24EF56CC00815CA3 /* ClassRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B82EC24EF56CC00815CA3 /* ClassRepresentation.swift */; };
-		1A5C18DB24EDD76A00A7BE0F /* AnywhereFitness.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A5C18D924EDD76A00A7BE0F /* AnywhereFitness.xcdatamodeld */; };
+		1A81A1A124F9EB4E00E5FDA5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A81A1A024F9EB4D00E5FDA5 /* GoogleService-Info.plist */; };
+		1A81A1A324F9F92600E5FDA5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A81A1A224F9F92600E5FDA5 /* User.swift */; };
+		1A81A1A624F9FB2100E5FDA5 /* AnywhereFitness.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A81A1A424F9FB2100E5FDA5 /* AnywhereFitness.xcdatamodeld */; };
 		1AA8172724F5B7C800649A07 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8172624F5B7C800649A07 /* Client.swift */; };
 		1AA8172924F5B7D400649A07 /* Instructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8172824F5B7D400649A07 /* Instructor.swift */; };
 		1AA8172B24F5B94900649A07 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8172A24F5B94900649A07 /* Bearer.swift */; };
@@ -84,7 +87,9 @@
 		1A2B82E424EE03B800815CA3 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		1A2B82E624EF564600815CA3 /* Class+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Class+Convenience.swift"; sourceTree = "<group>"; };
 		1A2B82EC24EF56CC00815CA3 /* ClassRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRepresentation.swift; sourceTree = "<group>"; };
-		1A5C18DA24EDD76A00A7BE0F /* AnywhereFitness.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnywhereFitness.xcdatamodel; sourceTree = "<group>"; };
+		1A81A1A024F9EB4D00E5FDA5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1A81A1A224F9F92600E5FDA5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1A81A1A524F9FB2100E5FDA5 /* AnywhereFitness.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnywhereFitness.xcdatamodel; sourceTree = "<group>"; };
 		1AA8172624F5B7C800649A07 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		1AA8172824F5B7D400649A07 /* Instructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructor.swift; sourceTree = "<group>"; };
 		1AA8172A24F5B94900649A07 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
@@ -96,6 +101,9 @@
 		8614CFEF24EF42A800414865 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8614D05024F32B9D00414865 /* ClassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDetailViewController.swift; sourceTree = "<group>"; };
 		8614D05224F41F0100414865 /* AddClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClassViewController.swift; sourceTree = "<group>"; };
+		962ACC83B68F14CC7902BC4F /* Pods_AnywhereFitness.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnywhereFitness.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E7717B0CADA893643FF358B /* Pods-AnywhereFitness.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnywhereFitness.debug.xcconfig"; path = "Target Support Files/Pods-AnywhereFitness/Pods-AnywhereFitness.debug.xcconfig"; sourceTree = "<group>"; };
+		CB9B564605666CB7289FDD42 /* Pods-AnywhereFitness.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnywhereFitness.release.xcconfig"; path = "Target Support Files/Pods-AnywhereFitness/Pods-AnywhereFitness.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D6A2A396AC0D9278583954 /* Pods_AnywhereFitness.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +131,8 @@
 			children = (
 				1281AA3624EDD1E800D24E0B /* AnywhereFitness */,
 				1281AA3524EDD1E800D24E0B /* Products */,
+				59A3A36119C3B875A3FCA5F7 /* Pods */,
+				51838096FF962E2E399743B5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,6 +152,7 @@
 				1281AA4C24EDD20D00D24E0B /* Controllers */,
 				1281AA4B24EDD1F900D24E0B /* Resources */,
 				1281AA4524EDD1EC00D24E0B /* Info.plist */,
+				1A81A1A024F9EB4D00E5FDA5 /* GoogleService-Info.plist */,
 			);
 			path = AnywhereFitness;
 			sourceTree = "<group>";
@@ -322,7 +334,7 @@
 		1A5C18D824EDD75200A7BE0F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1A5C18D924EDD76A00A7BE0F /* AnywhereFitness.xcdatamodeld */,
+				1A81A1A424F9FB2100E5FDA5 /* AnywhereFitness.xcdatamodeld */,
 				1A2B82E424EE03B800815CA3 /* CoreDataStack.swift */,
 				1A2B82E624EF564600815CA3 /* Class+Convenience.swift */,
 				1A2B82EC24EF56CC00815CA3 /* ClassRepresentation.swift */,
@@ -331,8 +343,26 @@
 				1AA8172824F5B7D400649A07 /* Instructor.swift */,
 				1AA8172A24F5B94900649A07 /* Bearer.swift */,
 				1AA8173024F5DFA500649A07 /* ClassListing.swift */,
+				1A81A1A224F9F92600E5FDA5 /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		51838096FF962E2E399743B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				962ACC83B68F14CC7902BC4F /* Pods_AnywhereFitness.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		59A3A36119C3B875A3FCA5F7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9E7717B0CADA893643FF358B /* Pods-AnywhereFitness.debug.xcconfig */,
+				CB9B564605666CB7289FDD42 /* Pods-AnywhereFitness.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,9 +372,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1281AA4824EDD1EC00D24E0B /* Build configuration list for PBXNativeTarget "AnywhereFitness" */;
 			buildPhases = (
+				1E0F84D7F26A6BEA90BA3533 /* [CP] Check Pods Manifest.lock */,
 				1281AA3024EDD1E800D24E0B /* Sources */,
 				1281AA3124EDD1E800D24E0B /* Frameworks */,
 				1281AA3224EDD1E800D24E0B /* Resources */,
+				E6B41C5A85E01637D5EDC34F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -395,6 +427,7 @@
 			files = (
 				1281AA4424EDD1EC00D24E0B /* LaunchScreen.storyboard in Resources */,
 				1281AA4124EDD1EC00D24E0B /* Assets.xcassets in Resources */,
+				1A81A1A124F9EB4E00E5FDA5 /* GoogleService-Info.plist in Resources */,
 				12AB67D724EE3C3A00AC2663 /* UserProfile.storyboard in Resources */,
 				1281AA3F24EDD1E800D24E0B /* Opening.storyboard in Resources */,
 				122572D324F6237900AF6D34 /* AnywhereFitnessOpeningVideo.mp4 in Resources */,
@@ -405,6 +438,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1E0F84D7F26A6BEA90BA3533 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AnywhereFitness-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6B41C5A85E01637D5EDC34F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnywhereFitness/Pods-AnywhereFitness-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnywhereFitness/Pods-AnywhereFitness-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AnywhereFitness/Pods-AnywhereFitness-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1281AA3024EDD1E800D24E0B /* Sources */ = {
@@ -418,12 +493,13 @@
 				12C9BD3824F7311B00ED2677 /* ClientUsernameViewController.swift in Sources */,
 				12C9BD2C24F7181D00ED2677 /* InstructorNameViewController.swift in Sources */,
 				8614D05324F41F0100414865 /* AddClassViewController.swift in Sources */,
-				1A5C18DB24EDD76A00A7BE0F /* AnywhereFitness.xcdatamodeld in Sources */,
 				12AB67DF24EE436300AC2663 /* SearchCollectionViewCell.swift in Sources */,
 				12C9BD2A24F7180F00ED2677 /* ClientPasswordViewController.swift in Sources */,
 				12C465B824F8AC8B00A6FDD3 /* SearchCollectionViewController.swift in Sources */,
 				12C9BD3424F7185F00ED2677 /* InstructorPhotoViewController.swift in Sources */,
 				8614CFF024EF42A800414865 /* ProfileViewController.swift in Sources */,
+				1A81A1A624F9FB2100E5FDA5 /* AnywhereFitness.xcdatamodeld in Sources */,
+				1A81A1A324F9F92600E5FDA5 /* User.swift in Sources */,
 				8614CFEE24EF3FAA00414865 /* ProfileClassesTableViewCell.swift in Sources */,
 				1281AA5924EDE3ED00D24E0B /* OpeningViewController.swift in Sources */,
 				12C9BD2824F70FEE00ED2677 /* ClientPhotoViewController.swift in Sources */,
@@ -586,6 +662,7 @@
 		};
 		1281AA4924EDD1EC00D24E0B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E7717B0CADA893643FF358B /* Pods-AnywhereFitness.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -604,6 +681,7 @@
 		};
 		1281AA4A24EDD1EC00D24E0B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB9B564605666CB7289FDD42 /* Pods-AnywhereFitness.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -644,12 +722,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		1A5C18D924EDD76A00A7BE0F /* AnywhereFitness.xcdatamodeld */ = {
+		1A81A1A424F9FB2100E5FDA5 /* AnywhereFitness.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				1A5C18DA24EDD76A00A7BE0F /* AnywhereFitness.xcdatamodel */,
+				1A81A1A524F9FB2100E5FDA5 /* AnywhereFitness.xcdatamodel */,
 			);
-			currentVersion = 1A5C18DA24EDD76A00A7BE0F /* AnywhereFitness.xcdatamodel */;
+			currentVersion = 1A81A1A524F9FB2100E5FDA5 /* AnywhereFitness.xcdatamodel */;
 			path = AnywhereFitness.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
