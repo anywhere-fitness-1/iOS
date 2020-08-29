@@ -8,6 +8,8 @@
 
 import UIKit
 import AVFoundation
+import Firebase
+import FirebaseAuth
 
 class OpeningViewController: UIViewController {
     
@@ -58,4 +60,20 @@ class OpeningViewController: UIViewController {
     @IBAction func createUserButtonTapped(_ sender: UIButton) {
         
     }
-}
+    
+    
+    @IBAction func loginBtn(_ sender: UIButton) {
+        
+        guard let email = userNameTextField.text, !email.isEmpty else { return }
+        guard let password = passwordTextField.text, !password.isEmpty else { return }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (authData, error) in
+            if error != nil {
+                print("Done")
+                return
+            }
+        }
+        
+    }//
+    
+}//

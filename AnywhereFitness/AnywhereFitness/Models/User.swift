@@ -9,10 +9,11 @@
 import Foundation
 
 struct User: Codable {
+    let identifier: String?
     let username: String?
     let password: String?
-    let name: String?
-    let about: String?
-    let image: String?
-    let isInstructor: Bool = false
+    var name: String?
+    var about: String?
+    var image: String?
+    var isInstructor: Bool = false
 }
