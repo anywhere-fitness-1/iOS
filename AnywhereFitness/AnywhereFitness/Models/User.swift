@@ -11,7 +11,7 @@ import Foundation
 struct User: Codable {
     let identifier: String?
     let username: String?
-    var password: String?
+    let password: String?
     var name: String?
     var about: String?
     var image: String?

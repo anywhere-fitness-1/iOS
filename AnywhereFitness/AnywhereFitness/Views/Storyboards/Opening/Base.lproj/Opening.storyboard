@@ -95,6 +95,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
+                                            <action selector="loginBtn:" destination="8kT-aH-Vc5" eventType="touchUpInside" id="8pt-K4-bfa"/>
                                             <segue destination="gtE-cr-a4S" kind="presentation" identifier="ToSearchStoryboard" modalPresentationStyle="fullScreen" id="81C-17-G52"/>
                                         </connections>
                                     </button>
