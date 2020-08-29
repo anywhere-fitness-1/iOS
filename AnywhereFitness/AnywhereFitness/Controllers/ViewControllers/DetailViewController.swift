@@ -93,12 +93,12 @@ class DetailViewController: UIViewController {
         guard let classListing = classListing else {
             return
         }
-        nameLabel.text = classListing.className
-        dateLabel.text = "\(classListing.date)"
+        nameLabel.text = classListing.classTitle
+        dateLabel.text = "\(classListing.startTime)"
         timeLabel.text = "2:30pm"
         locationLabel.text = classListing.location
-        idLabel.text = "\(classListing.id)"
-        instructorLabel.text = classListing.instructorName
+        idLabel.text = "\(classListing.identifier)"
+//        instructorLabel.text = classListing.instructorName
         intensityLabel.text = classListing.intensity
         durationLabel.text = classListing.duration
         typeLabel.text = classListing.classType

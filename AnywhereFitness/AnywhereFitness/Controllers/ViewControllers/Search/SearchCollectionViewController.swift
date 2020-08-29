@@ -17,7 +17,9 @@ class SearchCollectionViewController: UIViewController {
     var classListing: ClassListing?
     
     var classDataArray : [ClassListing]?
-    var dataArray : [ClassListing] = [ClassListing(id: 124, instructorName: "Norlan", instructorID: 124, className: "Norlans Workout", classType: "Yoga", date: Date(), duration: "30 min", intensity: "Beginner", location: "San Francisco", attendees: 12, maxClassSize: 50), ClassListing(id: 123, instructorName: "John", instructorID: 123, className: "John's Workout", classType: "Yoga", date: Date(), duration: "30 min", intensity: "Beginner", location: "San Francisco", attendees: 12, maxClassSize: 50) ]
+//    var dataArray : [ClassListing] = [ClassListing(id: 124, instructorName: "Norlan", instructorID: 124, className: "Norlans Workout", classType: "Yoga", date: Date(), duration: "30 min", intensity: "Beginner", location: "San Francisco", attendees: 12, maxClassSize: 50), ClassListing(id: 123, instructorName: "John", instructorID: 123, className: "John's Workout", classType: "Yoga", date: Date(), duration: "30 min", intensity: "Beginner", location: "San Francisco", attendees: 12, maxClassSize: 50) ]
+    var dataArray: [ClassListing] = [ClassListing(classTitle: "Yoga", classType: .yoga, instructorID: "123", startTime: Date(), duration: .sixtyMin, intensity: .beginner, location: .sanFran, maxClassSize: 15)]
+    
     var filterString: String?
     
  
@@ -112,4 +114,4 @@ protocol FilterDelegate {
 //    }
 //
 //
-//}
+}
