@@ -660,8 +660,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="zW3-rY-YPQ" kind="relationship" relationship="viewControllers" id="N9P-ry-jkK"/>
-                        <segue destination="yHV-T4-VHz" kind="presentation" identifier="ToUserProfileStoryboard" modalPresentationStyle="fullScreen" id="zCW-op-M03"/>
-                        <segue destination="8sH-QA-UJm" kind="presentation" identifier="ToSettingsStoryboard" id="2y9-zJ-LJU"/>
+                        <segue destination="yHV-T4-VHz" kind="relationship" relationship="viewControllers" id="U3P-Ig-Dwl"/>
+                        <segue destination="8sH-QA-UJm" kind="relationship" relationship="viewControllers" id="z1I-Zd-ANb"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0m-Th-fHL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
