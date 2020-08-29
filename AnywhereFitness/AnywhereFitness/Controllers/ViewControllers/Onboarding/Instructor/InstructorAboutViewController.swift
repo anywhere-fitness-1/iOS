@@ -23,7 +23,7 @@ class InstructorAboutViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == toInstructorPasswordViewController {
-            let passwordVC = segue.identifier as? InstructorPasswordViewController
+            let passwordVC = segue.destination as? InstructorPasswordViewController
             passwordVC?.passingInstructor = passingInstructor
         }
     }

@@ -25,7 +25,7 @@ class ClientUsernameViewController: UIViewController {
     func unwrapPassingClient(passingClient: Client?) {
         guard let passingClient = passingClient else { return }
         
-         usernameLabel.text = "Hi \(passingClient.name)! Please create a username"
+         usernameLabel.text = "Hi \(passingClient.name!) Please create a username"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
