@@ -22,7 +22,11 @@ enum NetworkError: Error {
     case noToken
     case tryAgain
     case failedDecoding
+    case failedEncoding
     case failedResponse
+    case noIdentifier
+    case noRep
+    case otherError
 }
 
 class LoginController {

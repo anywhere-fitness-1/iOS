@@ -10,18 +10,15 @@ import Foundation
 
 struct ClassRepresentation: Codable {
     
-    var uuid: String
-    var id: Int
-    var name: String
-    var type: String
-    var instructorID: Int
-    var date: String
-    var startTime: String
-    var duration: Int
+    var identifier: String
+    var classTitle: String
+    var classType: String
+    var instructorID: String
+    var startTime: Date
+    var duration: String
     var intensity: String
     var location: String
     var maxClassSize: Int
-    var attendeeCount: Int
-    var attendees: [Int]
+    var attendees: [String]
     
 }

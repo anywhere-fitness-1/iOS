@@ -22,9 +22,9 @@ class InstructorPhotoViewController: UIViewController {
     }
     
     @IBAction func saveAndFinishButtonTapped(_ sender: UIButton) {
-        guard let image = imageView else { return }
+        // guard let image = imageView else { return }
         
-        let instructor = Instructor(username: passingInstructor?.username, password: passingInstructor?.password, name: passingInstructor?.name, specialties: passingInstructor?.specialties, image: image)
+        let instructor = Instructor(username: passingInstructor?.username, password: passingInstructor?.password, name: passingInstructor?.name, specialties: passingInstructor?.specialties, image: nil)
         
         passingInstructor = instructor
     }

@@ -24,7 +24,7 @@ class InstructorPasswordViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == toInstructorPhotoViewController {
-            let photoVC = segue.identifier as? InstructorPhotoViewController
+            let photoVC = segue.destination as? InstructorPhotoViewController
             photoVC?.passingInstructor = passingInstructor
         }
     }

@@ -15,7 +15,7 @@ enum Intensity: String, CaseIterable {
     case advanced = "Advanced"
 }
 
-enum Type: String, CaseIterable {
+enum ClassType: String, CaseIterable {
     case yoga = "Yoga"
     case pilates = "Pilates"
     case aerobics = "Aerobics"
@@ -31,70 +31,71 @@ enum Location: String, CaseIterable {
     case newYork = "New York"
 }
 
-extension UserClass {
-    
+enum Duration: String, CaseIterable {
+    case thirtyMin = "30 Minutes"
+    case fortyFiveMin = "45 Minutes"
+    case sixtyMin = "60 Minutes"
+    case ninetyMin = "90 Minutes"
+}
+
+extension ClassListing {
+
     var classRepresentation: ClassRepresentation? {
-        guard let uuid = uuid?.uuidString,
-            let name = name,
-            let type = type,
-            let date = date,
+        guard let identifier = identifier?.uuidString,
+            let classTitle = classTitle,
+            let classType = classType,
+            let instructorID = instructorID,
             let startTime = startTime,
+            let duration = duration,
             let intensity = intensity,
             let location = location,
             let attendees = attendees else { return nil }
-        
-        return ClassRepresentation(uuid: uuid, id: Int(id), name: name, type: type, instructorID: Int(instructorID), date: date, startTime: startTime, duration: Int(duration), intensity: intensity, location: location, maxClassSize: Int(maxClassSize), attendeeCount: Int(attendeeCount), attendees: (attendees.components(separatedBy: ", ")).map { Int($0)!})
+
+        return ClassRepresentation(identifier: identifier, classTitle: classTitle, classType: classType, instructorID: instructorID, startTime: startTime, duration: duration, intensity: intensity, location: location, maxClassSize: Int(maxClassSize), attendees: (attendees.components(separatedBy: ", ")).map { $0 })
     }
-    
-    @discardableResult convenience init(uuid: UUID = UUID(),
-                                        id: Int,
-                                        name: String,
-                                        type: Type,
-                                        instructorID: Int,
-                                        date: String,
-                                        startTime: String,
-                                        duration: Int,
+
+    @discardableResult convenience init(identifier: UUID = UUID(),
+                                        classTitle: String,
+                                        classType: ClassType,
+                                        instructorID: String,
+                                        startTime: Date,
+                                        duration: Duration,
                                         intensity: Intensity,
                                         location: Location,
                                         maxClassSize: Int,
                                         attendeeCount: Int = 0,
-                                        attendees: [Int] = [],
+                                        attendees: [String] = [],
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
-        self.uuid = uuid
-        self.id = Int16(id)
-        self.name = name
-        self.type = type.rawValue
-        self.instructorID = Int16(instructorID)
-        self.date = date
+        self.identifier = identifier
+        self.classTitle = classTitle
+        self.classType = classType.rawValue
+        self.instructorID = instructorID
         self.startTime = startTime
-        self.duration = Int16(duration)
+        self.duration = duration.rawValue
         self.intensity = intensity.rawValue
         self.location = location.rawValue
         self.maxClassSize = Int16(maxClassSize)
-        self.attendeeCount = Int16(attendeeCount)
-        self.attendees = (attendees.map{String($0)}).joined(separator: ", ")
+        self.attendees = (attendees.map{$0}).joined(separator: ", ")
     }
-    
+
     @discardableResult convenience init?(classRepresentation: ClassRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        guard let uuid = UUID(uuidString: classRepresentation.uuid),
-            let type = Type(rawValue: classRepresentation.type),
+        guard let identifier = UUID(uuidString: classRepresentation.identifier),
+            let classType = ClassType(rawValue: classRepresentation.classType),
             let intensity = Intensity(rawValue: classRepresentation.intensity),
-            let location = Location(rawValue: classRepresentation.location) else { return nil }
-        self.init(uuid: uuid,
-                  id: classRepresentation.id,
-                  name: classRepresentation.name,
-                  type: type,
+            let location = Location(rawValue: classRepresentation.location),
+            let duration = Duration(rawValue: classRepresentation.duration) else { return nil }
+        self.init(identifier: identifier,
+                  classTitle: classRepresentation.classTitle,
+                  classType: classType,
                   instructorID: classRepresentation.instructorID,
-                  date: classRepresentation.date,
                   startTime: classRepresentation.startTime,
-                  duration: classRepresentation.duration,
+                  duration: duration,
                   intensity: intensity,
                   location: location,
                   maxClassSize: classRepresentation.maxClassSize,
-                  attendeeCount: classRepresentation.attendeeCount,
                   attendees: classRepresentation.attendees,
                   context: context)
     }
-    
+
 }
