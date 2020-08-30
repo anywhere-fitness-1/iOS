@@ -24,7 +24,8 @@ class ClassController {
     // MARK: - Firebase Server
         
     func getClasses(completion: @escaping CompletionHandler) {
-            var request = URLRequest(url: firebaseURL)
+            let requestURL = firebaseURL.appendingPathExtension("json")
+            var request = URLRequest(url: requestURL)
             request.httpMethod = HTTPMethod.get.rawValue
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 if let error = error {

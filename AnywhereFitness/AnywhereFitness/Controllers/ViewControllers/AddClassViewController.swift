@@ -121,12 +121,12 @@ class AddClassViewController: UIViewController, UITextFieldDelegate {
         let classListing = ClassListing(classTitle: classTitle, classType: classType, instructorID: instructorID, startTime: startTime, duration: duration, intensity: intensity, location: location, maxClassSize: maxClassSize)
         ClassController.shared.createClass(classListing: classListing)
         
-//        do {
-//            try CoreDataStack.shared.mainContext.save()
-//            navigationController?.dismiss(animated: true, completion: nil)
-//        } catch {
-//            NSLog("Error saving managed object context: \(error)")
-//        }
+        do {
+            try CoreDataStack.shared.mainContext.save()
+            navigationController?.dismiss(animated: true, completion: nil)
+        } catch {
+            NSLog("Error saving managed object context: \(error)")
+        }
         
         dismiss(animated: true, completion: nil)
         

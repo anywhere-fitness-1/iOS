@@ -78,12 +78,3 @@ class OpeningViewController: UIViewController {
     }//
     
 }//
-
-
-// Move to Profile View
-//var photo: UIImage?
-//LoginController.shared.getImage(imageUrl: imageURL, completion: { image in
-//    DispatchQueue.main.async {
-//        photo = image
-//    }
-//})
