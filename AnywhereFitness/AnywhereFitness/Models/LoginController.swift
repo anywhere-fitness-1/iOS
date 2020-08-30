@@ -33,23 +33,22 @@ enum NetworkError: Error {
 }
 
 class LoginController {
-    
+
     static let shared = LoginController()
-    
+
     private init() { }
-    
+
     var currentUser: User?
-    
+
     private let firebaseURL = URL(string: "https://fitness-bd254.firebaseio.com/users/")!
-    
+
     // MARK: - Get User
-    
+
     func getUser(with identifier: String, completion: @escaping (Result<User, NetworkError>) -> Void) {
 
         let requestURL = firebaseURL.appendingPathComponent(identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.get.rawValue
-        
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Get user failed with error: \(error)")
@@ -77,24 +76,23 @@ class LoginController {
         }
         task.resume()
     }
-        
-    
+
     func getImage(imageUrl: URL, completion: @escaping (UIImage?) -> Void) {
         let request = URLRequest(url: imageUrl)
-        
+
         if let urlResponse = URLCache.shared.cachedResponse(for: request) {
             let profileImage = UIImage(data: urlResponse.data)
             completion(profileImage)
             return
         }
-        
+
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Error retrieving profile image: \(error)")
                 completion(nil)
                 return
             }
-            
+
             if let data = data, let response = response {
                 let cachedResponse = CachedURLResponse(response: response, data: data)
                 URLCache.shared.storeCachedResponse(cachedResponse, for: request)
@@ -104,7 +102,7 @@ class LoginController {
             }
         }.resume()
     }
-    
+
     func setCurrentUser() {
         if let identifier = Auth.auth().currentUser?.uid {
             Database.database().reference().child("users").child(identifier).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -124,14 +122,12 @@ class LoginController {
             }
         }
     }
-    
 //    private func postRequest(for url: URL) -> URLRequest {
 //        var request = URLRequest(url: url)
 //        request.httpMethod = HTTPMethod.post.rawValue
 //        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 //        return request
 //    }
-    
 //    // MARK: - Sign Up Functions
 //
 //    func clientSignUp(with client: Client, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
@@ -262,5 +258,4 @@ class LoginController {
 //            completion(.failure(.failedSignIn))
 //        }
 //    }
-    
 }

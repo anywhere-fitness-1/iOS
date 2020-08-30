@@ -14,8 +14,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var navBar: UINavigationItem!
     var wasEdited = false
     let imagePicker = UIImagePickerController()
-    
-    
+
     lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 100)
     
     lazy var scrollView: UIScrollView = {
@@ -33,7 +32,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         view.frame = self.view.bounds
         
         return view
-        
     }()
     
     // Labels, Buttons, Textfields, ImageView
@@ -47,11 +45,11 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     var logoutButton: UIButton = UIButton(type: .roundedRect)
     var emailTextField: UITextField = UITextField()
     var emailLabel: UILabel = UILabel()
-    
+
     var profileImageView: UIImageView = UIImageView()
     var editPhotoView: UIImageView = UIImageView()
     var grayPhotoView: UIImageView = UIImageView()
-    
+
     override func viewWillLayoutSubviews() {
         profileImageView.setRounded()
         editPhotoView.setRounded()
@@ -118,27 +116,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
             
             //Save Information to Firebase
         }
-
-        firstNameTextField.isUserInteractionEnabled = editing
-        lastNameTextField.isUserInteractionEnabled = editing
-        passwordTextField.isUserInteractionEnabled = editing
-        emailTextField.isUserInteractionEnabled = editing
-        navigationItem.hidesBackButton = editing
-        profileImageView.isUserInteractionEnabled = editing
-        containerView.isUserInteractionEnabled = editing
-        logoutButton.isHidden = editing
-        editPhotoView.isUserInteractionEnabled = editing
-        grayPhotoView.isUserInteractionEnabled = editing
-       
-
     }
-    
-    
-    func setUpViews() {
-        navigationItem.rightBarButtonItem = editButtonItem
-        
-        //Adding properties to subviews
-        view.addSubview(scrollView)
+
+    func addSubview() {
         scrollView.addSubview(containerView)
         containerView.addSubview(lastNameTextField)
         containerView.addSubview(firstNameLabel)
@@ -152,7 +132,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         containerView.addSubview(profileImageView)
         profileImageView.addSubview(grayPhotoView)
         profileImageView.addSubview(editPhotoView)
-        
+    }
+    
+    func isUserInteractionEnabled() {
         firstNameTextField.isUserInteractionEnabled = false
         lastNameTextField.isUserInteractionEnabled = false
         emailTextField.isUserInteractionEnabled = false
@@ -160,35 +142,49 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         profileImageView.isUserInteractionEnabled = false
         editPhotoView.isUserInteractionEnabled = false
         grayPhotoView.isUserInteractionEnabled = false
-        
+    }
+    
+    func firstNameTextFieldConfiguration() {
         firstNameTextField.translatesAutoresizingMaskIntoConstraints = false
         firstNameTextField.text = "John"
         firstNameTextField.borderStyle = .roundedRect
-        
+    }
+    
+    func lastNameTextFieldConfiguration() {
         lastNameTextField.translatesAutoresizingMaskIntoConstraints = false
         lastNameTextField.text = "McCants"
         lastNameTextField.borderStyle = .roundedRect
-        
+    }
+    
+    func nameLabelsConfiguration() {
         firstNameLabel.text = "First Name"
         firstNameLabel.font = UIFont.boldSystemFont(ofSize:firstNameLabel.font.pointSize)
         lastNameLabel.text = "Last Name"
         lastNameLabel.font = UIFont.boldSystemFont(ofSize: lastNameLabel.font.pointSize)
-        
+    }
+    
+    func passwordTextFieldConfiguration() {
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.text = "123456"
         passwordTextField.borderStyle = .roundedRect
         passwordTextLabel.translatesAutoresizingMaskIntoConstraints = false
         passwordTextLabel.font = UIFont.boldSystemFont(ofSize: passwordTextLabel.font.pointSize)
         passwordTextLabel.text = "Password"
-            
+    }
+    
+    func emailTextFieldConfiguration() {
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         emailTextField.borderStyle = .roundedRect
         emailTextField.text = "johnmccants002@gmail.com"
-        
+    }
+    
+    func emailLabelConfiguration() {
         emailLabel.translatesAutoresizingMaskIntoConstraints = false
         emailLabel.text = "Email"
         emailLabel.font = UIFont.boldSystemFont(ofSize: emailLabel.font.pointSize)
-            
+    }
+
+    func logOutButtonConfiguration() {
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
         logoutButton.setTitle("Logout", for: .normal)
         logoutButton.titleLabel?.text = "Logout"
@@ -197,7 +193,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         logoutButton.backgroundColor = .black
         logoutButton.layer.cornerRadius = 5
         logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
-        
+    }
+
+    func profileImageViewConfiguration() {
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         profileImageView.image = UIImage(named: "bodypump")
         profileImageView.layer.borderWidth = 1.0
@@ -208,6 +206,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         editPhotoView.addGestureRecognizer(tapGestureRecognizer)
         grayPhotoView.addGestureRecognizer(tapGestureRecognizer)
         profileImageView.setRounded()
+    }
+
+    func containerViewConfiguration() {
         let tapGestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(tapGestureRecognizer:)))
         containerView.addGestureRecognizer(tapGestureRecognizer2)
         containerView.isUserInteractionEnabled = false
@@ -217,37 +218,31 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         grayPhotoView.translatesAutoresizingMaskIntoConstraints = false
         grayPhotoView.image = UIImage(named: "GrayPhoto")
         grayPhotoView.clipsToBounds = true
-        
-        
+    }
 
+    func stackViewConfiguration() {
         // Adding The Fields and Labels to a Vertical StackView
           let stackView = UIStackView(arrangedSubviews: [firstNameLabel, firstNameTextField, lastNameLabel, lastNameTextField, passwordTextLabel, passwordTextField, emailLabel, emailTextField])
           stackView.axis = .vertical
           stackView.distribution = .equalSpacing
           stackView.translatesAutoresizingMaskIntoConstraints = false
-          
         containerView.addSubview(stackView)
-                 
         let svTop = stackView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 20)
           let svLeading = stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
         let svTrailing = stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
           let svHeight = stackView.heightAnchor.constraint(equalToConstant: 250)
-
         NSLayoutConstraint.activate([svTop, svTrailing, svLeading, svHeight])
-        
         profileImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         profileImageView.setRounded()
-        
         editPhotoView.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor).isActive = true
         editPhotoView.centerXAnchor.constraint(equalTo: profileImageView.centerXAnchor).isActive = true
         editPhotoView.widthAnchor.constraint(equalToConstant: 50).isActive = true
         editPhotoView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         editPhotoView.isHidden = true
         editPhotoView.layer.opacity = 0.5
-        
         grayPhotoView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20).isActive = true
         grayPhotoView.widthAnchor.constraint(equalToConstant: 150).isActive = true
         grayPhotoView.heightAnchor.constraint(equalToConstant: 150).isActive = true
@@ -255,25 +250,38 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         grayPhotoView.layer.opacity = 0.7
         grayPhotoView.isHidden = true
         grayPhotoView.setRounded()
-        
         logoutButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20).isActive = true
         logoutButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20).isActive = true
         logoutButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20).isActive = true
         logoutButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        
     }
-    
+
+    func setUpViews() {
+        navigationItem.rightBarButtonItem = editButtonItem
+        //Adding properties to subviews
+        view.addSubview(scrollView)
+        addSubview()
+        isUserInteractionEnabled()
+        firstNameTextFieldConfiguration()
+        lastNameTextFieldConfiguration()
+        nameLabelsConfiguration()
+        passwordTextFieldConfiguration()
+        emailTextFieldConfiguration()
+        emailLabelConfiguration()
+        logOutButtonConfiguration()
+        profileImageViewConfiguration()
+        containerViewConfiguration()
+        stackViewConfiguration()
+    }
+
     @objc func logoutButtonTapped() {
         let openingController = OpeningViewController()
         present(openingController, animated: true, completion: nil)
-        
     }
-    
+
     func showAlert(text: String) {
         let alert = UIAlertController(title: "Unable to Save", message: "Make sure all fields are filled out", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-        
         switch text {
         case "firstName":
             alert.message = "Fill out first name"
@@ -298,12 +306,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         default:
             break
         }
-        
-        
     }
-    
+
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer){
-        
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
@@ -311,29 +316,25 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
                // Your action
         print("ImageTapped Function Firing")
            }
-    
     @objc func dismissKeyboard(tapGestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     }
 
 extension SettingsViewController : UITextFieldDelegate {
-    
 }
-
 
 extension SettingsViewController: UIImagePickerControllerDelegate {
 // MARK: - UIImagePickerControllerDelegate Methods
- 
 func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
         profileImageView.contentMode = .scaleAspectFit
         profileImageView.image = pickedImage
     }
- 
+
     dismiss(animated: true, completion: nil)
 }
-    
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
@@ -347,5 +348,3 @@ extension UIImageView {
         self.contentMode = .scaleAspectFill
     }
 }
-
-
