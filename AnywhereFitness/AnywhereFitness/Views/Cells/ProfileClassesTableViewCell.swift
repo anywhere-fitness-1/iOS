@@ -18,6 +18,14 @@ class ProfileClassesTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
+    private let dateFormatter = DateFormatter()
+    private let timeFormatter = DateFormatter()
+    
+    var classListing: ClassListing? {
+        didSet {
+            updateViews()
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,4 +38,9 @@ class ProfileClassesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    private func updateViews() {
+        guard let classListing = classListing else { return }
+        print(classListing)
+    }
+    
 }
