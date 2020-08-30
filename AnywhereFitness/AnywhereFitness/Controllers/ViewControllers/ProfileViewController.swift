@@ -8,6 +8,10 @@
 
 import UIKit
 import CoreData
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
 
 class ProfileViewController: UIViewController {
     
@@ -19,7 +23,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     
 
-    
+    var REF_USERS = Database.database().reference().child("users")
     
     
     // MARK: - Properties
@@ -60,6 +64,8 @@ class ProfileViewController: UIViewController {
             })
         }
     }
+
+    
 
  
 
