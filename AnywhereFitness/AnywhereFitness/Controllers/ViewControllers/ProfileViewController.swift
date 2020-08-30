@@ -39,6 +39,14 @@ class ProfileViewController: UIViewController {
         userImageView.clipsToBounds = true
         userImageView.layer.borderWidth = 2
         userImageView.layer.borderColor = UIColor.darkGray.cgColor
+        usernameLabel.text = LoginController.shared.currentUser?.name
+        if let imageURL = LoginController.shared.currentUser?.image {
+            LoginController.shared.getImage(imageUrl: imageURL, completion: { image in
+                DispatchQueue.main.async {
+                    self.userImageView.image = image
+                }
+            })
+        }
     }
 
  

@@ -60,8 +60,24 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         setUpViews()
         imagePicker.delegate = self
-
+        currentUser()
         }
+    
+    private func currentUser() {
+        if let imageURL = LoginController.shared.currentUser?.image {
+            LoginController.shared.getImage(imageUrl: imageURL, completion: { image in
+                DispatchQueue.main.async {
+                    self.profileImageView.image = image
+                }
+            })
+        }
+        firstNameLabel.text = "Username"
+        firstNameTextField.text = LoginController.shared.currentUser?.username
+        lastNameLabel.text = "Name"
+        lastNameTextField.text = LoginController.shared.currentUser?.name
+        emailLabel.text = "About"
+        emailTextField.text = LoginController.shared.currentUser?.about
+    }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
