@@ -83,7 +83,7 @@ class AddClassViewController: UIViewController, UITextFieldDelegate {
         }
         scrollView.scrollIndicatorInsets = scrollView.contentInset
     }
-    
+
     // Methods or Functions
     func hideKeyBoard() {
         nameTextField.resignFirstResponder()

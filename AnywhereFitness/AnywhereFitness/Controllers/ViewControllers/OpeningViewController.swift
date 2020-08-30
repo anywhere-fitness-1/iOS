@@ -12,9 +12,11 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class OpeningViewController: UIViewController {
+class OpeningViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate {
     
     //MARK: - IBOutlets
+    @IBOutlet weak var backgroundView: UIView!
+    
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -23,13 +25,43 @@ class OpeningViewController: UIViewController {
     var player: AVPlayer?
     var customUI = CustomUI()
     
+    
+    // MARK: - Keyboard Properties
+    
+
+    
+    
     //MARK: - Lifecycle Views
     override func viewDidLoad() {
         super.viewDidLoad()
         configureVideoBackground()
         configureButtons()
         configureTextFields()
+        
+        userNameTextField.delegate = self
+        passwordTextField.delegate = self
+
     }
+    
+   
+     // Methods or Functions
+        func hideKeyBoard() {
+            userNameTextField.resignFirstResponder()
+            passwordTextField.resignFirstResponder()
+    //        instructorNameTextField.resignFirstResponder()
+    //        durationTextField.resignFirstResponder()
+    //        maxClassSizeTextField.resignFirstResponder()
+        }
+        
+        // UITextField Delegates Methods
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            hideKeyBoard()
+            return true
+        }
+    
+    
+    
+    
         
     //MARK: - Helper Methods
     func configureVideoBackground() {
