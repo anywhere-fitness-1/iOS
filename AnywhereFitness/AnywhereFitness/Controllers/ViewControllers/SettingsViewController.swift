@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     
@@ -242,7 +243,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         logoutButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20).isActive = true
         logoutButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20).isActive = true
         logoutButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20).isActive = true
-        logoutButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        logoutButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         
     }

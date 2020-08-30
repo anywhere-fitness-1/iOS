@@ -12,7 +12,7 @@ import FirebaseAuth
 import FirebaseStorage
 import FirebaseDatabase
 
-class SignUpVC: UIViewController {
+class SignUpVC: UITableViewController {
     
     // Outlets
     @IBOutlet weak var profileImageView: UIImageView!
@@ -102,7 +102,7 @@ class SignUpVC: UIViewController {
                         if let metaImageUrl = url?.absoluteString {
                             dict["profileImageUrl"] = metaImageUrl
                             
-                            Database.database().reference().child("classes").setValue(true)
+                            Database.database().reference().child("classes")
                             
                             Database.database().reference().child("users").child(authData.user.uid).updateChildValues(dict, withCompletionBlock: { (error, ref) in
                                 if error == nil {
@@ -117,7 +117,7 @@ class SignUpVC: UIViewController {
             }
             
         } // Auth
-        
+        dismiss(animated: true, completion: nil)
     } // signUpBtn
     
     
@@ -131,6 +131,9 @@ class SignUpVC: UIViewController {
         }
     }//
     
+    @IBAction func cancelBtn(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
 
 } //
