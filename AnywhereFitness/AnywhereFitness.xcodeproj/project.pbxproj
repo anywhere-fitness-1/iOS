@@ -41,7 +41,6 @@
 		1AA8172B24F5B94900649A07 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8172A24F5B94900649A07 /* Bearer.swift */; };
 		1AA8172D24F5BA6100649A07 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8172C24F5BA6100649A07 /* LoginController.swift */; };
 		1AA8172F24F5BA7E00649A07 /* ClassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8172E24F5BA7E00649A07 /* ClassController.swift */; };
-		1AA8173124F5DFA500649A07 /* ClassListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8173024F5DFA500649A07 /* ClassListing.swift */; };
 		311F841E24F8A98700678CE6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311F841D24F8A98700678CE6 /* DetailViewController.swift */; };
 		311F842024F98BDB00678CE6 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311F841F24F98BDB00678CE6 /* FiltersViewController.swift */; };
 		3135318624EF5C78008F2413 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3135318524EF5C78008F2413 /* SettingsViewController.swift */; };
@@ -50,6 +49,8 @@
 		8614D05124F32B9E00414865 /* ClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614D05024F32B9D00414865 /* ClassDetailViewController.swift */; };
 		8614D05324F41F0100414865 /* AddClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614D05224F41F0100414865 /* AddClassViewController.swift */; };
 		8614D08324FADB6200414865 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614D08224FADB6200414865 /* SignUpVC.swift */; };
+		86C41FB324FC190D00798241 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C41FB224FC190D00798241 /* SearchVC.swift */; };
+		86C41FB524FC1A6D00798241 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C41FB424FC1A6D00798241 /* SearchTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,7 +89,6 @@
 		1AA8172A24F5B94900649A07 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
 		1AA8172C24F5BA6100649A07 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = AnywhereFitness/Models/LoginController.swift; sourceTree = SOURCE_ROOT; };
 		1AA8172E24F5BA7E00649A07 /* ClassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClassController.swift; path = AnywhereFitness/Models/ClassController.swift; sourceTree = SOURCE_ROOT; };
-		1AA8173024F5DFA500649A07 /* ClassListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassListing.swift; sourceTree = "<group>"; };
 		311F841D24F8A98700678CE6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		311F841F24F98BDB00678CE6 /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FiltersViewController.swift; path = Search/FiltersViewController.swift; sourceTree = "<group>"; };
 		3135318524EF5C78008F2413 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +97,8 @@
 		8614D05024F32B9D00414865 /* ClassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDetailViewController.swift; sourceTree = "<group>"; };
 		8614D05224F41F0100414865 /* AddClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClassViewController.swift; sourceTree = "<group>"; };
 		8614D08224FADB6200414865 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		86C41FB224FC190D00798241 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		86C41FB424FC1A6D00798241 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		962ACC83B68F14CC7902BC4F /* Pods_AnywhereFitness.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnywhereFitness.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E7717B0CADA893643FF358B /* Pods-AnywhereFitness.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnywhereFitness.debug.xcconfig"; path = "Target Support Files/Pods-AnywhereFitness/Pods-AnywhereFitness.debug.xcconfig"; sourceTree = "<group>"; };
 		CB9B564605666CB7289FDD42 /* Pods-AnywhereFitness.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnywhereFitness.release.xcconfig"; path = "Target Support Files/Pods-AnywhereFitness/Pods-AnywhereFitness.release.xcconfig"; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 			children = (
 				12AB67DE24EE436300AC2663 /* SearchCollectionViewCell.swift */,
 				8614CFED24EF3FAA00414865 /* ProfileClassesTableViewCell.swift */,
+				86C41FB424FC1A6D00798241 /* SearchTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				12C465B724F8AC8B00A6FDD3 /* SearchCollectionViewController.swift */,
+				86C41FB224FC190D00798241 /* SearchVC.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -490,11 +494,12 @@
 				12C9BD3424F7185F00ED2677 /* InstructorPhotoViewController.swift in Sources */,
 				8614CFF024EF42A800414865 /* ProfileViewController.swift in Sources */,
 				1A81A1A624F9FB2100E5FDA5 /* AnywhereFitness.xcdatamodeld in Sources */,
+				86C41FB524FC1A6D00798241 /* SearchTableViewCell.swift in Sources */,
 				1A81A1A324F9F92600E5FDA5 /* User.swift in Sources */,
+				86C41FB324FC190D00798241 /* SearchVC.swift in Sources */,
 				8614CFEE24EF3FAA00414865 /* ProfileClassesTableViewCell.swift in Sources */,
 				1281AA5924EDE3ED00D24E0B /* OpeningViewController.swift in Sources */,
 				8614D05124F32B9E00414865 /* ClassDetailViewController.swift in Sources */,
-				12C9BD2624F70FDF00ED2677 /* ClientAboutViewController.swift in Sources */,
 				1AA8172D24F5BA6100649A07 /* LoginController.swift in Sources */,
 				1281AA5C24EDE42700D24E0B /* CustomUI.swift in Sources */,
 				1AA8172924F5B7D400649A07 /* Instructor.swift in Sources */,
