@@ -63,7 +63,6 @@ extension ClassListing {
                                         intensity: Intensity,
                                         location: Location,
                                         maxClassSize: Int,
-                                        attendeeCount: Int = 0,
                                         attendees: [String] = [],
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)

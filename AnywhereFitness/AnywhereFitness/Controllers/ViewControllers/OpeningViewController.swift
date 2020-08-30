@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 
 class OpeningViewController: UIViewController {
     
@@ -69,11 +70,20 @@ class OpeningViewController: UIViewController {
         
         Auth.auth().signIn(withEmail: email, password: password) { (authData, error) in
             if error != nil {
-                print("Done")
+                print("error")
                 return
             }
+            LoginController.shared.setCurrentUser()
         }
-        
     }//
     
 }//
+
+
+// Move to Profile View
+//var photo: UIImage?
+//LoginController.shared.getImage(imageUrl: imageURL, completion: { image in
+//    DispatchQueue.main.async {
+//        photo = image
+//    }
+//})
