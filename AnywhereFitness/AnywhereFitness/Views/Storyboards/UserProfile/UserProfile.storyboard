@@ -95,6 +95,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="classNameLabel" destination="CiZ-gJ-yjR" id="dhE-Np-VdF"/>
+                                            <outlet property="dateLabel" destination="6iP-hM-QFQ" id="Xil-gP-Och"/>
+                                            <outlet property="instructorLabel" destination="2s4-cQ-hsv" id="jll-PT-WLf"/>
+                                            <outlet property="locationLabel" destination="T3n-8y-o1K" id="8Ko-Nn-7UC"/>
                                             <segue destination="xPY-Hh-dI3" kind="show" id="Hh2-TQ-miq"/>
                                         </connections>
                                     </tableViewCell>
