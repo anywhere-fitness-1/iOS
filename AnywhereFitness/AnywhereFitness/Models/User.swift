@@ -7,13 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 struct User: Codable {
     let identifier: String?
     let username: String?
-    let password: String?
     var name: String?
     var about: String?
-    var image: String?
+    var image: URL
     var isInstructor: Bool = false
 }
