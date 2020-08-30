@@ -22,10 +22,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         view.backgroundColor = .systemGray4
         view.frame = self.view.bounds
         view.contentSize = contentViewSize
-        
         return view
     }()
-    
     lazy var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemGray4
@@ -49,11 +47,11 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     var profileImageView: UIImageView = UIImageView()
     var editPhotoView: UIImageView = UIImageView()
     var grayPhotoView: UIImageView = UIImageView()
+    var aboutTextView: UITextView = UITextView()
 
     override func viewWillLayoutSubviews() {
         profileImageView.setRounded()
         editPhotoView.setRounded()
-        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,10 +79,12 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
 
+        print("setEditing")
         if editing {
         wasEdited = true
         editPhotoView.isHidden = false
         grayPhotoView.isHidden = false
+        isUserInteractionEnabled(bool: true)
         } else {
             
             guard let firstName = firstNameTextField.text, !firstName.isEmpty else {
@@ -111,6 +111,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
             passwordTextField.text = password
             grayPhotoView.isHidden = true
             editPhotoView.isHidden = true
+            isUserInteractionEnabled(bool: true)
             
             //Save Information to Core Data
             
@@ -130,11 +131,24 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         containerView.addSubview(emailLabel)
         containerView.addSubview(firstNameTextField)
         containerView.addSubview(profileImageView)
+        containerView.addSubview(aboutTextView)
         profileImageView.addSubview(grayPhotoView)
         profileImageView.addSubview(editPhotoView)
     }
     
-    func isUserInteractionEnabled() {
+    func isUserInteractionEnabled(bool: Bool) {
+        if bool == true {
+            firstNameTextField.isUserInteractionEnabled = true
+            lastNameTextField.isUserInteractionEnabled = true
+            emailTextField.isUserInteractionEnabled = true
+            passwordTextField.isUserInteractionEnabled = true
+            profileImageView.isUserInteractionEnabled = true
+            editPhotoView.isUserInteractionEnabled = true
+            grayPhotoView.isUserInteractionEnabled = true
+            aboutTextView.isUserInteractionEnabled = true
+
+            
+        } else {
         firstNameTextField.isUserInteractionEnabled = false
         lastNameTextField.isUserInteractionEnabled = false
         emailTextField.isUserInteractionEnabled = false
@@ -142,6 +156,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         profileImageView.isUserInteractionEnabled = false
         editPhotoView.isUserInteractionEnabled = false
         grayPhotoView.isUserInteractionEnabled = false
+        aboutTextView.isUserInteractionEnabled = false
+        }
     }
     
     func firstNameTextFieldConfiguration() {
@@ -182,6 +198,13 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         emailLabel.translatesAutoresizingMaskIntoConstraints = false
         emailLabel.text = "Email"
         emailLabel.font = UIFont.boldSystemFont(ofSize: emailLabel.font.pointSize)
+    }
+    
+    func aboutTextViewConfiguration() {
+        aboutTextView.translatesAutoresizingMaskIntoConstraints = false
+        aboutTextView.text = "Hey I'm John and I like to workout. Sally sells shells by the sea shore"
+        aboutTextView.clipsToBounds = true
+        
     }
 
     func logOutButtonConfiguration() {
@@ -230,7 +253,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         let svTop = stackView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 20)
           let svLeading = stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
         let svTrailing = stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
-          let svHeight = stackView.heightAnchor.constraint(equalToConstant: 250)
+          let svHeight = stackView.heightAnchor.constraint(equalToConstant: 350)
         NSLayoutConstraint.activate([svTop, svTrailing, svLeading, svHeight])
         profileImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
@@ -250,18 +273,22 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         grayPhotoView.layer.opacity = 0.7
         grayPhotoView.isHidden = true
         grayPhotoView.setRounded()
-        logoutButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20).isActive = true
+        logoutButton.topAnchor.constraint(equalTo: aboutTextView.bottomAnchor, constant: 20).isActive = true
         logoutButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20).isActive = true
         logoutButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20).isActive = true
         logoutButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        aboutTextView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 5).isActive = true
+        aboutTextView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20).isActive = true
+        aboutTextView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20).isActive = true
+        aboutTextView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
     }
 
     func setUpViews() {
         navigationItem.rightBarButtonItem = editButtonItem
         //Adding properties to subviews
         view.addSubview(scrollView)
-        addSubview()
-        isUserInteractionEnabled()
+        isUserInteractionEnabled(bool: false)
         firstNameTextFieldConfiguration()
         lastNameTextFieldConfiguration()
         nameLabelsConfiguration()
@@ -272,6 +299,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         profileImageViewConfiguration()
         containerViewConfiguration()
         stackViewConfiguration()
+        aboutTextViewConfiguration()
     }
 
     @objc func logoutButtonTapped() {
