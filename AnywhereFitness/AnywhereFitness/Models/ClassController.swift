@@ -11,18 +11,15 @@ import CoreData
 import Firebase
 
 class ClassController {
-    
     static let shared = ClassController()
-    
+
     private init() { }
-    
+
     private let firebaseURL = URL(string: "https://anywherefitness-ba403.firebaseio.com/classes")!
-    
+
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
-    
-    
+
     // MARK: - Firebase Server
-        
     func getClasses(completion: @escaping CompletionHandler) {
             let requestURL = firebaseURL.appendingPathExtension("json")
             var request = URLRequest(url: requestURL)
@@ -56,7 +53,7 @@ class ClassController {
             }
             task.resume()
         }
-    
+
     private func update(classListing: ClassListing, representation: ClassRepresentation) {
         classListing.classTitle = representation.classTitle
         classListing.instructorID = representation.instructorID
@@ -68,7 +65,7 @@ class ClassController {
         classListing.maxClassSize = Int16(representation.maxClassSize)
         classListing.attendees = representation.attendees.map{$0}.joined(separator: ", ")
     }
-    
+
     private func updateClasses(with representations: [ClassRepresentation]) throws {
         let context = CoreDataStack.shared.container.newBackgroundContext()
         let identifiersToFetch = representations.compactMap({UUID(uuidString: $0.identifier)})
@@ -95,7 +92,7 @@ class ClassController {
         }
         try CoreDataStack.shared.save(context: context)
     }
-    
+
     func createClass(classListing: ClassListing, completion: @escaping CompletionHandler = { _ in }) {
         guard let uuid = classListing.identifier else {
             completion(.failure(.noIdentifier))
@@ -104,7 +101,6 @@ class ClassController {
         let requestURL = firebaseURL.appendingPathComponent(uuid.uuidString).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = "PUT"
-        
         do {
             guard let representation = classListing.classRepresentation else {
                 completion(.failure(.noRep))
@@ -116,10 +112,9 @@ class ClassController {
             completion(.failure(.failedEncoding))
             return
         }
-        
         let task = URLSession.shared.dataTask(with: request) { (_, _,  error) in
             if let error = error {
-                print ("Error PUTting class to server: \(error)")
+                print("Error PUTting class to server: \(error)")
                 completion(.failure(.otherError))
                 return
             }
@@ -127,7 +122,7 @@ class ClassController {
         }
         task.resume()
     }
-    
+
     func deleteClass(_ classListing: ClassListing, completion: @escaping CompletionHandler = { _ in }) {
         guard let uuid = classListing.identifier else {
             completion(.failure(.noIdentifier))
@@ -149,5 +144,4 @@ class ClassController {
             NSLog("Error saving managed object context: \(error)")
         }
     }
-    
 }

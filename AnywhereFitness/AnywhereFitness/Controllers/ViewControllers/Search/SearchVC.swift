@@ -44,6 +44,13 @@ class SearchVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        LoginController.shared.setCurrentUser { (user) in
+            DispatchQueue.main.async {
+                LoginController.shared.currentUser = user
+            }
+        }
+        ClassController.shared.getClasses { (_) in
+        }
     }
     
 

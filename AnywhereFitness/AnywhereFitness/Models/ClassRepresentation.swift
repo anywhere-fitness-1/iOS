@@ -9,7 +9,7 @@
 import Foundation
 
 struct ClassRepresentation: Codable {
-    
+
     var identifier: String
     var classTitle: String
     var classType: String
@@ -20,5 +20,4 @@ struct ClassRepresentation: Codable {
     var location: String
     var maxClassSize: Int
     var attendees: [String]
-    
 }

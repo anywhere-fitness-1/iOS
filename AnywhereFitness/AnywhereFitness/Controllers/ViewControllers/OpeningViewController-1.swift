@@ -10,16 +10,16 @@ import UIKit
 import AVFoundation
 
 class OpeningViewController: UIViewController {
-    
+
     //MARK: - IBOutlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    
+
     //MARK: - Functionality Properties
     var player: AVPlayer?
     var customUI = CustomUI()
-    
+
     //MARK: - Lifecycle Views
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class OpeningViewController: UIViewController {
         configureButtons()
         configureTextFields()
     }
-    
+
     //MARK: - Helper Methods
     func configureVideoBackground() {
         let path = Bundle.main.path(forResource: "AnywhereFitnessOpeningVideo", ofType: "mp4")
@@ -41,21 +41,21 @@ class OpeningViewController: UIViewController {
         player!.seek(to: CMTime.zero)
         player!.play()
     }
-    
+
     @objc func playerItemDidReachEnd() {
         player!.seek(to: CMTime.zero)
     }
-    
+
     func configureButtons() {
         customUI.customDullButtonCorners(button: loginButton)
     }
-    
+
     func configureTextFields() {
         emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
     }
-    
+
     @IBAction func createUserButtonTapped(_ sender: UIButton) {
-        
+
     }
 }
