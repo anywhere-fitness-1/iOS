@@ -66,6 +66,13 @@ class SignUpVC: UITableViewController {
             print("Image is nil")
             return
         }
+        var isInstructor: Bool = false
+        switch clientInstructorSegmentedControl.selectedSegmentIndex {
+        case 1:
+            isInstructor = true
+        default:
+            isInstructor = false
+        }
         
         guard let imageData = imageSelected.jpegData(compressionQuality: 0.9) else { return }
         
@@ -85,6 +92,7 @@ class SignUpVC: UITableViewController {
                     "email": authData.user.uid,
                     "about": about,
                     "profileImageUrl": "",
+                    "isInstructor": isInstructor
                     ]
                 
                 let storageRef = Storage.storage().reference(forURL: "gs://anywherefitness-ba403.appspot.com")
@@ -101,9 +109,7 @@ class SignUpVC: UITableViewController {
                     storageProfileRef.downloadURL(completion: { (url, error) in
                         if let metaImageUrl = url?.absoluteString {
                             dict["profileImageUrl"] = metaImageUrl
-                            
-                            Database.database().reference().child("classes")
-                            
+
                             Database.database().reference().child("users").child(authData.user.uid).updateChildValues(dict, withCompletionBlock: { (error, ref) in
                                 if error == nil {
                                     print("Done")
@@ -113,7 +119,6 @@ class SignUpVC: UITableViewController {
                         }
                     })
                 })
-                
             }
             
         } // Auth

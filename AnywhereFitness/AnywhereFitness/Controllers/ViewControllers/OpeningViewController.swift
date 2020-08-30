@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 
 class OpeningViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate {
     
@@ -101,11 +102,11 @@ class OpeningViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         
         Auth.auth().signIn(withEmail: email, password: password) { (authData, error) in
             if error != nil {
-                print("Done")
+                print("error")
                 return
             }
+            LoginController.shared.setCurrentUser()
         }
-        
     }//
     
 }//

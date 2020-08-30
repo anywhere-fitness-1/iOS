@@ -37,6 +37,7 @@ class AddClassViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        LoginController.shared.setCurrentUser()
         nameTextField.delegate = self
 //        instructorNameTextField.delegate = self
 //        durationTextField.delegate = self
@@ -119,12 +120,15 @@ class AddClassViewController: UIViewController, UITextFieldDelegate {
 
         let classListing = ClassListing(classTitle: classTitle, classType: classType, instructorID: instructorID, startTime: startTime, duration: duration, intensity: intensity, location: location, maxClassSize: maxClassSize)
         ClassController.shared.createClass(classListing: classListing)
+        
         do {
             try CoreDataStack.shared.mainContext.save()
             navigationController?.dismiss(animated: true, completion: nil)
         } catch {
             NSLog("Error saving managed object context: \(error)")
         }
+        
+        dismiss(animated: true, completion: nil)
         
     }
     
