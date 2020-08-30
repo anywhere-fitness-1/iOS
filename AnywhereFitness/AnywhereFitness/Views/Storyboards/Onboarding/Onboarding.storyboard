@@ -100,7 +100,6 @@
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <action selector="signUpBtn:" destination="7p8-72-mX0" eventType="touchUpInside" id="23X-Ly-U8l"/>
-                                                                <segue destination="0FG-dW-b0g" kind="presentation" modalPresentationStyle="fullScreen" id="8l5-HB-OO2"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVp-yX-0uV">
@@ -195,7 +194,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="558-ca-2iQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1271.0144927536232" y="-117.1875"/>
+            <point key="canvasLocation" x="1265" y="-106"/>
         </scene>
         <!--SearchStoryboard-->
         <scene sceneID="pCh-sG-7XF">
