@@ -40,7 +40,6 @@ class OpeningViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         
         userNameTextField.delegate = self
         passwordTextField.delegate = self
-
     }
     
    
@@ -105,7 +104,11 @@ class OpeningViewController: UIViewController, UITextFieldDelegate, UITextViewDe
                 print("error")
                 return
             }
-            LoginController.shared.setCurrentUser()
+            LoginController.shared.setCurrentUser { (user) in
+                DispatchQueue.main.async {
+                    LoginController.shared.currentUser = user
+                }
+            }
         }
     }//
     

@@ -44,39 +44,39 @@ class LoginController {
     
     // MARK: - Get User
     
-    func getUser(with identifier: String, completion: @escaping (Result<User, NetworkError>) -> Void) {
-
-        let requestURL = firebaseURL.appendingPathComponent(identifier).appendingPathExtension("json")
-        var request = URLRequest(url: requestURL)
-        request.httpMethod = HTTPMethod.get.rawValue
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                print("Get user failed with error: \(error)")
-                completion(.failure(.otherError))
-                return
-            }
-            guard let response = response as? HTTPURLResponse,
-                response.statusCode == 200 else {
-                    print("Get user was unsuccessful")
-                    completion(.failure(.failedResponse))
-                    return
-            }
-            guard let data = data else {
-                print("Data was not received")
-                completion(.failure(.noData))
-                return
-            }
-            do {
-                let user = try JSONDecoder().decode(User.self, from: data)
-                completion(.success(user))
-            } catch {
-                print("Error decoding user: \(error)")
-                completion(.failure(.noData))
-            }
-        }
-        task.resume()
-    }
+//    func getUser(with identifier: String, completion: @escaping (Result<User, NetworkError>) -> Void) {
+//
+//        let requestURL = firebaseURL.appendingPathComponent(identifier).appendingPathExtension("json")
+//        var request = URLRequest(url: requestURL)
+//        request.httpMethod = HTTPMethod.get.rawValue
+//        
+//        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+//            if let error = error {
+//                print("Get user failed with error: \(error)")
+//                completion(.failure(.otherError))
+//                return
+//            }
+//            guard let response = response as? HTTPURLResponse,
+//                response.statusCode == 200 else {
+//                    print("Get user was unsuccessful")
+//                    completion(.failure(.failedResponse))
+//                    return
+//            }
+//            guard let data = data else {
+//                print("Data was not received")
+//                completion(.failure(.noData))
+//                return
+//            }
+//            do {
+//                let user = try JSONDecoder().decode(User.self, from: data)
+//                completion(.success(user))
+//            } catch {
+//                print("Error decoding user: \(error)")
+//                completion(.failure(.noData))
+//            }
+//        }
+//        task.resume()
+//    }
         
     
     func getImage(imageUrl: URL, completion: @escaping (UIImage?) -> Void) {
@@ -105,26 +105,38 @@ class LoginController {
         }.resume()
     }
     
-    func setCurrentUser() {
+    func setCurrentUser(completion: @escaping (User) -> Void) {
         if let identifier = Auth.auth().currentUser?.uid {
             Database.database().reference().child("users").child(identifier).observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
-                var user: User?
                 if let username = value?["username"] as? String,
                     let name = value?["name"] as? String,
                     let about = value?["about"] as? String,
                     let imageString = value?["profileImageUrl"] as? String,
                     let imageURL = URL(string: imageString),
                     let isInstructor = value?["isInstructor"] as? Bool {
-                        user = User(identifier: identifier, username: username, name: name, about: about, image: imageURL, isInstructor: isInstructor)
+                    let user = User(identifier: identifier, username: username, name: name, about: about, image: imageURL, isInstructor: isInstructor)
+                    completion(user)
                 }
-                LoginController.shared.currentUser = user
-            }) { (error) in
-                print(error.localizedDescription)
-            }
+            })
         }
     }
     
+    func getUser(with identifier: String, completion: @escaping (User) -> Void) {
+        Database.database().reference().child("users").child(identifier).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            if let username = value?["username"] as? String,
+                let name = value?["name"] as? String,
+                let about = value?["about"] as? String,
+                let imageString = value?["profileImageUrl"] as? String,
+                let imageURL = URL(string: imageString),
+                let isInstructor = value?["isInstructor"] as? Bool {
+                let user = User(identifier: identifier, username: username, name: name, about: about, image: imageURL, isInstructor: isInstructor)
+                completion(user)
+            }
+        })
+    }
+
 //    private func postRequest(for url: URL) -> URLRequest {
 //        var request = URLRequest(url: url)
 //        request.httpMethod = HTTPMethod.post.rawValue

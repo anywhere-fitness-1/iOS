@@ -30,7 +30,11 @@ class SearchCollectionViewController: UIViewController {
     //MARK: - View Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
-        LoginController.shared.setCurrentUser()
+        LoginController.shared.setCurrentUser { (user) in
+            DispatchQueue.main.async {
+                LoginController.shared.currentUser = user
+            }
+        }
         ClassController.shared.getClasses { (_) in
             print("Successfully got classes")
         }
