@@ -10,20 +10,15 @@ import UIKit
 import CoreData
 
 class ProfileViewController: UIViewController {
-    
-    
+
     // Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
-    
 
-    
-    
-    
     // MARK: - Properties
-    
+
     lazy var fetchedResultsController: NSFetchedResultsController<ClassListing> = {
         let fetchRequest: NSFetchRequest<ClassListing> = ClassListing.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "classType", ascending: true), NSSortDescriptor(key: "startTime", ascending: true)]
@@ -42,10 +37,10 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
+
         updateView()
     }
-    
+
     func updateView() {
         userImageView.layer.cornerRadius = 68
         userImageView.clipsToBounds = true
@@ -60,28 +55,24 @@ class ProfileViewController: UIViewController {
             })
         }
     }
-
- 
-
 } // Class
 
-
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileClassesTableViewCell.reuseIdentifier, for: indexPath) as? ProfileClassesTableViewCell else { fatalError("Can't dequeue cell of type \(ProfileClassesTableViewCell.reuseIdentifier)") }
-        
+
         cell.classListing = fetchedResultsController.object(at: indexPath)
-        
+
         return cell
     }
     
@@ -89,19 +80,18 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         guard let sectionInfo = fetchedResultsController.sections?[section] else { return nil }
         return sectionInfo.name
     }
-    
-}//
-
+}
+//MARK: -Extensions
 extension ProfileViewController: NSFetchedResultsControllerDelegate {
-    
+
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.beginUpdates()
     }
-    
+
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.endUpdates()
     }
-    
+
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         switch type {
         case .insert:
@@ -112,7 +102,7 @@ extension ProfileViewController: NSFetchedResultsControllerDelegate {
             break
         }
     }
-    
+
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
