@@ -28,7 +28,6 @@ class AddClassViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        LoginController.shared.setCurrentUser()
         nameTextField.delegate = self
 //        instructorNameTextField.delegate = self
 //        durationTextField.delegate = self

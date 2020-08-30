@@ -8,6 +8,10 @@
 
 import UIKit
 import CoreData
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
 
 class ProfileViewController: UIViewController {
 
@@ -16,6 +20,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
+
 
     // MARK: - Properties
 
@@ -55,6 +60,7 @@ class ProfileViewController: UIViewController {
             })
         }
     }
+
 } // Class
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
