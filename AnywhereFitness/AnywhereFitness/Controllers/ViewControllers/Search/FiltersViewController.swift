@@ -11,25 +11,23 @@ import UIKit
 class FiltersViewController: UIViewController {
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var filterTableView: UITableView!
-    
+
     var filtersArray: [String] = ["Class"]
-    
-    enum filters : String {
-        case Class = "Class"
-        case Location = "Location"
-        
+
+    enum Filters : String {
+        case chosenClass = "Class"
+        case location = "Location"
+
     }
     var filterString : String = ""
     var filterDelegate: FilterDelegate?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         filterButton.layer.cornerRadius = 5
-        
 
         // Do any additional setup after loading the view.
     }
-    
 
     /*
     // MARK: - Navigation
@@ -41,7 +39,7 @@ class FiltersViewController: UIViewController {
     }
     */
     @IBAction func filterButtonTapped(_ sender: Any) {
-        
+
         guard let filterDelegate = filterDelegate else {
             print("no filter delegate")
             return}
@@ -49,28 +47,25 @@ class FiltersViewController: UIViewController {
         print(filterString)
         navigationController?.popToRootViewController(animated: true)
     }
-    
 }
 
 extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         filtersArray.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
        let cell = tableView.dequeueReusableCell(withIdentifier: "filters", for: indexPath)
         cell.textLabel?.text = filtersArray[indexPath.row]
-        
+
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
         if tableView.cellForRow(at: indexPath)?.textLabel?.text == "Class" {
-            filterString = filters.Class.rawValue
+            filterString = Filters.chosenClass.rawValue
         }
     }
-    
-    
 }
