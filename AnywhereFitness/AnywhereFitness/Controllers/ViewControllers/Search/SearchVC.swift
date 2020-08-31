@@ -17,7 +17,6 @@ class SearchVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     // MARK: - Properties
-//    let classListing = ClassListing()
 
     // MARK: - FetchResult Properties
     lazy var fetchedResultsController: NSFetchedResultsController<ClassListing> = {
@@ -57,6 +56,8 @@ class SearchVC: UIViewController {
 
 } // Class
 
+
+
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -75,13 +76,18 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-
-        guard let sectionInfo = fetchedResultsController.sections?[section] else { return nil }
-        return sectionInfo.name
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToDetailViewSegue" {
+            if let detailVC = segue.destination as? DetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow {
+                detailVC.classListing = fetchedResultsController.object(at: indexPath)
+            }
+        }
     }
 
 } // Extension
+
+
 
 extension SearchVC: NSFetchedResultsControllerDelegate {
 
