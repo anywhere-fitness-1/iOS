@@ -280,16 +280,6 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvw-No-sKb">
-                                                        <rect key="frame" x="15" y="8" width="30" height="39"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                                        <state key="normal" title="X">
-                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="xButtonTapped:" destination="2sx-I9-QHi" eventType="touchUpInside" id="Zla-QS-Jbe"/>
-                                                        </connections>
-                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCD-Lu-AHz">
                                                         <rect key="frame" x="309" y="12" width="60" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
@@ -305,11 +295,9 @@
                                                 <constraints>
                                                     <constraint firstItem="XNL-rE-5Lk" firstAttribute="leading" secondItem="avO-Gu-wHu" secondAttribute="leading" constant="15" id="36x-dX-Jbj"/>
                                                     <constraint firstAttribute="trailing" secondItem="ZCD-Lu-AHz" secondAttribute="trailing" constant="15" id="7Tw-g8-3cQ"/>
-                                                    <constraint firstItem="Nvw-No-sKb" firstAttribute="leading" secondItem="avO-Gu-wHu" secondAttribute="leading" constant="15" id="D1u-Ps-vjr"/>
                                                     <constraint firstItem="XNL-rE-5Lk" firstAttribute="top" secondItem="avO-Gu-wHu" secondAttribute="top" constant="10" id="KdL-VQ-1XV"/>
                                                     <constraint firstAttribute="trailing" secondItem="XNL-rE-5Lk" secondAttribute="trailing" constant="15" id="WRE-eu-Ebu"/>
                                                     <constraint firstAttribute="height" constant="55" id="pFc-x3-lfG"/>
-                                                    <constraint firstItem="Nvw-No-sKb" firstAttribute="top" secondItem="avO-Gu-wHu" secondAttribute="top" constant="8" id="q8b-er-BRJ"/>
                                                     <constraint firstItem="ZCD-Lu-AHz" firstAttribute="top" secondItem="avO-Gu-wHu" secondAttribute="top" constant="12" id="yHf-7g-qlA"/>
                                                 </constraints>
                                             </view>
@@ -581,9 +569,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JLu-ZQ-5pf"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Class Name" largeTitleDisplayMode="never" id="9pG-Jp-q11">
-                        <barButtonItem key="rightBarButtonItem" title="Register" id="3Sq-bl-g3e"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Class Name" largeTitleDisplayMode="never" id="9pG-Jp-q11"/>
                     <connections>
                         <outlet property="attendeesTextView" destination="giD-JV-YCD" id="3ZW-Ww-RLL"/>
                         <outlet property="bottomBackgroundView" destination="n8C-Aq-gVT" id="sId-0d-2pZ"/>

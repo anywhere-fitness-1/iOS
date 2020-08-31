@@ -51,7 +51,7 @@ extension ClassListing {
             let location = location,
             let attendees = attendees else { return nil }
 
-        return ClassRepresentation(identifier: identifier, classTitle: classTitle, classType: classType, instructorID: instructorID, startTime: startTime, duration: duration, intensity: intensity, location: location, maxClassSize: Int(maxClassSize), attendees: (attendees.components(separatedBy: ", ")).map { $0 })
+        return ClassRepresentation(identifier: identifier, classTitle: classTitle, classType: classType, instructorID: instructorID, startTime: startTime, duration: duration, intensity: intensity, location: location, maxClassSize: Int(maxClassSize), attendees: attendees)
     }
 
     @discardableResult convenience init(identifier: UUID = UUID(),
@@ -63,7 +63,7 @@ extension ClassListing {
                                         intensity: Intensity,
                                         location: Location,
                                         maxClassSize: Int,
-                                        attendees: [String],
+                                        attendees: String,
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.identifier = identifier
@@ -75,7 +75,7 @@ extension ClassListing {
         self.intensity = intensity.rawValue
         self.location = location.rawValue
         self.maxClassSize = Int16(maxClassSize)
-        self.attendees = (attendees.map {$0}).joined(separator: ", ")
+        self.attendees = attendees
     }
 
     @discardableResult convenience init?(classRepresentation: ClassRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {

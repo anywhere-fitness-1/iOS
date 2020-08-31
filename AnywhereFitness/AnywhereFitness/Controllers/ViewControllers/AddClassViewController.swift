@@ -20,7 +20,6 @@ class AddClassViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var stepperControl: UIStepper!
     @IBOutlet weak var maxClassSizeLabel: UILabel!
 
-
     // MARK: - Properties
     private let classTypes = ClassType.allCases.map { $0.rawValue }
     private let locations = Location.allCases.map { $0.rawValue }
@@ -73,7 +72,7 @@ class AddClassViewController: UITableViewController, UITextFieldDelegate {
         let location = Location.allCases[locationIndex]
         let maxClassSize = Int(stepperControl.value)
 
-        let classListing = ClassListing(classTitle: classTitle, classType: classType, instructorID: instructorID, startTime: startTime, duration: duration, intensity: intensity, location: location, maxClassSize: maxClassSize, attendees: [instructorID])
+        let classListing = ClassListing(classTitle: classTitle, classType: classType, instructorID: instructorID, startTime: startTime, duration: duration, intensity: intensity, location: location, maxClassSize: maxClassSize, attendees: instructorID)
         ClassController.shared.createClass(classListing: classListing)
 
         do {

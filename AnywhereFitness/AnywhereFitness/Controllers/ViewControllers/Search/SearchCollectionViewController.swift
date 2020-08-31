@@ -18,7 +18,7 @@ class SearchCollectionViewController: UIViewController {
     var filterDelegate: FilterDelegate?
     var classListing: ClassListing?
     var classDataArray: [ClassListing]?
-    var dataArray: [ClassListing] = [ClassListing(classTitle: "Yoga", classType: .yoga, instructorID: "123", startTime: Date(), duration: .sixtyMin, intensity: .beginner, location: .sanFran, maxClassSize: 15, attendees: ["123"])]
+    var dataArray: [ClassListing] = [ClassListing(classTitle: "Yoga", classType: .yoga, instructorID: "123", startTime: Date(), duration: .sixtyMin, intensity: .beginner, location: .sanFran, maxClassSize: 15, attendees: "123")]
 
     var filterString: String?
 
@@ -53,7 +53,7 @@ extension SearchCollectionViewController: UICollectionViewDataSource {
         }
 
         cell.classListing = dataArray[indexPath.row]
-        
+
         return cell
 
     }
@@ -85,8 +85,8 @@ extension SearchCollectionViewController: UISearchBarDelegate {
             print("working")
 
         } else if segue.identifier == "detail" {
-            if let destinationVC = segue.destination as? DetailViewController, let index = collectionView.indexPathsForSelectedItems?.first  {
-                
+            if let destinationVC = segue.destination as? DetailViewController, let index = collectionView.indexPathsForSelectedItems?.first {
+
                 destinationVC.classListing = dataArray[index.item]
             }
         }
@@ -105,8 +105,7 @@ extension SearchCollectionViewController: FilterDelegate {
 
 protocol FilterDelegate {
     func filterSelected(filter: String)
-    
-    
+
     //    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     //
     //    }
