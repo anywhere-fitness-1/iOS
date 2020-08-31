@@ -17,8 +17,7 @@ class SearchVC: UIViewController {
     var filterTypeString: String?
     var filterString: String?
     var filterDelegate: FilterDelegate?
-    
-    
+
     // MARK: - Properties
 
     // MARK: - FetchResult Properties
@@ -34,6 +33,9 @@ class SearchVC: UIViewController {
         } catch {
             NSLog("Unable to fetch classes from main context: \(error)")
         }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         return frc
     }()
 
