@@ -93,11 +93,8 @@ extension SearchCollectionViewController: UISearchBarDelegate {
 }
 
 extension SearchCollectionViewController: FilterDelegate {
-
-    func filterSelected(filter: String) {
-        print(filter)
-        filterString = filter
-
+    func filterSelected(filterType: String?, filter: String?) {
+        print("nothing")
     }
 
 }

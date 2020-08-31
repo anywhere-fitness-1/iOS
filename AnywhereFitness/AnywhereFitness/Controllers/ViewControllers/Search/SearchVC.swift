@@ -12,14 +12,12 @@ import CoreData
 
 
 class SearchVC: UIViewController {
-    
-    
     // Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    var filterTypeString: String?
     var filterString: String?
     var filterDelegate: FilterDelegate?
-    
     
     
     // MARK: - Properties
@@ -27,7 +25,8 @@ class SearchVC: UIViewController {
     
     
     // MARK: - FetchResult Properties
-    lazy var fetchedResultsController: NSFetchedResultsController<ClassListing> = {
+    lazy var fetchedResultsController: NSFetchedResultsController<ClassListing> =
+        {
         let fetchRequest: NSFetchRequest<ClassListing> = ClassListing.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "classType", ascending: true), NSSortDescriptor(key: "startTime", ascending: true)]
         let moc = CoreDataStack.shared.mainContext
@@ -62,9 +61,6 @@ class SearchVC: UIViewController {
             destinationVC.filterDelegate = self
         }
     }
-    
-
-   
 
 } // Class
 
@@ -142,17 +138,19 @@ extension SearchVC: NSFetchedResultsControllerDelegate {
 } //
 
 extension SearchVC: FilterDelegate {
-    func filterSelected(filter: String) {
+    func filterSelected(filterType: String?, filter: String?) {
         self.filterString = filter
-        guard let filterString = filterString else {return}
+        self.filterTypeString = filterType
+        guard let filterString = filterString, let filterTypeString = filterTypeString else {return}
         print(filterString)
+        print(filterTypeString)
     }
     
     
 }
 
 protocol FilterDelegate {
-func filterSelected(filter: String)
+    func filterSelected(filterType: String?, filter: String?)
 }
 
 

@@ -12,23 +12,15 @@ class FiltersDetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navBar: UINavigationItem!
-    
     var filterDelegate: FilterDelegate?
     var filterString: String?
-    
+    var filterTypeString: String?
     var filtersArray: [String]?
     var selectedIndex: Int?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
         // Do any additional setup after loading the view.
     }
-    
-    
-    
-
     /*
     // MARK: - Navigation
 
@@ -38,39 +30,30 @@ class FiltersDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
     @IBAction func filterButtonTapped(_ sender: Any) {
-
         guard let filtersArray = filtersArray else {
             print("No Filters Array")
             return}
-        print(filtersArray)
-        
         guard let selectedIndex = selectedIndex else {
             print("No Selected Index")
             return
         }
         filterString = filtersArray[selectedIndex]
-        
             guard let filterDelegate = filterDelegate else {
                 print("No filter delegate")
-                return}
-            
-           guard let filterString = filterString else {
+                return
+        }
+           guard let filterString = filterString, let filterTypeString = filterTypeString else {
             print("No Filter String")
             return}
-            filterDelegate.filterSelected(filter: filterString)
+        filterDelegate.filterSelected(filterType: filterTypeString, filter: filterString)
             navigationController?.popToRootViewController(animated: true)
         }
     
 }
-
 extension FiltersDetailViewController: FilterDelegate {
-    func filterSelected(filter: String) {
-        print("Done")
+    func filterSelected(filterType: String?, filter: String?) {
     }
-    
-
 }
 
 extension FiltersDetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -91,20 +74,10 @@ extension FiltersDetailViewController: UITableViewDelegate, UITableViewDataSourc
             cell.accessoryType = .none
         }
         cell.textLabel?.text = filtersArray[indexPath.row]
-      
-
-       
-        
-       
         return cell
-    
 }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
             selectedIndex = indexPath.row
-
             tableView.reloadData()
         }
-    
- 
 }
