@@ -91,6 +91,11 @@ class DetailViewController: UIViewController {
             ClassController.shared.getAttendees(classListing: classListing) { (attendeeNames) in
                 DispatchQueue.main.async {
                     self.attendeesTextView.text = attendeeNames
+                    let attendeeNameArray = (attendeeNames.components(separatedBy: ", ")).map { $0 }
+                    if attendeeNameArray.count >= classListing.maxClassSize {
+                        self.presentAFAlertOnMainThread(title: "Sorry!", message: "This class is already full.", buttonTitle: "OK")
+                        self.navigationController?.popViewController(animated: true)
+                    }
                     guard let identifierString = classListing.attendees else { return }
                     let attendeeArray = (identifierString.components(separatedBy: ", ")).map { $0 }
                     if let identifier = Auth.auth().currentUser?.uid {
