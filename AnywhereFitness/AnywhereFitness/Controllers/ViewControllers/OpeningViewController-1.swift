@@ -11,16 +11,16 @@ import AVFoundation
 
 class OpeningViewController: UIViewController {
 
-    //MARK: - IBOutlets
+    // MARK: - IBOutlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
 
-    //MARK: - Functionality Properties
+    // MARK: - Functionality Properties
     var player: AVPlayer?
     var customUI = CustomUI()
 
-    //MARK: - Lifecycle Views
+    // MARK: - Lifecycle Views
     override func viewDidLoad() {
         super.viewDidLoad()
         configureVideoBackground()
@@ -28,16 +28,16 @@ class OpeningViewController: UIViewController {
         configureTextFields()
     }
 
-    //MARK: - Helper Methods
+    // MARK: - Helper Methods
     func configureVideoBackground() {
         let path = Bundle.main.path(forResource: "AnywhereFitnessOpeningVideo", ofType: "mp4")
         player = AVPlayer(url: NSURL(fileURLWithPath: path!) as URL)
-        player!.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none;
+        player!.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
         let playerLayer = AVPlayerLayer(player: player)
         playerLayer.frame = self.view.frame
         playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         self.view.layer.insertSublayer(playerLayer, at: 0)
-        NotificationCenter.default.addObserver(self, selector:#selector(self.playerItemDidReachEnd), name:NSNotification.Name.AVPlayerItemDidPlayToEndTime, object:player!.currentItem)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.playerItemDidReachEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player!.currentItem)
         player!.seek(to: CMTime.zero)
         player!.play()
     }
@@ -51,8 +51,8 @@ class OpeningViewController: UIViewController {
     }
 
     func configureTextFields() {
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
 
     @IBAction func createUserButtonTapped(_ sender: UIButton) {

@@ -12,6 +12,7 @@ class FiltersDetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navBar: UINavigationItem!
+
     var filterDelegate: FilterDelegate?
     var filterString: String?
     var filterTypeString: String?
@@ -40,10 +41,12 @@ class FiltersDetailViewController: UIViewController {
         filterDelegate.filterSelected(filterType: filterTypeString, filter: filterString)
             navigationController?.popToRootViewController(animated: true)
         }
+
 }
 extension FiltersDetailViewController: FilterDelegate {
     func filterSelected(filterType: String?, filter: String?) {
     }
+
 }
 
 extension FiltersDetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -51,6 +54,7 @@ extension FiltersDetailViewController: UITableViewDelegate, UITableViewDataSourc
         guard let filtersArray = filtersArray else {return 1}
         return filtersArray.count
             }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath)
         guard let filtersArray = filtersArray else {return cell}
@@ -61,9 +65,16 @@ extension FiltersDetailViewController: UITableViewDelegate, UITableViewDataSourc
         }
         cell.textLabel?.text = filtersArray[indexPath.row]
         return cell
+
 }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             selectedIndex = indexPath.row
             tableView.reloadData()
         }
+
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+
+    }
 }

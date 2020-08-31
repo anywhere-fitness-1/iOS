@@ -8,10 +8,9 @@
 
 import UIKit
 
-class AddClassViewController: UIViewController, UITextFieldDelegate {
+class AddClassViewController: UITableViewController, UITextFieldDelegate {
     // Outlets
-    @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
+
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addDatePickerView: UIDatePicker!
     @IBOutlet weak var locationPickerView: UIPickerView!
@@ -20,7 +19,6 @@ class AddClassViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var addTypePickerView: UIPickerView!
     @IBOutlet weak var stepperControl: UIStepper!
     @IBOutlet weak var maxClassSizeLabel: UILabel!
-    @IBOutlet weak var bottomConstrain: NSLayoutConstraint!
 
     // MARK: - Properties
     private let classTypes = ClassType.allCases.map { $0.rawValue }
@@ -74,7 +72,7 @@ class AddClassViewController: UIViewController, UITextFieldDelegate {
         let location = Location.allCases[locationIndex]
         let maxClassSize = Int(stepperControl.value)
 
-        let classListing = ClassListing(classTitle: classTitle, classType: classType, instructorID: instructorID, startTime: startTime, duration: duration, intensity: intensity, location: location, maxClassSize: maxClassSize)
+        let classListing = ClassListing(classTitle: classTitle, classType: classType, instructorID: instructorID, startTime: startTime, duration: duration, intensity: intensity, location: location, maxClassSize: maxClassSize, attendees: instructorID)
         ClassController.shared.createClass(classListing: classListing)
 
         do {

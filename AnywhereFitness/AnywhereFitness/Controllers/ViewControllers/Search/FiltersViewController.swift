@@ -17,10 +17,13 @@ class FiltersViewController: UIViewController {
     let intensityArray = ["Beginner", "Intermediate", "Expert"]
     let locationArray = ["San Francisco", "New York"]
     let durationArray = ["30 Minutes", "45 Minutes", "60 Minutes", "90 Minutes"]
+
+    var filterString: String = ""
     var filterDelegate: FilterDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
 
@@ -69,7 +72,12 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
        let cell = tableView.dequeueReusableCell(withIdentifier: "filters", for: indexPath)
         cell.textLabel?.text = filtersArray[indexPath.row]
         cell.accessoryType = .disclosureIndicator
+
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
     }
 }
 

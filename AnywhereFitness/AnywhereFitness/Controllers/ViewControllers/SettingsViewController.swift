@@ -10,9 +10,12 @@ import UIKit
 import Firebase
 
 class SettingsViewController: UIViewController, UINavigationControllerDelegate {
+
+    @IBOutlet weak var navBar: UINavigationItem!
     var wasEdited = false
     let imagePicker = UIImagePickerController()
     lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 100)
+
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView(frame: .zero)
         view.backgroundColor = .systemGray4
@@ -24,6 +27,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         let view = UIView()
         view.backgroundColor = .systemGray4
         view.frame = self.view.bounds
+
         return view
     }()
     // Labels, Buttons, Textfields, ImageView
@@ -48,6 +52,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         imagePicker.delegate = self
         currentUser()
         }
+
     private func currentUser() {
         if let imageURL = LoginController.shared.currentUser?.image {
             LoginController.shared.getImage(imageUrl: imageURL, completion: { image in
@@ -63,6 +68,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         aboutLabel.text = "About"
         aboutTextView.text = LoginController.shared.currentUser?.about
     }
+
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
 
@@ -102,6 +108,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         profileImageView.addSubview(grayPhotoView)
         profileImageView.addSubview(editPhotoView)
     }
+
     func isUserInteractionEnabled(bool: Bool) {
         if bool == true {
             userNameTextField.isUserInteractionEnabled = true
@@ -110,6 +117,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
             editPhotoView.isUserInteractionEnabled = true
             grayPhotoView.isUserInteractionEnabled = true
             aboutTextView.isUserInteractionEnabled = true
+
         } else {
         userNameTextField.isUserInteractionEnabled = false
         nameTextField.isUserInteractionEnabled = false
@@ -119,14 +127,17 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         aboutTextView.isUserInteractionEnabled = false
         }
     }
+
     func firstNameTextFieldConfiguration() {
         userNameTextField.translatesAutoresizingMaskIntoConstraints = false
         userNameTextField.borderStyle = .roundedRect
     }
+
     func lastNameTextFieldConfiguration() {
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         nameTextField.borderStyle = .roundedRect
     }
+
     func nameLabelsConfiguration() {
         userNameLabel.font = UIFont.boldSystemFont(ofSize:userNameLabel.font.pointSize)
         nameTextLabel.font = UIFont.boldSystemFont(ofSize: nameTextLabel.font.pointSize)
@@ -136,6 +147,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         aboutLabel.text = "About"
         aboutLabel.font = UIFont.boldSystemFont(ofSize: aboutLabel.font.pointSize)
     }
+
     func aboutTextViewConfiguration() {
         aboutTextView.translatesAutoresizingMaskIntoConstraints = false
         aboutTextView.text = "Hey I'm John and I like to workout. Sally sells shells by the sea shore"
@@ -259,7 +271,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
 
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer){
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
@@ -271,9 +283,12 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
     }
 
+extension SettingsViewController: UITextFieldDelegate {
+}
+
 extension SettingsViewController: UIImagePickerControllerDelegate {
 // MARK: - UIImagePickerControllerDelegate Methods
-func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
     if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
         profileImageView.contentMode = .scaleAspectFit
         profileImageView.image = pickedImage

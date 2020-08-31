@@ -43,7 +43,7 @@ class LoginController {
     private let firebaseURL = URL(string: "https://fitness-bd254.firebaseio.com/users/")!
 
     // MARK: - Get User    
-    
+
     func getImage(imageUrl: URL, completion: @escaping (UIImage?) -> Void) {
         let request = URLRequest(url: imageUrl)
 
@@ -69,7 +69,7 @@ class LoginController {
             }
         }.resume()
     }
-    
+
     func setCurrentUser(completion: @escaping (User) -> Void) {
         if let identifier = Auth.auth().currentUser?.uid {
             Database.database().reference().child("users").child(identifier).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -86,7 +86,7 @@ class LoginController {
             })
         }
     }
-    
+
     func getUser(with identifier: String, completion: @escaping (User) -> Void) {
         Database.database().reference().child("users").child(identifier).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
