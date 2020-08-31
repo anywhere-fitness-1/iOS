@@ -15,11 +15,16 @@ class SearchVC: UIViewController {
     // Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-
+    var filterTypeString: String?
+    var filterString: String?
+    var filterDelegate: FilterDelegate?
+    
+    
     // MARK: - Properties
 
     // MARK: - FetchResult Properties
-    lazy var fetchedResultsController: NSFetchedResultsController<ClassListing> = {
+    lazy var fetchedResultsController: NSFetchedResultsController<ClassListing> =
+        {
         let fetchRequest: NSFetchRequest<ClassListing> = ClassListing.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "classType", ascending: true), NSSortDescriptor(key: "startTime", ascending: true)]
         let moc = CoreDataStack.shared.mainContext
@@ -37,12 +42,20 @@ class SearchVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        self.filterDelegate = self
         LoginController.shared.setCurrentUser { (user) in
             DispatchQueue.main.async {
                 LoginController.shared.currentUser = user
             }
         }
         ClassController.shared.getClasses { (_) in
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "filters" {
+            guard let destinationVC = segue.destination as? FiltersViewController else {return}
+            destinationVC.filterDelegate = self
         }
     }
 
@@ -120,3 +133,21 @@ extension SearchVC: NSFetchedResultsControllerDelegate {
     }
 
 } //
+
+extension SearchVC: FilterDelegate {
+    func filterSelected(filterType: String?, filter: String?) {
+        self.filterString = filter
+        self.filterTypeString = filterType
+        guard let filterString = filterString, let filterTypeString = filterTypeString else {return}
+        print(filterString)
+        print(filterTypeString)
+    }
+    
+    
+}
+
+protocol FilterDelegate {
+    func filterSelected(filterType: String?, filter: String?)
+}
+
+

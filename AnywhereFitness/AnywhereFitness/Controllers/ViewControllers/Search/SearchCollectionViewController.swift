@@ -94,24 +94,22 @@ extension SearchCollectionViewController: UISearchBarDelegate {
 }
 
 extension SearchCollectionViewController: FilterDelegate {
-
-    func filterSelected(filter: String) {
-        print(filter)
-        filterString = filter
-
+    func filterSelected(filterType: String?, filter: String?) {
+        print("nothing")
     }
 
 }
 
-protocol FilterDelegate {
-    func filterSelected(filter: String)
-
+//protocol FilterDelegate {
+//    func filterSelected(filter: String)
+//
+//
     //    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     //
     //    }
     //
-    //
-}
+//    //
+//}
 
 //extension SearchCollectionViewController: NSFetchedResultsControllerDelegate {
 //
