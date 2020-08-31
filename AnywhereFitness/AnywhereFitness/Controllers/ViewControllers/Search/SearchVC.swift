@@ -48,8 +48,8 @@ class SearchVC: UIViewController {
             }
         }
     }
-    
-    func setUpFetch()  {
+
+    func setUpFetch() {
         guard let filterString = filterString, let filterTypeString = filterTypeString else {return}
         let pred = NSPredicate(format: "\(filterTypeString) CONTAINS '\(filterString)'")
         self.fetchedResultsController.fetchRequest.predicate = pred
@@ -60,7 +60,7 @@ class SearchVC: UIViewController {
         }
 
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "filters" {
             guard let destinationVC = segue.destination as? FiltersViewController else {return}
@@ -156,6 +156,3 @@ extension SearchVC: FilterDelegate {
 protocol FilterDelegate {
   func filterSelected(filterType: String?, filter: String?)
 }
-
-
-
