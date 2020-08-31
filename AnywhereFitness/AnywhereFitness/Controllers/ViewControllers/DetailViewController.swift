@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 import Firebase
 
-
 class DetailViewController: UIViewController {
 
        // Outlets
@@ -18,14 +17,14 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    
+
     @IBOutlet weak var instructorLabel: UILabel!
     @IBOutlet weak var intensityLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var attendeesTextView: UITextView!
     @IBOutlet weak var maxClassSizeLabel: UILabel!
-    
+
     @IBOutlet weak var topBackgroundView: UIView!
     @IBOutlet weak var centerBackgroundView: UIView!
     @IBOutlet weak var bottomBackgroundView: UIView!
@@ -34,12 +33,12 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var smallViewCenter: UIView!
     @IBOutlet weak var smallViewRight: UIView!
     @IBOutlet weak var registerButton: UIButton!
-    
+
     // MARK: - Properties
     let customUI = CustomUI()
-    
+
     var classListing: ClassListing?
-    
+
     private let dateFormatter = DateFormatter()
     private let timeFormatter = DateFormatter()
 
@@ -49,10 +48,10 @@ class DetailViewController: UIViewController {
         updateView()
 //        setUpViews()
     }
-    
+
     func updateView() {
         guard let classListing = classListing else { return }
-        
+
         nameLabel.text = classListing.classTitle
         dateFormatter.dateStyle = .short
         if let date = classListing.startTime {
@@ -68,18 +67,16 @@ class DetailViewController: UIViewController {
         typeLabel.text = classListing.classType
         attendeesTextView.text = classListing.attendees
         maxClassSizeLabel.text = String(classListing.maxClassSize)
-        
+
         guard let instructorId = classListing.instructorID else { return }
-        
+
         LoginController.shared.getUser(with: instructorId) { (user) in
             DispatchQueue.main.async {
                 self.instructorLabel.text = user.name
             }
         }
-        
+
     }//
-    
-    
 
     func configureView() {
         customUI.customCardView(card: topBackgroundView)
@@ -123,7 +120,7 @@ class DetailViewController: UIViewController {
 //        dateLabel.text = "\(classListing.startTime)"
 //        timeLabel.text = "2:30pm"
 //        locationLabel.text = classListing.location
-////        instructorLabel.text = classListing.instructorName
+//        instructorLabel.text = classListing.instructorName
 //        intensityLabel.text = classListing.intensity
 //        durationLabel.text = classListing.duration
 //        typeLabel.text = classListing.classType

@@ -12,23 +12,18 @@ class FiltersDetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navBar: UINavigationItem!
-    
+
     var filterDelegate: FilterDelegate?
     var filterString: String?
-    
+
     var filtersArray: [String]?
     var selectedIndexes = [[IndexPath.init(row: 0, section: 0)], [IndexPath.init(row: 0, section: 1)]]
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         // Do any additional setup after loading the view.
     }
-    
-    
-    
 
     /*
     // MARK: - Navigation
@@ -39,7 +34,7 @@ class FiltersDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
+
     @IBAction func filterButtonTapped(_ sender: Any) {
 
             guard let filterDelegate = filterDelegate, let filterString = filterString else {
@@ -49,14 +44,13 @@ class FiltersDetailViewController: UIViewController {
             print(filterString)
             navigationController?.popToRootViewController(animated: true)
         }
-    
+
 }
 
 extension FiltersDetailViewController: FilterDelegate {
     func filterSelected(filter: String) {
         print("Done")
     }
-    
 
 }
 
@@ -65,24 +59,23 @@ extension FiltersDetailViewController: UITableViewDelegate, UITableViewDataSourc
         guard let filtersArray = filtersArray else {return 1}
        return filtersArray.count
             }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath)
         guard let filtersArray = filtersArray else {return cell}
         cell.textLabel?.text = filtersArray[indexPath.row]
-        
+
         cell.selectionStyle = .none
 
         let selectedSectionIndexes = self.selectedIndexes[indexPath.section]
         if selectedSectionIndexes.contains(indexPath) {
             cell.accessoryType = .checkmark
-        }
-        else {
+        } else {
             cell.accessoryType = .none
         }
-       
+
         return cell
-    
+
 }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let cell = tableView.cellForRow(at: indexPath)
@@ -100,11 +93,10 @@ extension FiltersDetailViewController: UITableViewDelegate, UITableViewDataSourc
 
             tableView.reloadData()
         }
-    
-        
+
     }
-    
+
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
+
     }
 }

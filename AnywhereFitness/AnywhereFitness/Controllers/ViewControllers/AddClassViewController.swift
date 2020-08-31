@@ -20,7 +20,6 @@ class AddClassViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var stepperControl: UIStepper!
     @IBOutlet weak var maxClassSizeLabel: UILabel!
 
-
     // MARK: - Properties
     private let classTypes = ClassType.allCases.map { $0.rawValue }
     private let locations = Location.allCases.map { $0.rawValue }
