@@ -33,7 +33,7 @@ class FiltersViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toFilterDetail" {
             guard let destinationVC = segue.destination as? FiltersDetailViewController else {return}
-            destinationVC.filterDelegate = self
+            destinationVC.filterDelegate = self.filterDelegate
             print("passed guard")
             guard let selectedRow = self.filterTableView.indexPathsForSelectedRows?.first else {return}
 
@@ -41,16 +41,19 @@ class FiltersViewController: UIViewController {
             case "Type":
                 destinationVC.filtersArray = classTypeArray
                 destinationVC.navBar.title = "Type"
-                "Type Selected"
+                destinationVC.filterTypeString = "ClassType"
             case "Duration":
                 destinationVC.filtersArray = durationArray
                 destinationVC.navBar.title = "Duration"
+                destinationVC.filterTypeString = "Duration"
             case "Intensity Level":
                 destinationVC.filtersArray = intensityArray
                 destinationVC.navBar.title = "Intensity Level"
+                destinationVC.filterTypeString = "Intensity"
             case "Location":
                 destinationVC.filtersArray = locationArray
                 destinationVC.navBar.title = "Location"
+                destinationVC.filterTypeString = "Location"
             default:
                 break
             }
@@ -79,8 +82,6 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension FiltersViewController: FilterDelegate {
-    func filterSelected(filter: String) {
-        print("Filter Selected")
+    func filterSelected(filterType: String?, filter: String?) {
     }
-
-}
+    }

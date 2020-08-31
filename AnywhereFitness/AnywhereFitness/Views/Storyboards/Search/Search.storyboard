@@ -197,10 +197,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9DB-SV-fVc">
-                                <rect key="frame" x="0.0" y="119" width="414" height="615"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9DB-SV-fVc">
+                                <rect key="frame" x="0.0" y="140" width="414" height="450"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="450" id="3Tc-uW-C8L"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="filterCell" textLabel="Ajj-0E-G3b" style="IBUITableViewCellStyleDefault" id="RHt-lh-zXC">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
@@ -225,10 +227,13 @@
                                     <outlet property="delegate" destination="3yb-6b-NWp" id="LFJ-n8-WTk"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zES-6X-6bq">
-                                <rect key="frame" x="0.0" y="742" width="414" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.16860446330000001" green="0.16864064340000001" blue="0.16860216859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zES-6X-6bq">
+                                <rect key="frame" x="0.0" y="586" width="414" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="J4N-hL-Y7i"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <state key="normal" title="Apply Filter">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -238,6 +243,14 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="9DB-SV-fVc" firstAttribute="leading" secondItem="E4m-45-kAv" secondAttribute="leading" id="3ck-la-fEY"/>
+                            <constraint firstItem="9DB-SV-fVc" firstAttribute="trailing" secondItem="E4m-45-kAv" secondAttribute="trailing" id="5uS-VD-eEo"/>
+                            <constraint firstItem="zES-6X-6bq" firstAttribute="trailing" secondItem="E4m-45-kAv" secondAttribute="trailing" id="EwG-xF-heB"/>
+                            <constraint firstItem="zES-6X-6bq" firstAttribute="top" secondItem="9DB-SV-fVc" secondAttribute="bottom" constant="-4" id="Hy1-S5-xs5"/>
+                            <constraint firstItem="9DB-SV-fVc" firstAttribute="top" secondItem="E4m-45-kAv" secondAttribute="top" id="vQG-yK-KnE"/>
+                            <constraint firstItem="zES-6X-6bq" firstAttribute="leading" secondItem="E4m-45-kAv" secondAttribute="leading" id="zNC-kz-ehc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="E4m-45-kAv"/>
                     </view>
                     <navigationItem key="navigationItem" title="Class" id="4VW-h1-We7"/>

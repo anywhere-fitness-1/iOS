@@ -109,7 +109,10 @@ class DetailViewController: UIViewController {
         }
 
     }//
+    
 
+
+    
     func configureView() {
         customUI.customCardView(card: topBackgroundView)
         customUI.customCardView(card: centerBackgroundView)
