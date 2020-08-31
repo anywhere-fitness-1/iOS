@@ -18,7 +18,7 @@ class FiltersDetailViewController: UIViewController {
     var filterTypeString: String?
     var filtersArray: [String]?
     var selectedIndex: Int?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -53,7 +53,7 @@ extension FiltersDetailViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let filtersArray = filtersArray else {return 1}
         return filtersArray.count
-            }
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath)
@@ -66,12 +66,10 @@ extension FiltersDetailViewController: UITableViewDelegate, UITableViewDataSourc
         cell.textLabel?.text = filtersArray[indexPath.row]
         return cell
 
-}
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            selectedIndex = indexPath.row
-            tableView.reloadData()
-        }
-
+        selectedIndex = indexPath.row
+        tableView.reloadData()
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {

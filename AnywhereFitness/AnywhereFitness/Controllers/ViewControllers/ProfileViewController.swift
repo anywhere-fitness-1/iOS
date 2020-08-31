@@ -27,8 +27,21 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-
         updateView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        ClassController.shared.getClasses { (_) in
+            DispatchQueue.main.async {
+                ClassController.shared.getUserClasses { (userClasses) in
+                    DispatchQueue.main.async {
+                        ClassController.shared.userClasses = userClasses
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
     }
 
     func updateView() {
@@ -37,7 +50,11 @@ class ProfileViewController: UIViewController {
         userImageView.layer.borderWidth = 2
         userImageView.layer.borderColor = UIColor.darkGray.cgColor
         usernameLabel.text = LoginController.shared.currentUser?.name
-        if LoginController.shared.currentUser?.isInstructor == false {
+        if LoginController.shared.currentUser?.isInstructor == true {
+            navigationItem.rightBarButtonItem?.isEnabled = true
+            navigationItem.rightBarButtonItem?.tintColor = .black
+        } else {
+            navigationItem.rightBarButtonItem?.isEnabled = false
             navigationItem.rightBarButtonItem?.tintColor = .clear
         }
         if let imageURL = LoginController.shared.currentUser?.image {
@@ -65,8 +82,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
         return cell
     }
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToDetailVCSegue" {
             if let classDetailVC = segue.destination as? ClassDetailViewController,

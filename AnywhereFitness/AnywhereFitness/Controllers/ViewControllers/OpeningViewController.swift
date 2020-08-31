@@ -36,6 +36,7 @@ class OpeningViewController: UIViewController, UITextFieldDelegate, UITextViewDe
 
         userNameTextField.delegate = self
         passwordTextField.delegate = self
+
     }
 
      // Methods or Functions
