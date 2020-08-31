@@ -101,13 +101,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="WZq-LK-fdR"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                         <state key="normal" title="Log In">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="loginBtn:" destination="8kT-aH-Vc5" eventType="touchUpInside" id="8pt-K4-bfa"/>
-                                            <segue destination="gtE-cr-a4S" kind="presentation" identifier="ToSearchStoryboard" modalPresentationStyle="fullScreen" id="81C-17-G52"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -140,6 +139,7 @@
                         <outlet property="loginButton" destination="cGI-9L-uzT" id="aEl-JB-vWo"/>
                         <outlet property="passwordTextField" destination="YPT-yA-fHM" id="j5w-zI-Wd0"/>
                         <outlet property="userNameTextField" destination="d5a-ST-f9W" id="G7F-y2-NSa"/>
+                        <segue destination="gtE-cr-a4S" kind="presentation" identifier="ToSearchStoryboard" modalPresentationStyle="fullScreen" id="ril-Iv-Lzr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hI1-UL-Svp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -152,7 +152,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="SearchStoryboard" storyboardName="Search" referencedIdentifier="SearchStoryboard" id="gtE-cr-a4S" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8dv-Q2-v56" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1024" y="408"/>
+            <point key="canvasLocation" x="1075" y="356"/>
         </scene>
         <!--OnboardingStoryboard-->
         <scene sceneID="3rf-KV-mgW">
@@ -160,7 +160,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="OnboardingStoryboard" storyboardName="Onboarding" referencedIdentifier="OnboardingStoryboard" id="dQl-uC-dgF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="42h-iT-ecN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1040" y="370"/>
+            <point key="canvasLocation" x="1096" y="434"/>
         </scene>
     </scenes>
 </document>

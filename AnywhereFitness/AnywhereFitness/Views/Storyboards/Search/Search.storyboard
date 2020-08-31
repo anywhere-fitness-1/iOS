@@ -569,7 +569,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JLu-ZQ-5pf"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Class Name" largeTitleDisplayMode="never" id="9pG-Jp-q11"/>
+                    <navigationItem key="navigationItem" title="Class Name" largeTitleDisplayMode="never" id="9pG-Jp-q11">
+                        <barButtonItem key="rightBarButtonItem" title="Register" id="ed7-cJ-gx5"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="attendeesTextView" destination="giD-JV-YCD" id="3ZW-Ww-RLL"/>
                         <outlet property="bottomBackgroundView" destination="n8C-Aq-gVT" id="sId-0d-2pZ"/>

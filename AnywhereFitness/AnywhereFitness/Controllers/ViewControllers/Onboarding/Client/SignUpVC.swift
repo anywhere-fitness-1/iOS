@@ -30,7 +30,13 @@ class SignUpVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        profileImageView.layer.borderColor = UIColor.darkGray.cgColor
+        profileImageView.layer.borderWidth = 2
+        aboutTextView.layer.borderWidth = 1
+        aboutTextView.layer.borderColor = UIColor.systemGray4.cgColor
+        aboutTextView.layer.cornerRadius = 5
+        aboutTextView.clipsToBounds = true
+        
         updateImage()
     }
 
@@ -69,7 +75,6 @@ class SignUpVC: UITableViewController {
         }
 
         guard let imageData = imageSelected.jpegData(compressionQuality: 0.9) else { return }
-
         Auth.auth().createUser(withEmail: email, password: password) { (authDataResult, error) in
 
             if error != nil {
@@ -93,6 +98,7 @@ class SignUpVC: UITableViewController {
 
                 let metadata = StorageMetadata()
                 metadata.contentType = "image/json"
+
                 storageProfileRef.putData(imageData, metadata: metadata, completion: { (_, error) in
                     if error != nil {
                         print(error?.localizedDescription)
@@ -114,7 +120,8 @@ class SignUpVC: UITableViewController {
             }
 
         } // Auth
-        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "gotoTabbarSearchSegue", sender: nil)
+//        dismiss(animated: true, completion: nil)
     } // signUpBtn
 
     @IBAction func userSegmented(_ sender: UISegmentedControl) {

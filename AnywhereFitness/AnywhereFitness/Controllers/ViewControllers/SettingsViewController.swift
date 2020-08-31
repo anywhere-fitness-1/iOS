@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
@@ -215,7 +216,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     func profileImageViewConfiguration() {
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        profileImageView.image = UIImage(named: "bodypump")
+        profileImageView.image = UIImage(named: "placeholder")
         profileImageView.layer.borderWidth = 1.0
         profileImageView.clipsToBounds = true
         profileImageView.layer.borderColor = UIColor.darkGray.cgColor
@@ -297,9 +298,14 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         aboutTextViewConfiguration()
     }
 
-    @objc func logoutButtonTapped() {
-        let openingController = OpeningViewController()
-        present(openingController, animated: true, completion: nil)
+    @objc func logoutButtonTapped() { 
+        do {
+                try Auth.auth().signOut()
+            } catch let logoutError {
+                print(logoutError)
+                presentAFAlertOnMainThread(title: "OOPS!", message: "Something went wrong. \nPlease try again later.", buttonTitle: "Ok")
+            }
+            dismiss(animated: true, completion: nil)
     }
 
     func showAlert(text: String) {
