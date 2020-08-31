@@ -104,6 +104,8 @@ extension SearchCollectionViewController: FilterDelegate {
 
 protocol FilterDelegate {
     func filterSelected(filter: String)
+    
+    
     //    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     //
     //    }
