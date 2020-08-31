@@ -81,7 +81,10 @@ class DetailViewController: UIViewController {
         }
 
     }//
+    
 
+
+    
     func configureView() {
         customUI.customCardView(card: topBackgroundView)
         customUI.customCardView(card: centerBackgroundView)
@@ -103,9 +106,7 @@ class DetailViewController: UIViewController {
         }
     }
 
-    @IBAction func xButtonTapped(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
+
     func showAlert() {
         let alert = UIAlertController(title: "Unregistering from Class", message: "Are you sure you want to unregister from the class?", preferredStyle: .alert)
 
@@ -119,20 +120,5 @@ class DetailViewController: UIViewController {
         self.present(alert, animated: true)
     }
 
-//    func setUpViews() {
-//
-//        guard let classListing = classListing else {
-//            return
-//        }
-//        nameLabel.text = classListing.classTitle
-//        dateLabel.text = "\(classListing.startTime)"
-//        timeLabel.text = "2:30pm"
-//        locationLabel.text = classListing.location
-//        instructorLabel.text = classListing.instructorName
-//        intensityLabel.text = classListing.intensity
-//        durationLabel.text = classListing.duration
-//        typeLabel.text = classListing.classType
-//        attendeesTextView.text = "\(classListing.attendees)"
-//        maxClassSizeLabel.text = "\(classListing.maxClassSize)"
-//    }
-}
+
+}//
