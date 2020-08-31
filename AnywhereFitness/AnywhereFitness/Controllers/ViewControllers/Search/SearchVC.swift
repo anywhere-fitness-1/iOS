@@ -72,6 +72,7 @@ class SearchVC: UIViewController {
             }
         }
     }
+}
 
 // Class
 
@@ -153,5 +154,8 @@ extension SearchVC: FilterDelegate {
 }
 
 protocol FilterDelegate {
-    func filterSelected(filterType: String?, filter: String?)
+  func filterSelected(filterType: String?, filter: String?)
 }
+
+
+
