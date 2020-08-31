@@ -63,7 +63,7 @@ extension ClassListing {
                                         intensity: Intensity,
                                         location: Location,
                                         maxClassSize: Int,
-                                        attendees: [String] = [],
+                                        attendees: [String],
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.identifier = identifier
@@ -75,7 +75,7 @@ extension ClassListing {
         self.intensity = intensity.rawValue
         self.location = location.rawValue
         self.maxClassSize = Int16(maxClassSize)
-        self.attendees = (attendees.map{$0}).joined(separator: ", ")
+        self.attendees = (attendees.map {$0}).joined(separator: ", ")
     }
 
     @discardableResult convenience init?(classRepresentation: ClassRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {

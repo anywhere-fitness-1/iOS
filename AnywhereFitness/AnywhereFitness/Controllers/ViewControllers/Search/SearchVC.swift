@@ -10,20 +10,14 @@ import UIKit
 import Firebase
 import CoreData
 
-
 class SearchVC: UIViewController {
-    
-    
+
     // Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    
-    
-    
+
     // MARK: - Properties
-    let classListing = ClassListing()
-    
-    
+
     // MARK: - FetchResult Properties
     lazy var fetchedResultsController: NSFetchedResultsController<ClassListing> = {
         let fetchRequest: NSFetchRequest<ClassListing> = ClassListing.fetchRequest()
@@ -38,7 +32,6 @@ class SearchVC: UIViewController {
         }
         return frc
     }()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,38 +45,37 @@ class SearchVC: UIViewController {
         ClassController.shared.getClasses { (_) in
         }
     }
-    
 
-   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        ClassController.shared.register(classListing: fetchedResultsController.object(at: IndexPath(row: 0, section: 0)))
+        ClassController.shared.getAttendees(classListing: fetchedResultsController.object(at: IndexPath(row: 0, section: 1))) { (attendeeNames) in
+            print(attendeeNames)
+        }
+    }
 
 } // Class
 
 
 
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseIdentifier, for: indexPath) as? SearchTableViewCell else { fatalError("Can't dequeue cell of type \(SearchTableViewCell.reuseIdentifier)") }
-        
+
         cell.classListing = fetchedResultsController.object(at: indexPath)
-  
+
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        
-//        guard let sectionInfo = fetchedResultsController.sections?[section] else { return nil }
-//        return sectionInfo.name
-//    }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToDetailViewSegue" {
             if let detailVC = segue.destination as? DetailViewController,
@@ -92,23 +84,21 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
-    
-    
+
 } // Extension
 
 
 
-
 extension SearchVC: NSFetchedResultsControllerDelegate {
-    
+
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.beginUpdates()
     }
-    
+
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.endUpdates()
     }
-    
+
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         switch type {
         case .insert:
@@ -119,7 +109,7 @@ extension SearchVC: NSFetchedResultsControllerDelegate {
             break
         }
     }
-    
+
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
@@ -140,8 +130,5 @@ extension SearchVC: NSFetchedResultsControllerDelegate {
             break
         }
     }
-    
-    
+
 } //
-
-
