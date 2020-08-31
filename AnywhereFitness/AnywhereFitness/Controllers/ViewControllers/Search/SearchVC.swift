@@ -46,14 +46,6 @@ class SearchVC: UIViewController {
         }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        ClassController.shared.register(classListing: fetchedResultsController.object(at: IndexPath(row: 0, section: 0)))
-        ClassController.shared.getAttendees(classListing: fetchedResultsController.object(at: IndexPath(row: 0, section: 1))) { (attendeeNames) in
-            print(attendeeNames)
-        }
-    }
-
 } // Class
 
 
