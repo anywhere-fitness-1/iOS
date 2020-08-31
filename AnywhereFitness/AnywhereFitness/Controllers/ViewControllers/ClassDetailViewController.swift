@@ -90,6 +90,17 @@ class ClassDetailViewController: UIViewController {
         } else {
             ClassController.shared.unRegister(classListing: classListing)
         }
+        ClassController.shared.getUserClasses { (userClasses) in
+                DispatchQueue.main.async {
+                    ClassController.shared.userClasses = userClasses
+                    ClassController.shared.getAttendees(classListing: classListing) { (attendeeNames) in
+                        DispatchQueue.main.async {
+                            self.attendeesTextView.text = attendeeNames
+                            self.view.setNeedsDisplay()
+                    }
+                }
+            }
+        }
         navigationController?.popViewController(animated: true)
     }
 

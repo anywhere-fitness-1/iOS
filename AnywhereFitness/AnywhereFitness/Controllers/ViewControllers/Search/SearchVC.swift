@@ -43,6 +43,13 @@ class SearchVC: UIViewController {
             }
         }
         ClassController.shared.getClasses { (_) in
+            DispatchQueue.main.async {
+                ClassController.shared.getUserClasses { (_) in
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            }
         }
     }
 
