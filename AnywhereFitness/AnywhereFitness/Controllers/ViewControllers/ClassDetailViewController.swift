@@ -90,6 +90,12 @@ class ClassDetailViewController: UIViewController {
         } else {
             ClassController.shared.unRegister(classListing: classListing)
         }
+        ClassController.shared.getUserClasses { (userClasses) in
+                DispatchQueue.main.async {
+                    ClassController.shared.userClasses = userClasses
+                    self.presentAFAlertOnMainThread(title: "Registration Canceled", message: "We're sorry you couldn't join us!", buttonTitle: "OK")
+            }
+        }
         navigationController?.popViewController(animated: true)
     }
 

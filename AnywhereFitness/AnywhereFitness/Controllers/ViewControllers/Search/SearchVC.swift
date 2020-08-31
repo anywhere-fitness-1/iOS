@@ -15,11 +15,15 @@ class SearchVC: UIViewController {
     // Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    var filterTypeString: String?
+    var filterString: String?
+    var filterDelegate: FilterDelegate?
 
     // MARK: - Properties
 
     // MARK: - FetchResult Properties
-    lazy var fetchedResultsController: NSFetchedResultsController<ClassListing> = {
+    lazy var fetchedResultsController: NSFetchedResultsController<ClassListing> =
+        {
         let fetchRequest: NSFetchRequest<ClassListing> = ClassListing.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "classType", ascending: true), NSSortDescriptor(key: "startTime", ascending: true)]
         let moc = CoreDataStack.shared.mainContext
@@ -37,16 +41,40 @@ class SearchVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        self.filterDelegate = self
         LoginController.shared.setCurrentUser { (user) in
             DispatchQueue.main.async {
                 LoginController.shared.currentUser = user
             }
         }
-        ClassController.shared.getClasses { (_) in
+    }
+    
+    func setUpFetch()  {
+        guard let filterString = filterString, let filterTypeString = filterTypeString else {return}
+        let pred = NSPredicate(format: "\(filterTypeString) CONTAINS '\(filterString)'")
+        self.fetchedResultsController.fetchRequest.predicate = pred
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            print("unable to fetch by pred")
+        }
+
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "filters" {
+            guard let destinationVC = segue.destination as? FiltersViewController else {return}
+            destinationVC.filterDelegate = self
+        } else if segue.identifier == "goToDetailViewSegue" {
+            if let detailVC = segue.destination as? DetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow {
+                detailVC.classListing = fetchedResultsController.object(at: indexPath)
+            }
         }
     }
+}
 
-} // Class
+// Class
 
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
 
@@ -64,15 +92,6 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         cell.classListing = fetchedResultsController.object(at: indexPath)
 
         return cell
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToDetailViewSegue" {
-            if let detailVC = segue.destination as? DetailViewController,
-                let indexPath = tableView.indexPathForSelectedRow {
-                detailVC.classListing = fetchedResultsController.object(at: indexPath)
-            }
-        }
     }
 
 } // Extension
@@ -120,3 +139,23 @@ extension SearchVC: NSFetchedResultsControllerDelegate {
     }
 
 } //
+
+extension SearchVC: FilterDelegate {
+    func filterSelected(filterType: String?, filter: String?) {
+        self.filterString = filter
+        self.filterTypeString = filterType
+        guard let filterString = filterString, let filterTypeString = filterTypeString else {return}
+        print(filterString)
+        print(filterTypeString)
+        self.setUpFetch()
+        self.tableView.reloadData()
+    }
+
+}
+
+protocol FilterDelegate {
+  func filterSelected(filterType: String?, filter: String?)
+}
+
+
+

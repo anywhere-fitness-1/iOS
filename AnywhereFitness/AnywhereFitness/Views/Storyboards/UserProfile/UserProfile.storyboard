@@ -155,7 +155,7 @@
                         <viewLayoutGuide key="safeArea" id="UFT-bu-JUM"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="K6L-UX-tbr">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Nup-0t-DyP">
+                        <barButtonItem key="rightBarButtonItem" title="Add Class" id="Nup-0t-DyP">
                             <connections>
                                 <segue destination="wMN-bc-4sz" kind="presentation" identifier="goToAddClassSegue" modalPresentationStyle="fullScreen" id="why-CD-4ci"/>
                             </connections>
