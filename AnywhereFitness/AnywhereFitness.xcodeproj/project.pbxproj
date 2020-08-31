@@ -20,9 +20,6 @@
 		12AB67D324EE3B5000AC2663 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12AB67D224EE3B5000AC2663 /* Search.storyboard */; };
 		12AB67D724EE3C3A00AC2663 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12AB67D624EE3C3A00AC2663 /* UserProfile.storyboard */; };
 		12AB67DA24EE3CF900AC2663 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12AB67D924EE3CF900AC2663 /* Settings.storyboard */; };
-		12AB67DF24EE436300AC2663 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB67DE24EE436300AC2663 /* SearchCollectionViewCell.swift */; };
-		12C465B824F8AC8B00A6FDD3 /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C465B724F8AC8B00A6FDD3 /* SearchCollectionViewController.swift */; };
-		12C9BD3624F71BBE00ED2677 /* SegmentedControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C9BD3524F71BBE00ED2677 /* SegmentedControllerViewController.swift */; };
 		1A2B82E524EE03B800815CA3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B82E424EE03B800815CA3 /* CoreDataStack.swift */; };
 		1A2B82E724EF564600815CA3 /* Class+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B82E624EF564600815CA3 /* Class+Convenience.swift */; };
 		1A2B82ED24EF56CC00815CA3 /* ClassRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B82EC24EF56CC00815CA3 /* ClassRepresentation.swift */; };
@@ -67,9 +64,6 @@
 		12AB67D224EE3B5000AC2663 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		12AB67D624EE3C3A00AC2663 /* UserProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		12AB67D924EE3CF900AC2663 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
-		12AB67DE24EE436300AC2663 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
-		12C465B724F8AC8B00A6FDD3 /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
-		12C9BD3524F71BBE00ED2677 /* SegmentedControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControllerViewController.swift; sourceTree = "<group>"; };
 		1A2B82E424EE03B800815CA3 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		1A2B82E624EF564600815CA3 /* Class+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Class+Convenience.swift"; sourceTree = "<group>"; };
 		1A2B82EC24EF56CC00815CA3 /* ClassRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRepresentation.swift; sourceTree = "<group>"; };
@@ -283,7 +277,6 @@
 		12AB67DD24EE433600AC2663 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				12AB67DE24EE436300AC2663 /* SearchCollectionViewCell.swift */,
 				8614CFED24EF3FAA00414865 /* ProfileClassesTableViewCell.swift */,
 				86C41FB424FC1A6D00798241 /* SearchTableViewCell.swift */,
 			);
@@ -293,7 +286,6 @@
 		12C465B624F8AC3800A6FDD3 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				12C465B724F8AC8B00A6FDD3 /* SearchCollectionViewController.swift */,
 				86C41FB224FC190D00798241 /* SearchVC.swift */,
 			);
 			path = Search;
@@ -302,7 +294,6 @@
 		12C9BD1624F6FEE100ED2677 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				12C9BD3524F71BBE00ED2677 /* SegmentedControllerViewController.swift */,
 				12C9BD2124F70F8900ED2677 /* Client */,
 			);
 			path = Onboarding;
@@ -515,7 +506,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A2B82E724EF564600815CA3 /* Class+Convenience.swift in Sources */,
-				12C9BD3624F71BBE00ED2677 /* SegmentedControllerViewController.swift in Sources */,
 				1281AA3824EDD1E800D24E0B /* AppDelegate.swift in Sources */,
 				8614D05324F41F0100414865 /* AddClassViewController.swift in Sources */,
 				12AB67DF24EE436300AC2663 /* SearchCollectionViewCell.swift in Sources */,
