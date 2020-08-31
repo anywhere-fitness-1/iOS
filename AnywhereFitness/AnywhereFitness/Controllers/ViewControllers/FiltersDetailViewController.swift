@@ -17,11 +17,12 @@ class FiltersDetailViewController: UIViewController {
     var filterString: String?
     
     var filtersArray: [String]?
+    var selectedIndexes = [[IndexPath.init(row: 0, section: 0)], [IndexPath.init(row: 0, section: 1)]]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(filtersArray)
+        
 
         // Do any additional setup after loading the view.
     }
@@ -41,16 +42,14 @@ class FiltersDetailViewController: UIViewController {
     
     @IBAction func filterButtonTapped(_ sender: Any) {
 
-//            guard let filterDelegate = filterDelegate else {
-//                print("no filter delegate")
-//                return}
-//            filterDelegate.filterSelected(filter: filterString)
-//            print(filterString)
+            guard let filterDelegate = filterDelegate, let filterString = filterString else {
+                print("no filter delegate")
+                return}
+            filterDelegate.filterSelected(filter: filterString)
+            print(filterString)
             navigationController?.popToRootViewController(animated: true)
-//        }
+        }
     
-
-}
 }
 
 extension FiltersDetailViewController: FilterDelegate {
@@ -71,13 +70,38 @@ extension FiltersDetailViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath)
         guard let filtersArray = filtersArray else {return cell}
         cell.textLabel?.text = filtersArray[indexPath.row]
-        print("passed filtersArray guard")
+        
+        cell.selectionStyle = .none
+
+        let selectedSectionIndexes = self.selectedIndexes[indexPath.section]
+        if selectedSectionIndexes.contains(indexPath) {
+            cell.accessoryType = .checkmark
+        }
+        else {
+            cell.accessoryType = .none
+        }
        
         return cell
     
 }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            let cell = tableView.cellForRow(at: indexPath)
+
+        // If current cell is not present in selectedIndexes
+        if !self.selectedIndexes[indexPath.section].contains(indexPath) {
+            // mark it checked
+            cell?.accessoryType = .checkmark
+
+            // Remove any previous selected indexpath
+            self.selectedIndexes[indexPath.section].removeAll()
+
+            // add currently selected indexpath
+            self.selectedIndexes[indexPath.section].append(indexPath)
+
+            tableView.reloadData()
+        }
+    
+        
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
