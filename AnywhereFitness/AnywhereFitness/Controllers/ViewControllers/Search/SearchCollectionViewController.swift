@@ -12,17 +12,17 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class SearchCollectionViewController: UIViewController {
-    // MARK: -IBOutlets
+    // MARK: - IBOutlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     var filterDelegate: FilterDelegate?
     var classListing: ClassListing?
     var classDataArray: [ClassListing]?
-    var dataArray: [ClassListing] = [ClassListing(classTitle: "Yoga", classType: .yoga, instructorID: "123", startTime: Date(), duration: .sixtyMin, intensity: .beginner, location: .sanFran, maxClassSize: 15)]
+    var dataArray: [ClassListing] = [ClassListing(classTitle: "Yoga", classType: .yoga, instructorID: "123", startTime: Date(), duration: .sixtyMin, intensity: .beginner, location: .sanFran, maxClassSize: 15, attendees: ["123"])]
 
     var filterString: String?
 
-    //MARK: - View Lifecycle -
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         LoginController.shared.setCurrentUser { (user) in
@@ -35,7 +35,8 @@ class SearchCollectionViewController: UIViewController {
         }
     }
 }
-//MARK: - Extensions -
+
+// MARK: - Extensions
 extension SearchCollectionViewController: UICollectionViewDelegate {
 }
 

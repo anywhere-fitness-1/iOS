@@ -74,7 +74,7 @@ class AddClassViewController: UIViewController, UITextFieldDelegate {
         let location = Location.allCases[locationIndex]
         let maxClassSize = Int(stepperControl.value)
 
-        let classListing = ClassListing(classTitle: classTitle, classType: classType, instructorID: instructorID, startTime: startTime, duration: duration, intensity: intensity, location: location, maxClassSize: maxClassSize)
+        let classListing = ClassListing(classTitle: classTitle, classType: classType, instructorID: instructorID, startTime: startTime, duration: duration, intensity: intensity, location: location, maxClassSize: maxClassSize, attendees: [instructorID])
         ClassController.shared.createClass(classListing: classListing)
 
         do {
