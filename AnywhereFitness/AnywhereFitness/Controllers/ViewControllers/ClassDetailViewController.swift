@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import CoreData
+import FirebaseAuth
+import FirebaseDatabase
+
+
 
 class ClassDetailViewController: UIViewController {
     
@@ -15,7 +20,7 @@ class ClassDetailViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var idLabel: UILabel!
+ 
     @IBOutlet weak var instructorLabel: UILabel!
     @IBOutlet weak var intensityLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
@@ -33,16 +38,78 @@ class ClassDetailViewController: UIViewController {
     @IBOutlet weak var smallViewRight: UIView!
     
     
+
+    
     
     // MARK: - Properties
     let customUI = CustomUI()
+    var user: User?
+    var classListing: ClassListing?
+    
+    
+    private let dateFormatter = DateFormatter()
+    private let timeFormatter = DateFormatter()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        
+        updateView()
     }
+    
+    
+    func updateView() {
+        guard let classListing = classListing else { return }
+        
+        nameLabel.text = classListing.classTitle
+        dateFormatter.dateStyle = .short
+        if let date = classListing.startTime {
+            dateLabel.text = dateFormatter.string(from: date)
+        }
+        
+        timeFormatter.timeStyle = .short
+        if let time = classListing.startTime {
+            timeLabel.text = timeFormatter.string(from: time)
+        }
+        locationLabel.text = classListing.location
+        intensityLabel.text = classListing.intensity
+        durationLabel.text = classListing.duration
+        typeLabel.text = classListing.classType
+        attendeesTextView.text = classListing.attendees
+        maxClassSizeLabel.text = String(classListing.maxClassSize)
+        
+        guard let instructorId = classListing.instructorID else { return }
+        
+        LoginController.shared.getUser(with: instructorId) { (user) in
+            DispatchQueue.main.async {
+                self.instructorLabel.text = user.name
+            }
+        }
+        
+        
+        
+        
+    }//
+    
+    
+    
+    
+    
+    
+    let today = Date()
+    
+    func configureDate(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        
+        return dateFormatter.string(from: today)
+    }
+    
+    
+    
+    
+    
+    
     
     func configureView() {
         customUI.customCardView(card: topBackgroundView)

@@ -58,6 +58,8 @@ class SearchVC: UIViewController {
 
 } // Class
 
+
+
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -72,18 +74,29 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseIdentifier, for: indexPath) as? SearchTableViewCell else { fatalError("Can't dequeue cell of type \(SearchTableViewCell.reuseIdentifier)") }
         
         cell.classListing = fetchedResultsController.object(at: indexPath)
-        
+  
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        guard let sectionInfo = fetchedResultsController.sections?[section] else { return nil }
-        return sectionInfo.name
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        
+//        guard let sectionInfo = fetchedResultsController.sections?[section] else { return nil }
+//        return sectionInfo.name
+//    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToDetailViewSegue" {
+            if let detailVC = segue.destination as? DetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow {
+                detailVC.classListing = fetchedResultsController.object(at: indexPath)
+            }
+        }
     }
     
     
 } // Extension
+
+
 
 
 extension SearchVC: NSFetchedResultsControllerDelegate {
