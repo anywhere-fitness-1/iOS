@@ -17,6 +17,7 @@ class ClassController {
 
     private init() { }
 
+    var userClasses: [ClassListing]?
     private let firebaseURL = URL(string: "https://anywherefitness-ba403.firebaseio.com/classes")!
 
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
@@ -65,7 +66,7 @@ class ClassController {
         classListing.duration = representation.duration
         classListing.intensity = representation.intensity
         classListing.maxClassSize = Int16(representation.maxClassSize)
-        classListing.attendees = representation.attendees.map {$0}.joined(separator: ", ")
+        classListing.attendees = representation.attendees
     }
 
     private func updateClasses(with representations: [ClassRepresentation]) throws {
@@ -151,15 +152,29 @@ class ClassController {
 
     func unRegister(classListing: ClassListing) {
         if let identifier = Auth.auth().currentUser?.uid,
-            let classID = classListing.identifier?.uuidString {
-                ref.child("classes").child(classID).child("attendees").child(identifier).removeValue()
+            var attendees = classListing.attendees {
+            var attendeeArray = (attendees.components(separatedBy: ", ")).map { $0 }
+            for index in 0..<attendeeArray.count {
+                if identifier == attendeeArray[index] {
+                    attendeeArray.remove(at: index)
+                }
+            }
+            attendees = (attendeeArray.map {$0}).joined(separator: ", ")
+            updateValue(classListing: classListing, key: "attendees", value: attendees)
         }
     }
 
     func register(classListing: ClassListing) {
         if let identifier = Auth.auth().currentUser?.uid,
-            let classID = classListing.identifier?.uuidString {
-                ref.child("classes").child(classID).child("attendees").child(identifier).setValue(true)
+            let attendees = classListing.attendees {
+            let newAttendees = attendees + ", \(identifier)"
+            updateValue(classListing: classListing, key: "attendees", value: newAttendees)
+        }
+    }
+
+    private func updateValue(classListing: ClassListing, key: String, value: String) {
+        if let classID = classListing.identifier?.uuidString {
+            ref.child("classes").child(classID).updateChildValues(["\(key)": value])
         }
     }
 
@@ -169,7 +184,7 @@ class ClassController {
         bgQueue.async {
             let dispatchGroup = DispatchGroup()
             var attendeeNameArray: [String] = []
-            let attendeeArray = attendeeString.components(separatedBy: ", ").map { $0 }
+            let attendeeArray = (attendeeString.components(separatedBy: ", ")).map { $0 }
             for attendeeID in attendeeArray {
                 dispatchGroup.enter()
                 LoginController.shared.getUser(with: attendeeID) { (user) in
@@ -179,6 +194,20 @@ class ClassController {
             }
             dispatchGroup.wait()
             completion((attendeeNameArray.map {$0}).joined(separator: ", "))
+        }
+    }
+
+    func getUserClasses(completion: @escaping ([ClassListing]) -> Void) {
+        if let userID = Auth.auth().currentUser?.uid {
+            let context = CoreDataStack.shared.mainContext
+            let fetchRequest = NSFetchRequest<ClassListing>(entityName: "ClassListing")
+            fetchRequest.predicate = NSPredicate(format: "%@ IN attendees", userID)
+            do {
+                let userClasses = try context.fetch(fetchRequest)
+                completion(userClasses)
+            } catch {
+                print("Error fetching user's classes: \(error)")
+            }
         }
     }
 

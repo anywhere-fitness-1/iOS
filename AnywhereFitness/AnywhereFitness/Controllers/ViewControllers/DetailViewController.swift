@@ -65,7 +65,6 @@ class DetailViewController: UIViewController {
         intensityLabel.text = classListing.intensity
         durationLabel.text = classListing.duration
         typeLabel.text = classListing.classType
-        attendeesTextView.text = classListing.attendees
         maxClassSizeLabel.text = String(classListing.maxClassSize)
 
         guard let instructorId = classListing.instructorID else { return }
@@ -73,6 +72,11 @@ class DetailViewController: UIViewController {
         LoginController.shared.getUser(with: instructorId) { (user) in
             DispatchQueue.main.async {
                 self.instructorLabel.text = user.name
+            }
+        }
+        ClassController.shared.getAttendees(classListing: classListing) { (attendeeNames) in
+            DispatchQueue.main.async {
+                self.attendeesTextView.text = attendeeNames
             }
         }
 
@@ -92,6 +96,8 @@ class DetailViewController: UIViewController {
     @IBAction func registerButtonTapped(_ sender: UIButton) {
         if sender.titleLabel?.text == "Register" {
             sender.setTitle("Registered", for: .normal)
+            guard let classListing = classListing else { return }
+            ClassController.shared.register(classListing: classListing)
         } else if sender.titleLabel?.text == "Registered" {
             showAlert()
         }
@@ -106,6 +112,8 @@ class DetailViewController: UIViewController {
         alert.addAction(UIAlertAction.init(title: "Yes", style: .default, handler: { (action) in
                 print("Something")
             self.registerButton.setTitle("Register", for: .normal)
+            guard let classListing = self.classListing else { return }
+            ClassController.shared.unRegister(classListing: classListing)
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel))
         self.present(alert, animated: true)

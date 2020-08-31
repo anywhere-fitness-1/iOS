@@ -955,7 +955,11 @@
                         <viewLayoutGuide key="safeArea" id="bFi-3y-1Uc"/>
                     </view>
                     <navigationItem key="navigationItem" title="Class" id="MGt-sf-FhR">
-                        <barButtonItem key="rightBarButtonItem" title="Cancel Class" id="wbg-vr-1D2"/>
+                        <barButtonItem key="rightBarButtonItem" title="Cancel Class" id="wbg-vr-1D2">
+                            <connections>
+                                <action selector="cancelButton:" destination="xPY-Hh-dI3" id="vAX-a1-Z1g"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="attendeesTextView" destination="NlY-LI-4Fe" id="LBl-7Z-Fau"/>
