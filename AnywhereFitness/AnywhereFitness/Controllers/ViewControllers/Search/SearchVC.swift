@@ -48,8 +48,6 @@ class SearchVC: UIViewController {
 
 } // Class
 
-
-
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -78,8 +76,6 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     }
 
 } // Extension
-
-
 
 extension SearchVC: NSFetchedResultsControllerDelegate {
 
