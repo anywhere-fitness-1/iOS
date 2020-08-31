@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Firebase
+import CoreData
+
+
 
 class SearchTableViewCell: UITableViewCell {
     
@@ -41,7 +45,18 @@ class SearchTableViewCell: UITableViewCell {
         classNameLabel.text = classListing.classTitle
         
         locationLabel.text = classListing.location
-//        dateLabel.text = classListing.startTime
+        dateFormatter.dateStyle = .short
+        if let date = classListing.startTime {
+            dateLabel.text = dateFormatter.string(from: date)
+        }
+        
+        guard let instructorId = classListing.instructorID else { return }
+        
+        LoginController.shared.getUser(with: instructorId) { (user) in
+            DispatchQueue.main.async {
+                self.instructorLabel.text = user.name
+            }
+        }
         
     }
     

@@ -23,6 +23,8 @@ class ProfileViewController: UIViewController {
 
 
     // MARK: - Properties
+    
+    let classListing = ClassListing()
 
     lazy var fetchedResultsController: NSFetchedResultsController<ClassListing> = {
         let fetchRequest: NSFetchRequest<ClassListing> = ClassListing.fetchRequest()
@@ -86,7 +88,26 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         guard let sectionInfo = fetchedResultsController.sections?[section] else { return nil }
         return sectionInfo.name
     }
-}
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToDetailVCSegue" {
+            if let classDetailVC = segue.destination as? ClassDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow {
+                classDetailVC.classListing = fetchedResultsController.object(at: indexPath)
+//                classDetailVC.classListing = classListing
+            }
+        }
+    }
+    
+    
+}//
+
+
+
+
+
+
+
 //MARK: -Extensions
 extension ProfileViewController: NSFetchedResultsControllerDelegate {
 

@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import CoreData
+import Firebase
+
 
 class DetailViewController: UIViewController {
 
@@ -15,13 +18,14 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var idLabel: UILabel!
+    
     @IBOutlet weak var instructorLabel: UILabel!
     @IBOutlet weak var intensityLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var attendeesTextView: UITextView!
     @IBOutlet weak var maxClassSizeLabel: UILabel!
+    
     @IBOutlet weak var topBackgroundView: UIView!
     @IBOutlet weak var centerBackgroundView: UIView!
     @IBOutlet weak var bottomBackgroundView: UIView!
@@ -30,15 +34,52 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var smallViewCenter: UIView!
     @IBOutlet weak var smallViewRight: UIView!
     @IBOutlet weak var registerButton: UIButton!
-    var classListing: ClassListing?
+    
     // MARK: - Properties
     let customUI = CustomUI()
+    
+    var classListing: ClassListing?
+    
+    private let dateFormatter = DateFormatter()
+    private let timeFormatter = DateFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        setUpViews()
+        updateView()
+//        setUpViews()
     }
+    
+    func updateView() {
+        guard let classListing = classListing else { return }
+        
+        nameLabel.text = classListing.classTitle
+        dateFormatter.dateStyle = .short
+        if let date = classListing.startTime {
+            dateLabel.text = dateFormatter.string(from: date)
+        }
+        timeFormatter.timeStyle = .short
+        if let time = classListing.startTime {
+            timeLabel.text = timeFormatter.string(from: time)
+        }
+        locationLabel.text = classListing.location
+        intensityLabel.text = classListing.intensity
+        durationLabel.text = classListing.duration
+        typeLabel.text = classListing.classType
+        attendeesTextView.text = classListing.attendees
+        maxClassSizeLabel.text = String(classListing.maxClassSize)
+        
+        guard let instructorId = classListing.instructorID else { return }
+        
+        LoginController.shared.getUser(with: instructorId) { (user) in
+            DispatchQueue.main.async {
+                self.instructorLabel.text = user.name
+            }
+        }
+        
+    }//
+    
+    
 
     func configureView() {
         customUI.customCardView(card: topBackgroundView)
@@ -73,21 +114,20 @@ class DetailViewController: UIViewController {
         self.present(alert, animated: true)
     }
 
-    func setUpViews() {
-
-        guard let classListing = classListing else {
-            return
-        }
-        nameLabel.text = classListing.classTitle
-        dateLabel.text = "\(classListing.startTime)"
-        timeLabel.text = "2:30pm"
-        locationLabel.text = classListing.location
-        idLabel.text = "\(classListing.identifier)"
-//        instructorLabel.text = classListing.instructorName
-        intensityLabel.text = classListing.intensity
-        durationLabel.text = classListing.duration
-        typeLabel.text = classListing.classType
-        attendeesTextView.text = "\(classListing.attendees)"
-        maxClassSizeLabel.text = "\(classListing.maxClassSize)"
-    }
+//    func setUpViews() {
+//
+//        guard let classListing = classListing else {
+//            return
+//        }
+//        nameLabel.text = classListing.classTitle
+//        dateLabel.text = "\(classListing.startTime)"
+//        timeLabel.text = "2:30pm"
+//        locationLabel.text = classListing.location
+////        instructorLabel.text = classListing.instructorName
+//        intensityLabel.text = classListing.intensity
+//        durationLabel.text = classListing.duration
+//        typeLabel.text = classListing.classType
+//        attendeesTextView.text = "\(classListing.attendees)"
+//        maxClassSizeLabel.text = "\(classListing.maxClassSize)"
+//    }
 }
