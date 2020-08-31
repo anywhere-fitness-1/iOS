@@ -87,12 +87,21 @@ class OpeningViewController: UIViewController, UITextFieldDelegate, UITextViewDe
 
     @IBAction func loginBtn(_ sender: UIButton) {
 
-        guard let email = userNameTextField.text, !email.isEmpty else { return }
-        guard let password = passwordTextField.text, !password.isEmpty else { return }
+        guard let email = userNameTextField.text, !email.isEmpty,
+            let password = passwordTextField.text, !password.isEmpty else {
+                return
+            }
+        
 
         Auth.auth().signIn(withEmail: email, password: password) { (_, error) in
+            
+            
+            
             if error != nil {
                 print("error")
+                self.presentAFAlertOnMainThread(title: "Bad Login & Password", message: "Please, enter the correct Login & Password \nor click the link below to Sign Up.", buttonTitle: "Ok")
+                self.userNameTextField.text = ""
+                self.passwordTextField.text = ""
                 return
             }
             LoginController.shared.setCurrentUser { (user) in
@@ -101,6 +110,8 @@ class OpeningViewController: UIViewController, UITextFieldDelegate, UITextViewDe
                     ClassController.shared.getUserClasses { (userClasses) in
                         DispatchQueue.main.async {
                             ClassController.shared.userClasses = userClasses
+                            self.performSegue(withIdentifier: "ToSearchStoryboard", sender: nil)
+                            
                         }
                     }
                 }
