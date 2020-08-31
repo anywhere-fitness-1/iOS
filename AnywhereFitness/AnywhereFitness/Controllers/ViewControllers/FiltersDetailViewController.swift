@@ -72,9 +72,4 @@ extension FiltersDetailViewController: UITableViewDelegate, UITableViewDataSourc
             tableView.reloadData()
         }
 
-    }
-
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-
-    }
 }

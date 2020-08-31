@@ -55,11 +55,16 @@ class SearchVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "filters" {
             guard let destinationVC = segue.destination as? FiltersViewController else {return}
-            destinationVC.filterDelegate = self
+            destinationVC.filterDelegate = self } else if segue.identifier == "goToDetailViewSegue" {
+                if let detailVC = segue.destination as? DetailViewController,
+                    let indexPath = tableView.indexPathForSelectedRow {
+                    detailVC.classListing = fetchedResultsController.object(at: indexPath)
+                }
+            }
         }
     }
 
-} // Class
+// Class
 
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
 
@@ -77,15 +82,6 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         cell.classListing = fetchedResultsController.object(at: indexPath)
 
         return cell
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToDetailViewSegue" {
-            if let detailVC = segue.destination as? DetailViewController,
-                let indexPath = tableView.indexPathForSelectedRow {
-                detailVC.classListing = fetchedResultsController.object(at: indexPath)
-            }
-        }
     }
 
 } // Extension
