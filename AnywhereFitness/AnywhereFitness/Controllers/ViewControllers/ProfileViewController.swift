@@ -84,26 +84,18 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let sectionInfo = fetchedResultsController.sections?[section] else { return nil }
-        return sectionInfo.name
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToDetailVCSegue" {
             if let classDetailVC = segue.destination as? ClassDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow {
                 classDetailVC.classListing = fetchedResultsController.object(at: indexPath)
-//                classDetailVC.classListing = classListing
             }
         }
     }
     
     
 }//
-
-
-
 
 
 
