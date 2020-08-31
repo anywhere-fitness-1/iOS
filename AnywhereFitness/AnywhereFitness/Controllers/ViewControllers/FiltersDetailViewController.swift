@@ -17,19 +17,10 @@ class FiltersDetailViewController: UIViewController {
     var filterTypeString: String?
     var filtersArray: [String]?
     var selectedIndex: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func filterButtonTapped(_ sender: Any) {
         guard let filtersArray = filtersArray else {
             print("No Filters Array")
@@ -49,7 +40,6 @@ class FiltersDetailViewController: UIViewController {
         filterDelegate.filterSelected(filterType: filterTypeString, filter: filterString)
             navigationController?.popToRootViewController(animated: true)
         }
-    
 }
 extension FiltersDetailViewController: FilterDelegate {
     func filterSelected(filterType: String?, filter: String?) {
@@ -59,18 +49,14 @@ extension FiltersDetailViewController: FilterDelegate {
 extension FiltersDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let filtersArray = filtersArray else {return 1}
-       return filtersArray.count
+        return filtersArray.count
             }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath)
         guard let filtersArray = filtersArray else {return cell}
-        if(indexPath.row == selectedIndex)
-        {
+        if indexPath.row == selectedIndex {
             cell.accessoryType = .checkmark
-        }
-        else
-        {
+        } else {
             cell.accessoryType = .none
         }
         cell.textLabel?.text = filtersArray[indexPath.row]
