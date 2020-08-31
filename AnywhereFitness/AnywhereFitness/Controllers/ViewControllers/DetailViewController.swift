@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class DetailViewController: UIViewController {
 
@@ -32,7 +34,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var smallViewLeft: UIView!
     @IBOutlet weak var smallViewCenter: UIView!
     @IBOutlet weak var smallViewRight: UIView!
-    @IBOutlet weak var registerButton: UIButton!
 
     // MARK: - Properties
     let customUI = CustomUI()
@@ -48,6 +49,18 @@ class DetailViewController: UIViewController {
         updateView()
 //        setUpViews()
     }
+
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        ClassController.shared.getClasses { (_) in
+//            DispatchQueue.main.async {
+//                ClassController.shared.getUserClasses { (_) in
+//                    DispatchQueue.main.async {
+//                    }
+//                }
+//            }
+//        }
+//    }
 
     func updateView() {
         guard let classListing = classListing else { return }
@@ -74,9 +87,24 @@ class DetailViewController: UIViewController {
                 self.instructorLabel.text = user.name
             }
         }
-        ClassController.shared.getAttendees(classListing: classListing) { (attendeeNames) in
-            DispatchQueue.main.async {
-                self.attendeesTextView.text = attendeeNames
+        ClassController.shared.getClasses { (_) in
+            ClassController.shared.getAttendees(classListing: classListing) { (attendeeNames) in
+                DispatchQueue.main.async {
+                    self.attendeesTextView.text = attendeeNames
+                    guard let identifierString = classListing.attendees else { return }
+                    let attendeeArray = (identifierString.components(separatedBy: ", ")).map { $0 }
+                    if let identifier = Auth.auth().currentUser?.uid {
+                        if attendeeArray.contains(identifier) {
+                            self.navigationItem.rightBarButtonItem?.isEnabled = false
+                            self.navigationItem.rightBarButtonItem?.tintColor = .clear
+                            self.view.layoutIfNeeded()
+                        } else {
+                            self.navigationItem.rightBarButtonItem?.isEnabled = true
+                            self.navigationItem.rightBarButtonItem?.tintColor = .black
+                            self.view.setNeedsDisplay()
+                        }
+                    }
+                }
             }
         }
 
@@ -93,46 +121,16 @@ class DetailViewController: UIViewController {
         locationView.layer.borderColor = UIColor.white.cgColor
     }
 
-    @IBAction func registerButtonTapped(_ sender: UIButton) {
-        if sender.titleLabel?.text == "Register" {
-            sender.setTitle("Registered", for: .normal)
-            guard let classListing = classListing else { return }
-            ClassController.shared.register(classListing: classListing)
-        } else if sender.titleLabel?.text == "Registered" {
-            showAlert()
+    @IBAction func registerButton(_ sender: UIBarButtonItem) {
+        guard let classListing = classListing else { return }
+        ClassController.shared.register(classListing: classListing)
+        ClassController.shared.getUserClasses { (userClasses) in
+            DispatchQueue.main.async {
+                ClassController.shared.userClasses = userClasses
+                self.presentAFAlertOnMainThread(title: "Registration Successful", message: "We look forward to seeing you in class!", buttonTitle: "OK")
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
 
-    @IBAction func xButtonTapped(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    func showAlert() {
-        let alert = UIAlertController(title: "Unregistering from Class", message: "Are you sure you want to unregister from the class?", preferredStyle: .alert)
-
-        alert.addAction(UIAlertAction.init(title: "Yes", style: .default, handler: { (action) in
-                print("Something")
-            self.registerButton.setTitle("Register", for: .normal)
-            guard let classListing = self.classListing else { return }
-            ClassController.shared.unRegister(classListing: classListing)
-        }))
-        alert.addAction(UIAlertAction(title: "No", style: .cancel))
-        self.present(alert, animated: true)
-    }
-
-//    func setUpViews() {
-//
-//        guard let classListing = classListing else {
-//            return
-//        }
-//        nameLabel.text = classListing.classTitle
-//        dateLabel.text = "\(classListing.startTime)"
-//        timeLabel.text = "2:30pm"
-//        locationLabel.text = classListing.location
-//        instructorLabel.text = classListing.instructorName
-//        intensityLabel.text = classListing.intensity
-//        durationLabel.text = classListing.duration
-//        typeLabel.text = classListing.classType
-//        attendeesTextView.text = "\(classListing.attendees)"
-//        maxClassSizeLabel.text = "\(classListing.maxClassSize)"
-//    }
 }

@@ -49,25 +49,34 @@ class SearchVC: UIViewController {
                 LoginController.shared.currentUser = user
             }
         }
-        ClassController.shared.getClasses { (_) in
+    }
+    
+    func setUpFetch()  {
+        guard let filterString = filterString, let filterTypeString = filterTypeString else {return}
+        let pred = NSPredicate(format: "\(filterTypeString) CONTAINS '\(filterString)'")
+        self.fetchedResultsController.fetchRequest.predicate = pred
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            print("unable to fetch by pred")
         }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "filters" {
             guard let destinationVC = segue.destination as? FiltersViewController else {return}
             destinationVC.filterDelegate = self
-        } else {
-           if segue.identifier == "goToDetailViewSegue" {
-                if let detailVC = segue.destination as? DetailViewController,
-                    let indexPath = tableView.indexPathForSelectedRow {
-                    detailVC.classListing = fetchedResultsController.object(at: indexPath)
-                }
+        } else if segue.identifier == "goToDetailViewSegue" {
+            if let detailVC = segue.destination as? DetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow {
+                detailVC.classListing = fetchedResultsController.object(at: indexPath)
             }
         }
     }
+}
 
-} // Class
+// Class
 
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
 
@@ -140,9 +149,15 @@ extension SearchVC: FilterDelegate {
         guard let filterString = filterString, let filterTypeString = filterTypeString else {return}
         print(filterString)
         print(filterTypeString)
+        self.setUpFetch()
+        self.tableView.reloadData()
     }
+
 }
 
 protocol FilterDelegate {
-    func filterSelected(filterType: String?, filter: String?)
+  func filterSelected(filterType: String?, filter: String?)
 }
+
+
+

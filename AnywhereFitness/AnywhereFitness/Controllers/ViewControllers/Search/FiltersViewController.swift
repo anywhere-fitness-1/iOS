@@ -34,26 +34,26 @@ class FiltersViewController: UIViewController {
         if segue.identifier == "toFilterDetail" {
             guard let destinationVC = segue.destination as? FiltersDetailViewController else {return}
             destinationVC.filterDelegate = self.filterDelegate
-            print("passed guard")
+            
             guard let selectedRow = self.filterTableView.indexPathsForSelectedRows?.first else {return}
 
             switch filtersArray[selectedRow.row] {
             case "Type":
                 destinationVC.filtersArray = classTypeArray
                 destinationVC.navBar.title = "Type"
-                destinationVC.filterTypeString = "ClassType"
+                destinationVC.filterTypeString = "classType"
             case "Duration":
                 destinationVC.filtersArray = durationArray
                 destinationVC.navBar.title = "Duration"
-                destinationVC.filterTypeString = "Duration"
+                destinationVC.filterTypeString = "duration"
             case "Intensity Level":
                 destinationVC.filtersArray = intensityArray
                 destinationVC.navBar.title = "Intensity Level"
-                destinationVC.filterTypeString = "Intensity"
+                destinationVC.filterTypeString = "intensity"
             case "Location":
                 destinationVC.filtersArray = locationArray
                 destinationVC.navBar.title = "Location"
-                destinationVC.filterTypeString = "Location"
+                destinationVC.filterTypeString = "location"
             default:
                 break
             }

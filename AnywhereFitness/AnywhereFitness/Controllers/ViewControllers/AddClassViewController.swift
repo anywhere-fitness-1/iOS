@@ -81,6 +81,11 @@ class AddClassViewController: UITableViewController, UITextFieldDelegate {
         } catch {
             NSLog("Error saving managed object context: \(error)")
         }
+        ClassController.shared.getUserClasses { (userClasses) in
+            DispatchQueue.main.async {
+                ClassController.shared.userClasses = userClasses
+            }
+        }
         dismiss(animated: true, completion: nil)
     }
     @IBAction func cancelBtn(_ sender: UIBarButtonItem) {
