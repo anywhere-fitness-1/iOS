@@ -68,11 +68,8 @@ extension FiltersDetailViewController: UITableViewDelegate, UITableViewDataSourc
 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIndex = indexPath.row
-        tableView.reloadData()
-    }
+            selectedIndex = indexPath.row
+            tableView.reloadData()
+        }
 
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-
-    }
 }
