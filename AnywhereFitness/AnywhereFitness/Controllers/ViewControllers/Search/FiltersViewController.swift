@@ -34,7 +34,7 @@ class FiltersViewController: UIViewController {
         if segue.identifier == "toFilterDetail" {
             guard let destinationVC = segue.destination as? FiltersDetailViewController else {return}
             destinationVC.filterDelegate = self.filterDelegate
-            print("passed guard")
+            
             guard let selectedRow = self.filterTableView.indexPathsForSelectedRows?.first else {return}
 
             switch filtersArray[selectedRow.row] {

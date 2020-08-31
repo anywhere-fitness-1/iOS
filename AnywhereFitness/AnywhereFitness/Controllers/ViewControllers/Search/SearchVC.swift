@@ -67,7 +67,8 @@ class SearchVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "filters" {
             guard let destinationVC = segue.destination as? FiltersViewController else {return}
-            destinationVC.filterDelegate = self } else if segue.identifier == "goToDetailViewSegue" {
+            destinationVC.filterDelegate = self }
+        else if segue.identifier == "goToDetailViewSegue" {
                 if let detailVC = segue.destination as? DetailViewController,
                     let indexPath = tableView.indexPathForSelectedRow {
                     detailVC.classListing = fetchedResultsController.object(at: indexPath)
