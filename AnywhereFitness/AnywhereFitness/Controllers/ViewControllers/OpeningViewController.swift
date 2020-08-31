@@ -97,6 +97,11 @@ class OpeningViewController: UIViewController, UITextFieldDelegate, UITextViewDe
             LoginController.shared.setCurrentUser { (user) in
                 DispatchQueue.main.async {
                     LoginController.shared.currentUser = user
+                    ClassController.shared.getUserClasses { (userClasses) in
+                        DispatchQueue.main.async {
+                            ClassController.shared.userClasses = userClasses
+                        }
+                    }
                 }
             }
         }

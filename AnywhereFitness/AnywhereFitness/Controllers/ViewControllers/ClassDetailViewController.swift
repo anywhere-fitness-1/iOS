@@ -66,7 +66,6 @@ class ClassDetailViewController: UIViewController {
         intensityLabel.text = classListing.intensity
         durationLabel.text = classListing.duration
         typeLabel.text = classListing.classType
-        attendeesTextView.text = classListing.attendees
         maxClassSizeLabel.text = String(classListing.maxClassSize)
 
         guard let instructorId = classListing.instructorID else { return }
@@ -76,8 +75,23 @@ class ClassDetailViewController: UIViewController {
                 self.instructorLabel.text = user.name
             }
         }
+        ClassController.shared.getAttendees(classListing: classListing) { (attendeeNames) in
+            DispatchQueue.main.async {
+                self.attendeesTextView.text = attendeeNames
+            }
+        }
 
     }//
+
+    @IBAction func cancelButton(_ sender: UIBarButtonItem) {
+        guard let classListing = classListing else { return }
+        if Auth.auth().currentUser?.uid == classListing.instructorID {
+            ClassController.shared.deleteClass(classListing: classListing)
+        } else {
+            ClassController.shared.unRegister(classListing: classListing)
+        }
+        navigationController?.popViewController(animated: true)
+    }
 
     let today = Date()
 

@@ -18,7 +18,7 @@ class SearchCollectionViewController: UIViewController {
     var filterDelegate: FilterDelegate?
     var classListing: ClassListing?
     var classDataArray: [ClassListing]?
-    var dataArray: [ClassListing] = [ClassListing(classTitle: "Yoga", classType: .yoga, instructorID: "123", startTime: Date(), duration: .sixtyMin, intensity: .beginner, location: .sanFran, maxClassSize: 15, attendees: ["123"])]
+    var dataArray: [ClassListing] = [ClassListing(classTitle: "Yoga", classType: .yoga, instructorID: "123", startTime: Date(), duration: .sixtyMin, intensity: .beginner, location: .sanFran, maxClassSize: 15, attendees: "123")]
 
     var filterString: String?
 

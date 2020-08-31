@@ -19,5 +19,5 @@ struct ClassRepresentation: Codable {
     var intensity: String
     var location: String
     var maxClassSize: Int
-    var attendees: [String]
+    var attendees: String
 }
