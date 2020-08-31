@@ -41,19 +41,19 @@ class FiltersViewController: UIViewController {
             case "Type":
                 destinationVC.filtersArray = classTypeArray
                 destinationVC.navBar.title = "Type"
-                destinationVC.filterTypeString = "ClassType"
+                destinationVC.filterTypeString = "classType"
             case "Duration":
                 destinationVC.filtersArray = durationArray
                 destinationVC.navBar.title = "Duration"
-                destinationVC.filterTypeString = "Duration"
+                destinationVC.filterTypeString = "duration"
             case "Intensity Level":
                 destinationVC.filtersArray = intensityArray
                 destinationVC.navBar.title = "Intensity Level"
-                destinationVC.filterTypeString = "Intensity"
+                destinationVC.filterTypeString = "intensity"
             case "Location":
                 destinationVC.filtersArray = locationArray
                 destinationVC.navBar.title = "Location"
-                destinationVC.filterTypeString = "Location"
+                destinationVC.filterTypeString = "location"
             default:
                 break
             }
