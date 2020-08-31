@@ -93,12 +93,7 @@ class ClassDetailViewController: UIViewController {
         ClassController.shared.getUserClasses { (userClasses) in
                 DispatchQueue.main.async {
                     ClassController.shared.userClasses = userClasses
-                    ClassController.shared.getAttendees(classListing: classListing) { (attendeeNames) in
-                        DispatchQueue.main.async {
-                            self.attendeesTextView.text = attendeeNames
-                            self.view.setNeedsDisplay()
-                    }
-                }
+                    self.presentAFAlertOnMainThread(title: "Registration Canceled", message: "We're sorry you couldn't join us!", buttonTitle: "OK")
             }
         }
         navigationController?.popViewController(animated: true)

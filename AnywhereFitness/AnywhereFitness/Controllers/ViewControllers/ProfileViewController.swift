@@ -34,8 +34,9 @@ class ProfileViewController: UIViewController {
         super.viewWillAppear(true)
         ClassController.shared.getClasses { (_) in
             DispatchQueue.main.async {
-                ClassController.shared.getUserClasses { (_) in
+                ClassController.shared.getUserClasses { (userClasses) in
                     DispatchQueue.main.async {
+                        ClassController.shared.userClasses = userClasses
                         self.tableView.reloadData()
                     }
                 }
@@ -81,8 +82,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
         return cell
     }
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToDetailVCSegue" {
             if let classDetailVC = segue.destination as? ClassDetailViewController,

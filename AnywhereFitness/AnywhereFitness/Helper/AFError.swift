@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 enum AFError: String, Error {
     case invalidUsername = "This username created an invalid request. Please try again"
     case unabletoComplete = "Unable to complete your request. Please check your internet connection"

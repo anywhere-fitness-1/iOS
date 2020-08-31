@@ -50,17 +50,17 @@ class DetailViewController: UIViewController {
 //        setUpViews()
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        ClassController.shared.getClasses { (_) in
-            DispatchQueue.main.async {
-                ClassController.shared.getUserClasses { (_) in
-                    DispatchQueue.main.async {
-                    }
-                }
-            }
-        }
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        ClassController.shared.getClasses { (_) in
+//            DispatchQueue.main.async {
+//                ClassController.shared.getUserClasses { (_) in
+//                    DispatchQueue.main.async {
+//                    }
+//                }
+//            }
+//        }
+//    }
 
     func updateView() {
         guard let classListing = classListing else { return }
@@ -109,10 +109,7 @@ class DetailViewController: UIViewController {
         }
 
     }//
-    
 
-
-    
     func configureView() {
         customUI.customCardView(card: topBackgroundView)
         customUI.customCardView(card: centerBackgroundView)
@@ -126,16 +123,12 @@ class DetailViewController: UIViewController {
 
     @IBAction func registerButton(_ sender: UIBarButtonItem) {
         guard let classListing = classListing else { return }
-            ClassController.shared.register(classListing: classListing)
-            ClassController.shared.getUserClasses { (userClasses) in
-                DispatchQueue.main.async {
-                    ClassController.shared.userClasses = userClasses
-                    ClassController.shared.getAttendees(classListing: classListing) { (attendeeNames) in
-                        DispatchQueue.main.async {
-                            self.attendeesTextView.text = attendeeNames
-                            self.view.layoutSubviews()
-                    }
-                }
+        ClassController.shared.register(classListing: classListing)
+        ClassController.shared.getUserClasses { (userClasses) in
+            DispatchQueue.main.async {
+                ClassController.shared.userClasses = userClasses
+                self.presentAFAlertOnMainThread(title: "Registration Successful", message: "We look forward to seeing you in class!", buttonTitle: "OK")
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }
