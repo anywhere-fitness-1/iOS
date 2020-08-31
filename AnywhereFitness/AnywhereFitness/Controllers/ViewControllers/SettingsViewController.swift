@@ -14,6 +14,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var navBar: UINavigationItem!
     var wasEdited = false
     let imagePicker = UIImagePickerController()
+//    let loginController = LoginController()
 
     lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 100)
     
@@ -38,11 +39,11 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     var firstNameLabel: UILabel = UILabel()
     var lastNameLabel: UILabel = UILabel()
     
-    var passwordTextField: UITextField = UITextField()
+    var usernameTextField: UITextField = UITextField()
     var passwordTextLabel: UILabel = UILabel()
     var logoutButton: UIButton = UIButton(type: .roundedRect)
-    var emailTextField: UITextField = UITextField()
-    var emailLabel: UILabel = UILabel()
+//    var emailTextField: UITextField = UITextField()
+    var aboutLabel: UILabel = UILabel()
 
     var profileImageView: UIImageView = UIImageView()
     var editPhotoView: UIImageView = UIImageView()
@@ -72,8 +73,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         firstNameTextField.text = LoginController.shared.currentUser?.username
         lastNameLabel.text = "Name"
         lastNameTextField.text = LoginController.shared.currentUser?.name
-        emailLabel.text = "About"
-        emailTextField.text = LoginController.shared.currentUser?.about
+        aboutLabel.text = "About"
+        aboutTextView.text = LoginController.shared.currentUser?.about
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -86,7 +87,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         grayPhotoView.isHidden = false
         isUserInteractionEnabled(bool: true)
         } else {
-            
+            self.resignFirstResponder()
             guard let firstName = firstNameTextField.text, !firstName.isEmpty else {
                 showAlert(text: "firstName")
                 return}
@@ -96,25 +97,27 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
                 return
             }
             
-            guard let password = passwordTextField.text, !password.isEmpty else {
+            guard let password = usernameTextField.text, !password.isEmpty else {
                 showAlert(text: "password")
                 return
             }
             
-            guard let email = emailTextField.text, !email.isEmpty else {
-                showAlert(text: "email")
-                return
-            }
+//            guard let email = emailTextField.text, !email.isEmpty else {
+//                showAlert(text: "email")
+//                return
+//
+//            }
             firstNameTextField.text = firstName
             lastNameTextField.text = lastName
-            emailTextField.text = email
-            passwordTextField.text = password
+//            emailTextField.text = email
+            usernameTextField.text = password
             grayPhotoView.isHidden = true
             editPhotoView.isHidden = true
-            isUserInteractionEnabled(bool: true)
+           
             
             //Save Information to Core Data
-            
+
+
             //Save Information to Firebase
         }
     }
@@ -124,11 +127,10 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         containerView.addSubview(lastNameTextField)
         containerView.addSubview(firstNameLabel)
         containerView.addSubview(lastNameLabel)
-        containerView.addSubview(passwordTextField)
+        containerView.addSubview(usernameTextField)
         containerView.addSubview(passwordTextLabel)
         containerView.addSubview(logoutButton)
-        containerView.addSubview(emailTextField)
-        containerView.addSubview(emailLabel)
+        containerView.addSubview(aboutLabel)
         containerView.addSubview(firstNameTextField)
         containerView.addSubview(profileImageView)
         containerView.addSubview(aboutTextView)
@@ -140,8 +142,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         if bool == true {
             firstNameTextField.isUserInteractionEnabled = true
             lastNameTextField.isUserInteractionEnabled = true
-            emailTextField.isUserInteractionEnabled = true
-            passwordTextField.isUserInteractionEnabled = true
+//            emailTextField.isUserInteractionEnabled = true
+            usernameTextField.isUserInteractionEnabled = true
             profileImageView.isUserInteractionEnabled = true
             editPhotoView.isUserInteractionEnabled = true
             grayPhotoView.isUserInteractionEnabled = true
@@ -151,8 +153,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         } else {
         firstNameTextField.isUserInteractionEnabled = false
         lastNameTextField.isUserInteractionEnabled = false
-        emailTextField.isUserInteractionEnabled = false
-        passwordTextField.isUserInteractionEnabled = false
+//        emailTextField.isUserInteractionEnabled = false
+        usernameTextField.isUserInteractionEnabled = false
         profileImageView.isUserInteractionEnabled = false
         editPhotoView.isUserInteractionEnabled = false
         grayPhotoView.isUserInteractionEnabled = false
@@ -180,24 +182,24 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     func passwordTextFieldConfiguration() {
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.text = "123456"
-        passwordTextField.borderStyle = .roundedRect
+        usernameTextField.translatesAutoresizingMaskIntoConstraints = false
+        usernameTextField.text = "123456"
+        usernameTextField.borderStyle = .roundedRect
         passwordTextLabel.translatesAutoresizingMaskIntoConstraints = false
         passwordTextLabel.font = UIFont.boldSystemFont(ofSize: passwordTextLabel.font.pointSize)
         passwordTextLabel.text = "Password"
     }
     
-    func emailTextFieldConfiguration() {
-        emailTextField.translatesAutoresizingMaskIntoConstraints = false
-        emailTextField.borderStyle = .roundedRect
-        emailTextField.text = "johnmccants002@gmail.com"
-    }
+//    func emailTextFieldConfiguration() {
+//        emailTextField.translatesAutoresizingMaskIntoConstraints = false
+//        emailTextField.borderStyle = .roundedRect
+//        emailTextField.text = "johnmccants002@gmail.com"
+//    }
     
-    func emailLabelConfiguration() {
-        emailLabel.translatesAutoresizingMaskIntoConstraints = false
-        emailLabel.text = "Email"
-        emailLabel.font = UIFont.boldSystemFont(ofSize: emailLabel.font.pointSize)
+    func aboutLabelConfiguration() {
+        aboutLabel.translatesAutoresizingMaskIntoConstraints = false
+        aboutLabel.text = "About"
+        aboutLabel.font = UIFont.boldSystemFont(ofSize: aboutLabel.font.pointSize)
     }
     
     func aboutTextViewConfiguration() {
@@ -234,7 +236,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     func containerViewConfiguration() {
         let tapGestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(tapGestureRecognizer:)))
         containerView.addGestureRecognizer(tapGestureRecognizer2)
-        containerView.isUserInteractionEnabled = false
+        containerView.isUserInteractionEnabled = true
         editPhotoView.translatesAutoresizingMaskIntoConstraints = false
         editPhotoView.image = UIImage(named: "addPhoto")
         editPhotoView.clipsToBounds = true
@@ -245,7 +247,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     func stackViewConfiguration() {
         // Adding The Fields and Labels to a Vertical StackView
-          let stackView = UIStackView(arrangedSubviews: [firstNameLabel, firstNameTextField, lastNameLabel, lastNameTextField, passwordTextLabel, passwordTextField, emailLabel, emailTextField])
+          let stackView = UIStackView(arrangedSubviews: [firstNameLabel, firstNameTextField, lastNameLabel, lastNameTextField, passwordTextLabel, usernameTextField, aboutLabel])
           stackView.axis = .vertical
           stackView.distribution = .equalSpacing
           stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -288,13 +290,13 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         navigationItem.rightBarButtonItem = editButtonItem
         //Adding properties to subviews
         view.addSubview(scrollView)
+        addSubview()
         isUserInteractionEnabled(bool: false)
         firstNameTextFieldConfiguration()
         lastNameTextFieldConfiguration()
         nameLabelsConfiguration()
         passwordTextFieldConfiguration()
-        emailTextFieldConfiguration()
-        emailLabelConfiguration()
+        aboutLabelConfiguration()
         logOutButtonConfiguration()
         profileImageViewConfiguration()
         containerViewConfiguration()
