@@ -139,7 +139,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     func nameLabelsConfiguration() {
-        userNameLabel.font = UIFont.boldSystemFont(ofSize:userNameLabel.font.pointSize)
+        userNameLabel.font = UIFont.boldSystemFont(ofSize: userNameLabel.font.pointSize)
         nameTextLabel.font = UIFont.boldSystemFont(ofSize: nameTextLabel.font.pointSize)
     }
     func aboutLabelConfiguration() {

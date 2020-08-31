@@ -18,8 +18,7 @@ class SearchVC: UIViewController {
     var filterTypeString: String?
     var filterString: String?
     var filterDelegate: FilterDelegate?
-    
-    
+
     // MARK: - Properties
 
     // MARK: - FetchResult Properties
@@ -48,8 +47,6 @@ class SearchVC: UIViewController {
                 LoginController.shared.currentUser = user
             }
         }
-        ClassController.shared.getClasses { (_) in
-        }
     }
     
     func setUpFetch()  {
@@ -67,12 +64,11 @@ class SearchVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "filters" {
             guard let destinationVC = segue.destination as? FiltersViewController else {return}
-            destinationVC.filterDelegate = self }
-        else if segue.identifier == "goToDetailViewSegue" {
-                if let detailVC = segue.destination as? DetailViewController,
-                    let indexPath = tableView.indexPathForSelectedRow {
-                    detailVC.classListing = fetchedResultsController.object(at: indexPath)
-                }
+            destinationVC.filterDelegate = self
+        } else if segue.identifier == "goToDetailViewSegue" {
+            if let detailVC = segue.destination as? DetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow {
+                detailVC.classListing = fetchedResultsController.object(at: indexPath)
             }
         }
     }
@@ -153,12 +149,9 @@ extension SearchVC: FilterDelegate {
         self.setUpFetch()
         self.tableView.reloadData()
     }
-    
-    
+
 }
 
 protocol FilterDelegate {
     func filterSelected(filterType: String?, filter: String?)
 }
-
-

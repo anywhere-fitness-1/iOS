@@ -154,10 +154,8 @@ class ClassController {
         if let identifier = Auth.auth().currentUser?.uid,
             var attendees = classListing.attendees {
             var attendeeArray = (attendees.components(separatedBy: ", ")).map { $0 }
-            for index in 0..<attendeeArray.count {
-                if identifier == attendeeArray[index] {
-                    attendeeArray.remove(at: index)
-                }
+            if let index = attendeeArray.firstIndex(of: identifier) {
+                attendeeArray.remove(at: index)
             }
             attendees = (attendeeArray.map {$0}).joined(separator: ", ")
             updateValue(classListing: classListing, key: "attendees", value: attendees)
@@ -175,6 +173,8 @@ class ClassController {
     private func updateValue(classListing: ClassListing, key: String, value: String) {
         if let classID = classListing.identifier?.uuidString {
             ref.child("classes").child(classID).updateChildValues(["\(key)": value])
+            ClassController.shared.getClasses { (_) in
+            }
         }
     }
 
