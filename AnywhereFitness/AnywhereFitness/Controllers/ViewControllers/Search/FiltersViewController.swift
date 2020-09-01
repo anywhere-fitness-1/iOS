@@ -12,11 +12,14 @@ class FiltersViewController: UIViewController {
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var filterTableView: UITableView!
 
-    var filtersArray: [String] = ["Type", "Duration", "Intensity Level", "Location"]
-    let classTypeArray = ["Yoga", "Pilates", "Aerobics", "Dance", "Cross Fit", "Strength Training", "Martial Arts", "Other"]
-    let intensityArray = ["Beginner", "Intermediate", "Expert"]
-    let locationArray = ["San Francisco", "New York"]
-    let durationArray = ["30 Minutes", "45 Minutes", "60 Minutes", "90 Minutes"]
+    var filtersArray: [String] = ["Type", "Duration", "Intensity Level", "Location", "Day", "Time of Day"]
+    let classTypeArray = ClassType.allCases.map { $0.rawValue }
+    let intensityArray = Intensity.allCases.map { $0.rawValue }
+    let locationArray = Location.allCases.map { $0.rawValue }
+    let durationArray = Duration.allCases.map { $0.rawValue }
+    let daysArray = ["Today", "Tomorrow", "This Weekend", "Next Week"]
+    let timeArray = ["Morning", "Noon", "Afternoon", "Night"]
+
 
     var filterString: String = ""
     var filterDelegate: FilterDelegate?
@@ -54,6 +57,14 @@ class FiltersViewController: UIViewController {
                 destinationVC.filtersArray = locationArray
                 destinationVC.navBar.title = "Location"
                 destinationVC.filterTypeString = "location"
+            case "Day":
+                destinationVC.filtersArray = daysArray
+                destinationVC.navBar.title = "Days"
+                destinationVC.filterTypeString = "startTime"
+            case "Time of Day":
+                destinationVC.filtersArray = timeArray
+                destinationVC.navBar.title = "Time of Day"
+                destinationVC.filterTypeString = "startTime"
             default:
                 break
             }
@@ -74,10 +85,6 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
         cell.accessoryType = .disclosureIndicator
 
         return cell
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
     }
 }
 
