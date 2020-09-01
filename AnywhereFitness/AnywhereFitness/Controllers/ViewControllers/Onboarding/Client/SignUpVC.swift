@@ -36,7 +36,7 @@ class SignUpVC: UITableViewController {
         aboutTextView.layer.borderColor = UIColor.systemGray4.cgColor
         aboutTextView.layer.cornerRadius = 5
         aboutTextView.clipsToBounds = true
-        
+
         updateImage()
     }
 

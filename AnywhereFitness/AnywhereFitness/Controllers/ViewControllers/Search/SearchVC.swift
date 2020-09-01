@@ -16,7 +16,7 @@ class SearchVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var filterTypeString: String?
     var filterString: String?
-    var filterDelegate: FilterDelegate?
+    weak var filterDelegate: FilterDelegate?
 
     // MARK: - Properties
 
@@ -170,6 +170,6 @@ extension SearchVC: FilterDelegate {
 
 }
 
-protocol FilterDelegate {
+protocol FilterDelegate: AnyObject {
   func filterSelected(filterType: String?, filter: String?)
 }
