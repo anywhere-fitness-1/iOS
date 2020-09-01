@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 
 enum HTTPMethod: String {
     case get = "GET"
@@ -39,6 +40,7 @@ class LoginController {
     private init() { }
 
     var currentUser: User?
+    let ref = Database.database().reference()
 
     private let firebaseURL = URL(string: "https://fitness-bd254.firebaseio.com/users/")!
 
@@ -72,7 +74,7 @@ class LoginController {
 
     func setCurrentUser(completion: @escaping (User) -> Void) {
         if let identifier = Auth.auth().currentUser?.uid {
-            Database.database().reference().child("users").child(identifier).observeSingleEvent(of: .value, with: { (snapshot) in
+            ref.child("users").child(identifier).observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
                 if let username = value?["username"] as? String,
                     let name = value?["name"] as? String,
@@ -88,7 +90,7 @@ class LoginController {
     }
 
     func getUser(with identifier: String, completion: @escaping (User) -> Void) {
-        Database.database().reference().child("users").child(identifier).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("users").child(identifier).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             if let username = value?["username"] as? String,
                 let name = value?["name"] as? String,
@@ -100,6 +102,12 @@ class LoginController {
                 completion(user)
             }
         })
+    }
+
+    func updateValue(key: String, value: String) {
+        if let userID = Auth.auth().currentUser?.uid {
+            ref.child("users").child(userID).updateChildValues(["\(key)": value])
+        }
     }
 
 }

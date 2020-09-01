@@ -19,7 +19,7 @@ class FiltersViewController: UIViewController {
     let durationArray = ["30 Minutes", "45 Minutes", "60 Minutes", "90 Minutes"]
 
     var filterString: String = ""
-    var filterDelegate: FilterDelegate?
+    weak var filterDelegate: FilterDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class FiltersViewController: UIViewController {
         if segue.identifier == "toFilterDetail" {
             guard let destinationVC = segue.destination as? FiltersDetailViewController else {return}
             destinationVC.filterDelegate = self.filterDelegate
-            
+
             guard let selectedRow = self.filterTableView.indexPathsForSelectedRows?.first else {return}
 
             switch filtersArray[selectedRow.row] {

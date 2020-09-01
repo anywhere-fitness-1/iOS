@@ -27,14 +27,10 @@ class AddClassViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.delegate = self
-//        instructorNameTextField.delegate = self
-//        durationTextField.delegate = self
-//        maxClassSizeTextField.delegate = self
         addTypePickerView.delegate = self
         addTypePickerView.dataSource = self
         locationPickerView.delegate = self
         locationPickerView.dataSource = self
-//        self.hideKeyBoard()
     }
 
     @IBAction func maxClassSizeStepper(_ sender: UIStepper) {
@@ -46,9 +42,6 @@ class AddClassViewController: UITableViewController, UITextFieldDelegate {
     // Methods or Functions
     func hideKeyBoard() {
         nameTextField.resignFirstResponder()
-//        instructorNameTextField.resignFirstResponder()
-//        durationTextField.resignFirstResponder()
-//        maxClassSizeTextField.resignFirstResponder()
     }
 
     // UITextField Delegates Methods

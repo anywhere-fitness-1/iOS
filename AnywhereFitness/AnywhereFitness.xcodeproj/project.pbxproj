@@ -46,7 +46,6 @@
 		86C41FC324FD503400798241 /* AFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C41FC224FD503400798241 /* AFBodyLabel.swift */; };
 		86C41FC524FD509200798241 /* AFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C41FC424FD509200798241 /* AFSecondaryTitleLabel.swift */; };
 		86C41FC824FD514500798241 /* AFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C41FC724FD514500798241 /* AFButton.swift */; };
-		86C41FCA24FD692600798241 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C41FC924FD692600798241 /* AuthService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,7 +89,6 @@
 		86C41FC224FD503400798241 /* AFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFBodyLabel.swift; sourceTree = "<group>"; };
 		86C41FC424FD509200798241 /* AFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		86C41FC724FD514500798241 /* AFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFButton.swift; sourceTree = "<group>"; };
-		86C41FC924FD692600798241 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = AnywhereFitness/Helper/AFButtons/AuthService.swift; sourceTree = SOURCE_ROOT; };
 		962ACC83B68F14CC7902BC4F /* Pods_AnywhereFitness.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnywhereFitness.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E7717B0CADA893643FF358B /* Pods-AnywhereFitness.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnywhereFitness.debug.xcconfig"; path = "Target Support Files/Pods-AnywhereFitness/Pods-AnywhereFitness.debug.xcconfig"; sourceTree = "<group>"; };
 		CB9B564605666CB7289FDD42 /* Pods-AnywhereFitness.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnywhereFitness.release.xcconfig"; path = "Target Support Files/Pods-AnywhereFitness/Pods-AnywhereFitness.release.xcconfig"; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 			children = (
 				1AA8172C24F5BA6100649A07 /* LoginController.swift */,
 				1AA8172E24F5BA7E00649A07 /* ClassController.swift */,
-				86C41FC924FD692600798241 /* AuthService.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -508,8 +505,6 @@
 				1A2B82E724EF564600815CA3 /* Class+Convenience.swift in Sources */,
 				1281AA3824EDD1E800D24E0B /* AppDelegate.swift in Sources */,
 				8614D05324F41F0100414865 /* AddClassViewController.swift in Sources */,
-				12AB67DF24EE436300AC2663 /* SearchCollectionViewCell.swift in Sources */,
-				12C465B824F8AC8B00A6FDD3 /* SearchCollectionViewController.swift in Sources */,
 				86C41FBE24FD4F4300798241 /* AFAlertVC.swift in Sources */,
 				8614CFF024EF42A800414865 /* ProfileViewController.swift in Sources */,
 				1A81A1A624F9FB2100E5FDA5 /* AnywhereFitness.xcdatamodeld in Sources */,
@@ -531,7 +526,6 @@
 				86C41FC324FD503400798241 /* AFBodyLabel.swift in Sources */,
 				311F842224FC9A4200678CE6 /* FiltersDetailViewController.swift in Sources */,
 				311F841E24F8A98700678CE6 /* DetailViewController.swift in Sources */,
-				86C41FCA24FD692600798241 /* AuthService.swift in Sources */,
 				86C41FC524FD509200798241 /* AFSecondaryTitleLabel.swift in Sources */,
 				1A2B82ED24EF56CC00815CA3 /* ClassRepresentation.swift in Sources */,
 				1A2B82E524EE03B800815CA3 /* CoreDataStack.swift in Sources */,
