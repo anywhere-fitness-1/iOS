@@ -124,7 +124,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bodypump" translatesAutoresizingMaskIntoConstraints="NO" id="zQy-OW-cCR">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="zQy-OW-cCR">
                                         <rect key="frame" x="139" y="35" width="136" height="136"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="136" id="7A2-vp-w1D"/>
@@ -1042,8 +1042,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bodypump" width="960" height="540"/>
         <image name="crossfit" width="612" height="408"/>
         <image name="person" catalog="system" width="128" height="117"/>
+        <image name="placeholder" width="300" height="300"/>
     </resources>
 </document>

@@ -15,12 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="jxp-DD-3QU">
-                                <rect key="frame" x="0.0" y="140" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="slp-hY-qDr">
-                                <rect key="frame" x="0.0" y="196" width="414" height="617"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" rowHeight="327" id="dQA-TD-Xaa" customClass="SearchTableViewCell" customModule="AnywhereFitness" customModuleProvider="target">
@@ -112,13 +108,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="jxp-DD-3QU" firstAttribute="top" secondItem="19i-8s-T5d" secondAttribute="top" id="4gZ-o1-WbM"/>
-                            <constraint firstItem="slp-hY-qDr" firstAttribute="top" secondItem="jxp-DD-3QU" secondAttribute="bottom" id="AoK-B8-oQY"/>
+                            <constraint firstItem="slp-hY-qDr" firstAttribute="top" secondItem="19i-8s-T5d" secondAttribute="top" id="5Nz-OB-J4b"/>
                             <constraint firstItem="slp-hY-qDr" firstAttribute="leading" secondItem="19i-8s-T5d" secondAttribute="leading" id="Ccr-CC-bKW"/>
-                            <constraint firstItem="jxp-DD-3QU" firstAttribute="leading" secondItem="19i-8s-T5d" secondAttribute="leading" id="EEw-Op-xLW"/>
                             <constraint firstItem="slp-hY-qDr" firstAttribute="trailing" secondItem="19i-8s-T5d" secondAttribute="trailing" id="NOy-V4-QYy"/>
                             <constraint firstItem="slp-hY-qDr" firstAttribute="bottom" secondItem="19i-8s-T5d" secondAttribute="bottom" id="fUl-ol-dgC"/>
-                            <constraint firstItem="jxp-DD-3QU" firstAttribute="trailing" secondItem="19i-8s-T5d" secondAttribute="trailing" id="sYL-s4-hYZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="19i-8s-T5d"/>
                     </view>
@@ -131,7 +124,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchBar" destination="jxp-DD-3QU" id="vha-X3-m5i"/>
                         <outlet property="tableView" destination="slp-hY-qDr" id="UXJ-5B-mTi"/>
                     </connections>
                 </viewController>
@@ -571,6 +563,7 @@
                         <viewLayoutGuide key="safeArea" id="JLu-ZQ-5pf"/>
                     </view>
                     <navigationItem key="navigationItem" title="Class Name" largeTitleDisplayMode="never" id="9pG-Jp-q11">
+                        <barButtonItem key="rightBarButtonItem" title="Register" id="ed7-cJ-gx5"/>
                         <barButtonItem key="rightBarButtonItem" title="Register" id="3Sq-bl-g3e">
                             <connections>
                                 <action selector="registerButton:" destination="2sx-I9-QHi" id="W7n-m4-5yz"/>

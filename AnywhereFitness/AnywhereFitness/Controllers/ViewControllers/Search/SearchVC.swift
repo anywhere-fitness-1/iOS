@@ -13,7 +13,6 @@ import CoreData
 class SearchVC: UIViewController {
 
     // Outlets
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var filterTypeString: String?
     var filterString: String?
@@ -34,6 +33,9 @@ class SearchVC: UIViewController {
         } catch {
             NSLog("Unable to fetch classes from main context: \(error)")
         }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         return frc
     }()
 
@@ -48,8 +50,8 @@ class SearchVC: UIViewController {
             }
         }
     }
-    
-    func setUpFetch()  {
+
+    func setUpFetch() {
         guard let filterString = filterString, let filterTypeString = filterTypeString else {return}
         let pred = NSPredicate(format: "\(filterTypeString) CONTAINS '\(filterString)'")
         self.fetchedResultsController.fetchRequest.predicate = pred
@@ -171,6 +173,3 @@ extension SearchVC: FilterDelegate {
 protocol FilterDelegate {
   func filterSelected(filterType: String?, filter: String?)
 }
-
-
-
