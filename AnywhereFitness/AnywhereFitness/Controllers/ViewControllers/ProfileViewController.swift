@@ -52,7 +52,7 @@ class ProfileViewController: UIViewController {
         usernameLabel.text = LoginController.shared.currentUser?.name
         if LoginController.shared.currentUser?.isInstructor == true {
             navigationItem.rightBarButtonItem?.isEnabled = true
-            navigationItem.rightBarButtonItem?.tintColor = .black
+            navigationItem.rightBarButtonItem?.tintColor = .systemOrange
         } else {
             navigationItem.rightBarButtonItem?.isEnabled = false
             navigationItem.rightBarButtonItem?.tintColor = .clear
