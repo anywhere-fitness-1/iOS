@@ -20,7 +20,6 @@ class FiltersViewController: UIViewController {
     let daysArray = ["Today", "Tomorrow", "This Weekend", "Next Week"]
     let timeArray = ["Morning", "Noon", "Afternoon", "Night"]
 
-
     var filterString: String = ""
     weak var filterDelegate: FilterDelegate?
 

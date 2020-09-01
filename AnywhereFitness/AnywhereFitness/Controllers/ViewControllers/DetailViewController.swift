@@ -105,7 +105,7 @@ class DetailViewController: UIViewController {
                             self.view.layoutIfNeeded()
                         } else {
                             self.navigationItem.rightBarButtonItem?.isEnabled = true
-                            self.navigationItem.rightBarButtonItem?.tintColor = .black
+                            self.navigationItem.rightBarButtonItem?.tintColor = .orange
                             self.view.setNeedsDisplay()
                         }
                     }
