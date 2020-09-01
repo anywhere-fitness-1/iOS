@@ -508,8 +508,6 @@
 				1A2B82E724EF564600815CA3 /* Class+Convenience.swift in Sources */,
 				1281AA3824EDD1E800D24E0B /* AppDelegate.swift in Sources */,
 				8614D05324F41F0100414865 /* AddClassViewController.swift in Sources */,
-				12AB67DF24EE436300AC2663 /* SearchCollectionViewCell.swift in Sources */,
-				12C465B824F8AC8B00A6FDD3 /* SearchCollectionViewController.swift in Sources */,
 				86C41FBE24FD4F4300798241 /* AFAlertVC.swift in Sources */,
 				8614CFF024EF42A800414865 /* ProfileViewController.swift in Sources */,
 				1A81A1A624F9FB2100E5FDA5 /* AnywhereFitness.xcdatamodeld in Sources */,
