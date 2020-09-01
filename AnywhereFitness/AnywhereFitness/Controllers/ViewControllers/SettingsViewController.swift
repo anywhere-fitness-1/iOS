@@ -43,6 +43,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     var grayPhotoView: UIImageView = UIImageView()
     var aboutTextView: UITextView = UITextView()
 
+    var photoSelected: Bool = false
+
     override func viewWillLayoutSubviews() {
         profileImageView.setRounded()
         editPhotoView.setRounded()
@@ -75,24 +77,26 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
         print("setEditing")
         if editing {
-        wasEdited = true
         editPhotoView.isHidden = false
         grayPhotoView.isHidden = false
         isUserInteractionEnabled(bool: true)
         } else {
             self.resignFirstResponder()
-            guard let username = userNameTextField.text, !username.isEmpty else {
-                showAlert(text: "username")
-                return}
-            guard let name = nameTextField.text, !name.isEmpty else {
-                showAlert(text: "name")
-                return
+            if let username = userNameTextField.text {
+                LoginController.shared.updateValue(key: "username", value: username)
             }
-            userNameTextField.text = username
-            nameTextField.text = name
+            if let name = nameTextField.text {
+                LoginController.shared.updateValue(key: "name", value: name)
+            }
+            if let about = aboutTextView.text {
+                LoginController.shared.updateValue(key: "about", value: about)
+            }
+//            if photoSelected == true {
+//                let image = profileImageView.image
+//                // send image data to Firebase
+//            }
             grayPhotoView.isHidden = true
             editPhotoView.isHidden = true
-            //Update User Info here
         }
     }
 
@@ -248,7 +252,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         aboutTextViewConfiguration()
     }
 
-    @objc func logoutButtonTapped() { 
+    @objc func logoutButtonTapped() {
         do {
                 try Auth.auth().signOut()
             } catch let logoutError {
@@ -298,6 +302,7 @@ func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMe
     if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
         profileImageView.contentMode = .scaleAspectFit
         profileImageView.image = pickedImage
+        photoSelected = true
     }
 
     dismiss(animated: true, completion: nil)
