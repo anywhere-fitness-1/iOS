@@ -62,7 +62,7 @@ class SearchVC: UIViewController {
         }
 
     }
-    
+
     func checkDate(date: Date, filterString: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
@@ -73,10 +73,9 @@ class SearchVC: UIViewController {
         } else {
         return Date()
         }
-        
+
     }
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "filters" {
             guard let destinationVC = segue.destination as? FiltersViewController else {return}
@@ -165,7 +164,7 @@ extension SearchVC: FilterDelegate {
         print(filterTypeString)
         self.setUpFetch()
         self.tableView.reloadData()
-        
+
     }
 
 }
