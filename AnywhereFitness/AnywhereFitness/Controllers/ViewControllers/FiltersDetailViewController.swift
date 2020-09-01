@@ -13,7 +13,7 @@ class FiltersDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navBar: UINavigationItem!
 
-    var filterDelegate: FilterDelegate?
+    weak var filterDelegate: FilterDelegate?
     var filterString: String?
     var filterTypeString: String?
     var filtersArray: [String]?
@@ -31,16 +31,16 @@ class FiltersDetailViewController: UIViewController {
             return
         }
         filterString = filtersArray[selectedIndex]
-            guard let filterDelegate = filterDelegate else {
-                print("No filter delegate")
-                return
+        guard let filterDelegate = filterDelegate else {
+            print("No filter delegate")
+            return
         }
-           guard let filterString = filterString, let filterTypeString = filterTypeString else {
+        guard let filterString = filterString, let filterTypeString = filterTypeString else {
             print("No Filter String")
             return}
         filterDelegate.filterSelected(filterType: filterTypeString, filter: filterString)
-            navigationController?.popToRootViewController(animated: true)
-        }
+        navigationController?.popToRootViewController(animated: true)
+    }
 
 }
 extension FiltersDetailViewController: FilterDelegate {
@@ -68,8 +68,11 @@ extension FiltersDetailViewController: UITableViewDelegate, UITableViewDataSourc
 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            selectedIndex = indexPath.row
-            tableView.reloadData()
-        }
+        selectedIndex = indexPath.row
+        tableView.reloadData()
+    }
 
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+
+    }
 }

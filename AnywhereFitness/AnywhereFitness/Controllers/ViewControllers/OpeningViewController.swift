@@ -91,12 +91,9 @@ class OpeningViewController: UIViewController, UITextFieldDelegate, UITextViewDe
             let password = passwordTextField.text, !password.isEmpty else {
                 return
             }
-        
 
         Auth.auth().signIn(withEmail: email, password: password) { (_, error) in
-            
-            
-            
+
             if error != nil {
                 print("error")
                 self.presentAFAlertOnMainThread(title: "Bad Login & Password", message: "Please, enter the correct Login & Password \nor click the link below to Sign Up.", buttonTitle: "Ok")
@@ -111,7 +108,6 @@ class OpeningViewController: UIViewController, UITextFieldDelegate, UITextViewDe
                         DispatchQueue.main.async {
                             ClassController.shared.userClasses = userClasses
                             self.performSegue(withIdentifier: "ToSearchStoryboard", sender: nil)
-                            
                         }
                     }
                 }

@@ -13,11 +13,10 @@ import CoreData
 class SearchVC: UIViewController {
 
     // Outlets
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var filterTypeString: String?
     var filterString: String?
-    var filterDelegate: FilterDelegate?
+    weak var filterDelegate: FilterDelegate?
 
     // MARK: - Properties
 
@@ -34,6 +33,9 @@ class SearchVC: UIViewController {
         } catch {
             NSLog("Unable to fetch classes from main context: \(error)")
         }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         return frc
     }()
 
@@ -48,8 +50,8 @@ class SearchVC: UIViewController {
             }
         }
     }
-    
-    func setUpFetch()  {
+
+    func setUpFetch() {
         guard let filterString = filterString, let filterTypeString = filterTypeString else {return}
         let pred = NSPredicate(format: "\(filterTypeString) CONTAINS '\(filterString)'")
         self.fetchedResultsController.fetchRequest.predicate = pred
@@ -60,6 +62,20 @@ class SearchVC: UIViewController {
         }
 
     }
+    
+    func checkDate(date: Date, filterString: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        let dayInWeek = dateFormatter.string(from: date)
+        print(dayInWeek)
+        if filterString == dayInWeek {
+            return date
+        } else {
+        return Date()
+        }
+        
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "filters" {
@@ -149,13 +165,11 @@ extension SearchVC: FilterDelegate {
         print(filterTypeString)
         self.setUpFetch()
         self.tableView.reloadData()
+        
     }
 
 }
 
-protocol FilterDelegate {
+protocol FilterDelegate: AnyObject {
   func filterSelected(filterType: String?, filter: String?)
 }
-
-
-
